@@ -2,11 +2,21 @@ const express = require('express');
 
 const app = express();
 
+
+const port = process.env.PORT || 5000;
+
+app.listen(port, () => 
+  console.log(`Server running on port ${port}`
+  ));
+
+
+
+//Send message to the html
 app.get('/', (req, res) => res.send('Hello world!'));
 
-const port = process.env.PORT || 8082;
 
 
+//// Middleware----------------------------------------------
 
 const bodyParser = require("body-parser");
 const cors = require("cors");
@@ -18,13 +28,18 @@ app.use(
   })
 );
 app.use(cors());
-//
-//route 
+
+
+
+//route ------------------------------------------------------
 app.use('/cities', require('./routes/cities'));
-app.use('/prova',require('./routes/prova'));
-//
+app.use('/all', require('./routes/cities'));
+
+//----------------------------------------------------------------
+
+/*
 const { MongoClient } = require('mongodb');
-const uri = "mongodb+srv://genis123:admin89@itinerary.h6gff.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+const uri = "mongodb+srv://genis123:admin123@sandbox.h6gff.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 const client = new MongoClient(uri, { 
   useNewUrlParser: true, 
   useUnifiedTopology: true 
@@ -34,7 +49,19 @@ client.connect(err => {
   // perform actions on the collection object
   client.close();
 });
-//
+// */
 
 
-app.listen(port, () => console.log(`Server running on port ${port}`));
+
+
+
+// db es el modulo mongoURI del archivo keys.js --------------------------------
+const db = require('./keys').mongoURI;
+
+const mongoose = require("mongoose");
+
+mongoose.connect("mongodb+srv://genis123:admin123@sandbox.h6gff.mongodb.net/myFirstDatabase?retryWrites=true&w=majority", { useNewUrlParser: true, useCreateIndex: true })
+    .then(() => console.log('Connection to Mongo DB established!'))
+    .catch(err => console.log(err));
+
+////
