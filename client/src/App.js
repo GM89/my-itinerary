@@ -3,6 +3,7 @@ import React from 'react';
 import './App.css'; 
 import { BrowserRouter, Route, Routes, NavLink , Link} from 'react-router-dom'
 import {Landing} from './components/Landing.js'
+import {Cities} from './components/Cities.js'
 
 //routes és equivalent a Switch
 
@@ -11,13 +12,17 @@ function App() {
   return (
     
         <div className="App">
-          <Link to="landing"> Landing aquí </Link>
+
+          <div><Link to="landing"> Landing aquí </Link> </div>
+
+          <div><Link to="cities"> Cities aquí </Link></div>
           <div><p>Hola!</p></div>
 
 
             <Routes>
                 
                   <Route path='/landing' element={<Landing/>}> </Route>
+                  <Route path='/cities' element={<Cities/>}> </Route>
             </Routes>
             
             

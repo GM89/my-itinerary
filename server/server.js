@@ -28,8 +28,7 @@ the api route and the relative path to the file where
 we will defining our route methods.*/
 
 app.use('/cities', require('./routes/cities'))
-app.use('/all', require('./routes/cities'));
-
+app.use('/cities/all', require('./routes/cities'))
 
 //---------------------------------------------
 const db = require("./keys").mongoURI;
