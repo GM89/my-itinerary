@@ -18,5 +18,5 @@ const citySchema = new mongoose.Schema({
        },
 })
 
-//We set the export to a variable ‘city’ which was defined as 'Schema' on line6, and we exported as a mongoose modelxº
+//We set the export to a variable ‘city’ which was defined as 'Schema' on line6, and we exported as a mongoose model
 module.exports = mongoose.model('city', citySchema)
