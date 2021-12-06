@@ -1,60 +1,71 @@
-import React, { Component } from 'react';
+import React, {useState,useEffect } from 'react';
+import axios from 'axios';
 
 
-let url = "http://localhost:3000/cities";
-
-let cities_data = [{}]
 
 let dummy_dictionary =[{'city':"Madrid ", 'country':'Spain','photoUrl':'photomadrid'}, {'city':"lyon ", 'country':'france','photoUrl':'photolyon'}]
 
- const fetchQuotes = () => {
-      fetch("http://localhost:5000/cities/all")
-      .then(response => response.json())
-      .then(json => {
-        cities_data = json;
-       
-        console.log(cities_data, 'cities dentro de fetch');
-      });
-      
-  }
 
-  console.log(cities_data, 'cities data FUERA de fetch')
 
-  
-  const Table = () => {
-    
-     for(let i=0; i< cities_data.length; i++){
-      
-                return(
-                  <div>
-                    <p> at least I'm returning this text</p>
-                    {cities_data[i].city}
-                  </div>
-                )
-             }
-  }
 
-/*s
-componentDidMount() {
-  this.fetchQuotes()
-  this.timer = setInterval(() => this.fetchQuotes(), 2000);
-}
- 
-componentWillUnmount() {
-  this.timer = null;
-}  
-*/
 
   function Cities () {
-    return (
-      <div>
-     <p> Cities components is here!</p>
-        <div>
-            <Table/>
-          </div>
-      </div>
-     
-    )}
+    const [data, setData] = useState('');
+    let url = "http://localhost:5000/";
+// React to only execute the side effect once (at mount time), by passing an empty array:
+    useEffect( () => {
+      getData()
+          }, [])
+        
+    
+    
+    const getData = () => {
+        
+       axios.get(`${url}cities/all`)
+       .then((response)=>{
+         const citiesData = response.data;
+         setData(citiesData)
+         console.log(citiesData, 'cities data DENTRO de axios')
+       })
+    
+       .catch(error=>console.error(`error ${error}`))
+          
+      }
+/*
+
+      function createPost() {
+        axios
+          .post(`${url}cities/all`, {
+            city: "Prague",
+            country: "Czech republic",
+            photoUrl:"https://live.staticflickr.com/2396/2132573649_c987dddc90_b.jpg",
+          })
+          .then((response) => {
+            setData(response.data);
+          });
+      }
+      */
+      
+    
+      return(
+        Object.keys(data).map((x) => {
+            return(
+              
+                <ul key={data[x]._id}>
+                    <li>{data[x].city}</li>
+                    <li>{data[x].country}</li>
+                    <li>{data[x]._id}</li>
+                    <li>{data[x].photoUrl}</li>
+                </ul>             
+        )
+        })
+        
+    
+      )
+  }
+  
+
+  
 
 
 
