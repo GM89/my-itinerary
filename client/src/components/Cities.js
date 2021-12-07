@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
+
 let dummy_dictionary = [{ 'city': "Madrid ", 'country': 'Spain', 'photoUrl': 'photomadrid' }, { 'city': "lyon ", 'country': 'France', 'photoUrl': 'photolyon' }]
 
 
@@ -59,6 +60,8 @@ data[objectCity].city nos permite hacer eso. Aqui data[objectCity] actúa como u
 
 */
 
+
+
   return (
 
 
@@ -73,7 +76,7 @@ data[objectCity].city nos permite hacer eso. Aqui data[objectCity] actúa como u
 
     
 
-      {Object.keys(data).filter(objectCity => data[objectCity].city.toLowerCase().includes(filter.toLowerCase()))
+      {Object.keys(data).filter(objectCity => data[objectCity].city.toLowerCase().startsWith(filter.toLowerCase()))
         .map(x => <li key={data[x].city}>{data[x].city}</li>)}
 
     </div>  
