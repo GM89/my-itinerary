@@ -10,24 +10,30 @@ import thunk from 'redux-thunk';
 
 // Dispacth the fetch 
 //(port = '5000') => 
-const getCitiesList = async dispatch => {
+const getCitiesList = async (dispatch) => {
   dispatch(actionFetchInit());
   try {
     const port = '5000';
     const url = `http://localhost:${port}/`;
     axios.get(`${url}cities/all`)
       .then((response) => {
-        let citiesData = response.data;
+        let citiesData = await response.data;
         //setData(citiesData);
         console.log(citiesData, 'cities data DENTRO de axios')
+        console.log(citiesData.length, 'number of cities')
       })
       dispatch(actionFetchSuccess(citiesData));
 
   } catch (error) {
     console.error(`error ${error}`)
-    dispatch(actionFetchFailure(error.message));
+    dispatch(actionFetchFailure(error.message.data, error.message.status));
   }
 }
+
+//que es error.message.data, error.message.status
+
+
+dispatch(getCitiesList)
 
 
 //Fetch actions 
@@ -35,27 +41,29 @@ const getCitiesList = async dispatch => {
 
  const actionFetchInit = () => {
   return {
-    type: FETCH_INIT
+    type: 'FETCH/fetch_init'
   }
 }
 
 const actionFetchSuccess = (data)=> {
   return {
-    type: GET_CITIES_LIST_SUCCESS,
+    type: 'FETCH/get_list_success',
     payload: {
       data
     }
   }
 }
 
- const actionFetchFailure = errormessage => {
+ const actionFetchFailure = (msg, status, id) => {
   return {
-    type: GET_CITIES_LIST_FAILURE,
+    type: 'ERROR/get_list_failure',
     payload: {
-      errormessage
-    }
+       msg, status, id 
+   }
   }
 }
+
+
 
 
 

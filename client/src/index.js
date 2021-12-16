@@ -24,10 +24,7 @@ You then pass this object to the react-redux Provider component, which is render
 top of our component tree. This ensures that any time we connect to Redux in our app, 
 the store is available to our components.
  
-const store = createStore(
-  rootReducer,
-  composeWithDevTools(applyMiddleware(thunk))
-);*/
+*/
 ReactDOM.render(
   <Provider store={store}>
     <App />
