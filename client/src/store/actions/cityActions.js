@@ -1,44 +1,23 @@
 
 import React, { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux';
 import axios from 'axios';
 
-
-
-
 const port = '5000';
 const url = `http://localhost:${port}/`;
-/*const getCitiesList = () = async (dispatch) => {*/
-const getCitiesList = async (dispatch) => {
-  dispatch(actionFetchInit());
-  try {
-   
-    axios.get(`${url}cities/all`)
-      .then((response) => {
-        let citiesData = await response.data;
-        //setData(citiesData);
-        console.log(citiesData, 'cities data DENTRO de axios')
-        console.log(citiesData.length, 'number of cities')
-      })
-      dispatch(actionFetchSuccess(citiesData));
+//Fetch actions 
+export const fetchCities = () => {
+return async dispatch =>  {
+  const  response = await axios.get(`${url}/cities/all`);
+  const data = await  response;
+  console.log(data);
+  dispatch({ type:'FETCH/get_list_success', payload:data });
 
-  } catch (error) {
-    console.error(`error ${error}`)
-    dispatch(actionFetchFailure(error.message.data, error.message.status));
-  }
 }
 
-//que es error.message.data, error.message.status
+}
 
-
-dispatch(getCitiesList)
-
-
-//Fetch actions 
-
-
- const actionFetchInit = () => {
+const actionFetchInit = () => {
   return {
     type: 'FETCH/fetch_init',
   }
@@ -62,6 +41,32 @@ dispatch(getCitiesList)
    }
   }
 }
+
+
+
+
+/*const getCitiesList = () = async (dispatch) => {*/
+
+/* 
+const fetchCitiesList = async (dispatch) => {
+  let citiesData = {}
+  dispatch(actionFetchInit());
+  try {
+        await axios.get(`${url}cities/all`)
+      .then((response) => {
+        citiesData =   response.data;
+        //setData(citiesData);
+        console.log(citiesData, 'cities data DENTRO de axios')
+        console.log(citiesData.length, 'number of cities')
+      })
+      dispatch(actionFetchSuccess(citiesData));
+
+  } catch (error) {
+    console.error(`error ${error}`)
+    dispatch(actionFetchFailure(error.message.data, error.message.status));
+  }
+} */
+
 
 
 
@@ -125,4 +130,3 @@ function actionFetch() {
 
 
 
-  export {getCitiesList};

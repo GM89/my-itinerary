@@ -1,10 +1,8 @@
-import React, { useState } from 'react'
-
-
+let CITIES = [];
 // actions refer to cityAction.js
 const initialState = {
-  cities: [],
-  loading: false,
+  cities: CITIES,
+  //loading: false,
 }
 
 
@@ -13,11 +11,11 @@ const initialState = {
 const itineraryReducers = (state = initialState, action) => {
   switch(action.type) {
 
-     case 'CITIES/get_list_success':
+     case 'FETCH/get_list_success':
       return{
                  ...state,
                 cities: action.payload,
-                loading: false
+                //loading: false
             }
  
     default:
