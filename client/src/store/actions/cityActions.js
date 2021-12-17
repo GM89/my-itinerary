@@ -1,21 +1,19 @@
 
-import React, { useState} from 'react'
+import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux';
-import axios from "axios";
-
-import thunk from 'redux-thunk';
+import axios from 'axios';
 
 
 
-// Dispacth the fetch 
-//(port = '5000') => 
 
-const getCitiesList = async () => {
+const port = '5000';
+const url = `http://localhost:${port}/`;
+/*const getCitiesList = () = async (dispatch) => {*/
+const getCitiesList = async (dispatch) => {
   dispatch(actionFetchInit());
   try {
-    const port = '5000';
-    const url = `http://localhost:${port}/`;
+   
     axios.get(`${url}cities/all`)
       .then((response) => {
         let citiesData = await response.data;
@@ -34,16 +32,19 @@ const getCitiesList = async () => {
 //que es error.message.data, error.message.status
 
 
+dispatch(getCitiesList)
+
+
 //Fetch actions 
 
 
  const actionFetchInit = () => {
   return {
-    type: 'FETCH/fetch_init'
+    type: 'FETCH/fetch_init',
   }
 }
 
-const actionFetchSuccess = (data)=> {
+ const actionFetchSuccess = (data)=> {
   return {
     type: 'FETCH/get_list_success',
     payload: {
@@ -52,7 +53,8 @@ const actionFetchSuccess = (data)=> {
   }
 }
 
- const actionFetchFailure = (msg, status, id) => {
+ 
+  const actionFetchFailure = (msg, status, id) => {
   return {
     type: 'ERROR/get_list_failure',
     payload: {
@@ -64,7 +66,7 @@ const actionFetchSuccess = (data)=> {
 
 
 
-export {getCitiesList};
+
 
 
 
@@ -123,3 +125,4 @@ function actionFetch() {
 
 
 
+  export {getCitiesList};
