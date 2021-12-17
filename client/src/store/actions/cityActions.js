@@ -8,14 +8,12 @@ const url = `http://localhost:${port}/`;
 //Fetch actions 
 export const fetchCities = () => {
 return async dispatch =>  {
-  const  response = await axios.get(`${url}/cities/all`);
+  const  response = await axios.get(`http://localhost:5000/cities/all`);
   const data = await  response;
   console.log(data);
-  dispatch({ type:'FETCH/get_list_success', payload:data });
+  dispatch(actionFetchSuccess(data));
+}}
 
-}
-
-}
 
 const actionFetchInit = () => {
   return {
@@ -124,7 +122,6 @@ function actionFetch() {
   
 
   
-
 
 
 

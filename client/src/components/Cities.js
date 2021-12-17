@@ -19,6 +19,8 @@ const dispatch = useDispatch();
    loadCities();
   },[dispatch] );
 
+  console.log(dispatch, 'el dispatch')
+
   // Los estados se cargan antes que el componente se cargue, 
   const initialdata = useSelector(state => state.cities)
 
