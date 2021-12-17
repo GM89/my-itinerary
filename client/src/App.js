@@ -11,23 +11,26 @@ import {Cities} from './components/Cities.js'
 function App() {
   return (
     
-        <div className="App">
+     
 
-          <div><Link to="landing"> Landing aquí </Link> </div>
+      <BrowserRouter>
 
-          <div><Link to="cities"> Cities aquí </Link></div>
-          <div><p>Hola!</p></div>
+              <div className="App">
+                      <div><Link to="landing"> Landing aquí </Link> </div>
+                      <div><Link to="cities"> Cities aquí </Link></div>
+                      <div><p>Hola!</p></div>
 
-
-            <Routes>
-                
+                      
+                </div>
+            <Routes>         
                   <Route path='/landing' element={<Landing/>}> </Route>
                   <Route path='/cities' element={<Cities/>}> </Route>
             </Routes>
+      </BrowserRouter>
             
             
 
-        </div>
+      
 
   )
 }

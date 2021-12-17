@@ -1,8 +1,8 @@
 
-import React, { useState } from 'react'
+import React, { useState} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux';
-
+import axios from "axios";
 
 import thunk from 'redux-thunk';
 
@@ -10,7 +10,8 @@ import thunk from 'redux-thunk';
 
 // Dispacth the fetch 
 //(port = '5000') => 
-const getCitiesList = async (dispatch) => {
+
+const getCitiesList = async () => {
   dispatch(actionFetchInit());
   try {
     const port = '5000';
@@ -31,9 +32,6 @@ const getCitiesList = async (dispatch) => {
 }
 
 //que es error.message.data, error.message.status
-
-
-dispatch(getCitiesList)
 
 
 //Fetch actions 
@@ -66,7 +64,7 @@ const actionFetchSuccess = (data)=> {
 
 
 
-
+export {getCitiesList};
 
 
 
@@ -125,4 +123,3 @@ function actionFetch() {
 
 
 
-  export {getCitiesList};
