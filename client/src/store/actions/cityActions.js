@@ -9,9 +9,9 @@ const url = `http://localhost:${port}/`;
 export const fetchCities = () => {
 return async dispatch =>  {
   const  response = await axios.get(`http://localhost:5000/cities/all`);
-  const data = await  response;
-  console.log(data);
-  dispatch(actionFetchSuccess(data));
+  const data = await response;
+  
+  dispatch(actionFetchSuccess(data.data));
 }}
 
 

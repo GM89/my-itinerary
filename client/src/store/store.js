@@ -7,9 +7,11 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 
 import {middleware} from './middlewares/middleware.js'
 
-let initialState = []
+let initialState = {}
 const store = createStore(
-  rootReducer, initialState, composeWithDevTools(applyMiddleware(...middleware)))
+  rootReducer, 
+  initialState, 
+  composeWithDevTools(applyMiddleware(...middleware)))
 
 export {store}
 

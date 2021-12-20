@@ -1,7 +1,7 @@
-let CITIES = [];
+let citiesInit = []
 // actions refer to cityAction.js
 const initialState = {
-  cities: CITIES,
+  cities: citiesInit,
   //loading: false,
 }
 

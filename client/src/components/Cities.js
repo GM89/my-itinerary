@@ -3,14 +3,21 @@ import {fetchCities} from '../store/actions/cityActions.js';
 
 import { useSelector, useDispatch } from "react-redux";
 
-let dummy_dictionary = [{ 'city': "Madrid ", 'country': 'Spain', 'photoUrl': 'photomadrid' }, { 'city': "lyon ", 'country': 'France', 'photoUrl': 'photolyon' }]
 
 
 
 
 function Cities() {
 //UseEffectis invoked immediately after a component is mounted, but not rendered
+//const [data, setData] = useState('')
+
+
+const datos = useSelector(state => state.cities.cities.data)
 const dispatch = useDispatch();
+
+
+console.log(datos,'il cavaliere davi')
+
 
   useEffect( () => {
    const loadCities = async()=> {
@@ -19,16 +26,13 @@ const dispatch = useDispatch();
    loadCities();
   },[dispatch] );
 
-  console.log(dispatch, 'el dispatch')
+
+/*   console.log(dispatch, 'el dispatch') */
 
   // Los estados se cargan antes que el componente se cargue, 
-  const initialdata = useSelector(state => state.cities)
+  
 
-  console.log(initialdata)
-
-  const [data, setData] = useState(initialdata)
-
-  const [filter, setFilter] = useState('')
+  //const [filter, setFilter] = useState('')
 
        /* useEffect(() => {
           getData()
@@ -40,7 +44,7 @@ Analizamos el siguiente pedazo de código:
 filter(objectCity => data[objectCity].city.toLowerCase().includes(filter.toLowerCase()))
 objectCity es cada object que está en la array data.
 Queremos ir a la propiedad city de cada objeto 
-data[objectCity].city nos permite hacer eso. Aqui data[objectCity] actúa como un índice. 
+data[objectCity].city Ssnos permite hacer eso. Aqui data[objectCity] actúa como un índice. 
 
 */
 
@@ -52,8 +56,10 @@ data[objectCity].city nos permite hacer eso. Aqui data[objectCity] actúa como u
 
     <p>cities.js is here</p>
 
-
-
+    {datos 
+    && datos.map(x=>{
+     return x.city
+   } )}
   </div>  
 
   )
