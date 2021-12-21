@@ -11,7 +11,9 @@ router.get('/prova', (req, res) => {
         { msg: 'prova' }
         );
 })
-
+/*en server.jsapp.use('/itineraries', require('./routes/itineraries'))
+la ruta será itineraries/all 
+*/
   //------get--------------
 
   router.get('/all',
@@ -25,7 +27,7 @@ router.get('/prova', (req, res) => {
 
 
 router.get("/:name_city", (req, res) => {
-    itineraryModel.find({ cityName: req.params.name_city }, (err, data) => {
+    itineraryModel.find({ name_city : req.params.name_city }, (err, data) => {
       if (err) res.send(err);
       res.send(data);
     });
