@@ -26,9 +26,10 @@ app.listen(port, () => {
 /* Make a call to “app.use” and pass in two arguments, 
 the api route and the relative path to the file where 
 we will defining our route methods.*/
-
+//------------------------routes-----------------------------------------
 app.use('/cities', require('./routes/cities'))
 app.use('/cities/all', require('./routes/cities'))
+app.use('/api/itineraries', require('./routes/itineraries'))
 
 //---------------------------------------------
 const db = require("./keys").mongoURI;

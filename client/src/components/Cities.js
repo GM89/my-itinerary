@@ -1,22 +1,40 @@
 import React, { useState, useEffect } from 'react';
 import {fetchCities} from '../store/actions/cityActions.js';
-
 import { useSelector, useDispatch } from "react-redux";
 
 
-
-
+            /*   console.log(dispatch, 'el dispatch') */
+            // Los estados se cargan antes que el componente se cargue, 
+            //const [filter, setFilter] = useState('')
+                /* useEffect(() => {
+                    getData()
+                    }, [])*/
+              
+            // Dentro del map hay código html. Neceistaríamos indicar el resultado dentro de un return? No es necesario.
+            /* Dado que map ya está dentro de un return.
+            Analizamos el siguiente pedazo de código:
+            filter(objectCity => data[objectCity].city.toLowerCase().includes(filter.toLowerCase()))
+            objectCity es cada object que está en la array data.
+            Queremos ir a la propiedad city de cada objeto 
+            data[objectCity].city Ssnos permite hacer eso. Aqui data[objectCity] actúa como un índice. 
+            //const [data, setData] = useState('')
+            */
 
 function Cities() {
-//UseEffectis invoked immediately after a component is mounted, but not rendered
-//const [data, setData] = useState('')
 
-
-const datos = useSelector(state => state.cities.cities.data)
+/* Note! There could have been asyncrony troubles here. CityData intitial data is read and mounted before useEffect, meaning that fetch has not been done
+therefore we don't have access to entire state object, but just partially. 
+state.cities.cities.data.data (where the cities are) can't be read right now because fetch hasn't download it. 
+So initialy cityData is dummy variable that only gets cities.cities.data*/
+const cityData = useSelector(state => state.cities.cities.data)
 const dispatch = useDispatch();
+console.log(cityData,'cityData here');
 
-
-console.log(datos,'il cavaliere davi')
+/*UseEffect invoked immediately after a component is mounted.it is also called everytime its dispatch change its values, that is, when there's a new fetch
+On the previous section topic, here we have access to whole already fetched state, so we could go cities.cities.data.data. Where do we do this?
+In the cityActions fetchCities() downloads the whole state as 'fetchedData', and now we can access to where the cities are.
+that is the ".data" key-value, and we do this when we write fetchedData.data.
+ */
 
 
   useEffect( () => {
@@ -26,45 +44,25 @@ console.log(datos,'il cavaliere davi')
    loadCities();
   },[dispatch] );
 
-
-/*   console.log(dispatch, 'el dispatch') */
-
-  // Los estados se cargan antes que el componente se cargue, 
-  
-
-  //const [filter, setFilter] = useState('')
-
-       /* useEffect(() => {
-          getData()
-           }, [])*/
-      
-// Dentro del map hay código html. Neceistaríamos indicar el resultado dentro de un return? No es necesario.
-/* Dado que map ya está dentro de un return.
-Analizamos el siguiente pedazo de código:
-filter(objectCity => data[objectCity].city.toLowerCase().includes(filter.toLowerCase()))
-objectCity es cada object que está en la array data.
-Queremos ir a la propiedad city de cada objeto 
-data[objectCity].city Ssnos permite hacer eso. Aqui data[objectCity] actúa como un índice. 
-
-*/
-
+ let mapping =  ((cityData  && cityData.map(x=>{
+      return (
+        <tr key={x.city}>
+          <td> {x.city}</td>
+          <td> {x.country}</td> 
+          <td> <img  className="photoUrl" src={x.photoUrl} alt={x.city}/> </td>
+        </tr> ) })) ) 
 
   return (
-
-
    <div>
-
     <p>cities.js is here</p>
 
-    {datos 
-    && datos.map(x=>{
-     return x.city
-   } )}
+    <table>
+     {mapping}
+    </table>
   </div>  
 
   )
 } 
-  
 
   
 

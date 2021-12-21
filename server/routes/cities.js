@@ -22,7 +22,7 @@ router.get('/test', (req, res) => {
 
 
 // We import our SCHEMA for further get instances-------------------------------------------------
-const cityModel = require('../model/cityModel')
+const cityModel = require('../model/CityModel')
 
 // GET ROUTE---------------------------------------------------------------------------
 //Create route to retrieve all the cities from the database
@@ -68,7 +68,23 @@ router.post('/all', (req, res) => {
       res.status(500).send("Server error")}) 
   });
   
-  
+  // -------------------findOne city-------------------------------
+
+//findOne está haciendo una query, busca city: barcelona en la lista de documentos de la colección.
+//busca fin
+//req.params.name
+
+  router.get('/:cityId',
+  (req, res) => {
+        let cityRequested = req.params.name;
+        cityModel.findOne({ city: cityRequested })
+          .then(city => {
+              res.send(city)
+              
+          })
+          .catch(err => console.log(err));
+});
+
 
 
 module.exports = router;

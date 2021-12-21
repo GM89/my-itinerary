@@ -3,15 +3,18 @@ import React, { useState } from 'react'
 import { createStore, applyMiddleware } from 'redux';
 import axios from 'axios';
 
+
+//Fetch actions 
+
+//note that in order to access data we select "data.data"
 const port = '5000';
 const url = `http://localhost:${port}/`;
-//Fetch actions 
 export const fetchCities = () => {
 return async dispatch =>  {
-  const  response = await axios.get(`http://localhost:5000/cities/all`);
-  const data = await response;
+  const  response = await axios.get(`${url}cities/all`);
+  const fetchedData = await response;
   
-  dispatch(actionFetchSuccess(data.data));
+  dispatch(actionFetchSuccess(fetchedData.data));
 }}
 
 
