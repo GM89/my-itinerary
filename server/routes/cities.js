@@ -2,6 +2,7 @@
 const express = require('express')
 
 const router = express.Router()
+const cityModel = require('../model/CityModel')
 
 
 
@@ -22,7 +23,6 @@ router.get('/test', (req, res) => {
 
 
 // We import our SCHEMA for further get instances-------------------------------------------------
-const cityModel = require('../model/CityModel')
 
 // GET ROUTE---------------------------------------------------------------------------
 //Create route to retrieve all the cities from the database
@@ -74,7 +74,7 @@ router.post('/all', (req, res) => {
 //busca fin
 //req.params.name
 
-  router.get('/:cityId',
+  router.get('/:name',
   (req, res) => {
         let cityRequested = req.params.name;
         cityModel.findOne({ city: cityRequested })

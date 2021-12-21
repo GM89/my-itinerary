@@ -1,7 +1,7 @@
 const express = require('express')
 
 const router = express.Router()
-const itineraryModel = require('../model/itineraryModel')
+const itineraryModel = require('../model/ItineraryModel')
 
 //test route:
 
@@ -12,7 +12,7 @@ router.get('/prova', (req, res) => {
         );
 })
 
-  //------get
+  //------get--------------
 
   router.get('/all',
     (req, res) => {
@@ -24,19 +24,15 @@ router.get('/prova', (req, res) => {
 });
 
 
-router.get('/bycity/:city_id',
-    (req, res) => {
-        let cityRequested = req.params.city_id;
-        itineraryModel.find({city_id:cityRequested})
-            .populate('city_id') //TODO populate with less things, not everything is needed here and a lot of data is duplicated
-            .exec((err, files) => {
-                console.log(files);
-                res.send(files)
-            })
-});
+router.get("/:name_city", (req, res) => {
+    itineraryModel.find({ cityName: req.params.name_city }, (err, data) => {
+      if (err) res.send(err);
+      res.send(data);
+    });
+  });
 
 //----------------------------------post
-router.post('/', (req, res) => {
+/* router.post('/', (req, res) => {
     const newItinerary = new itineraryModel({
         title: req.body.title,
        
@@ -60,7 +56,7 @@ router.post('/', (req, res) => {
         .catch(err => {
             res.status(500).send("Error" + err)
         })
-})
+}) */
 //findone está haciendo una query, busca city: barcelona en la lista de documentos de la colección.
 //req.params.name
 

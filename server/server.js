@@ -29,7 +29,7 @@ we will defining our route methods.*/
 //------------------------routes-----------------------------------------
 app.use('/cities', require('./routes/cities'))
 app.use('/cities/all', require('./routes/cities'))
-app.use('/api/itineraries', require('./routes/itineraries'))
+app.use('/itineraries', require('./routes/itineraries'))
 
 //---------------------------------------------
 const db = require("./keys").mongoURI;

@@ -7,6 +7,7 @@ some sort of structure for the documents in our database collection.
 
 itle, a profile picture(URL), a rating, a duration, a price and some hashtags
 */
+//category: {type: Schema.Types.ObjectId, ref: 'itineraries'}, 
 const itinerarySchema = new mongoose.Schema({ 
     title: {
         type: String,
@@ -17,7 +18,7 @@ const itinerarySchema = new mongoose.Schema({
         type: String,
     },
     rating: {
-        type: int32,
+        type: Number,
        },
     duration: {
             type: String,
@@ -26,9 +27,9 @@ const itinerarySchema = new mongoose.Schema({
             type: String,
         
            },
-    city_id: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'cities',  //hace referenci a la colecion cities
+    name_city: {
+        type: String,
+        ref: 'cities',  //hace referenci a la coleccion cities
         required: true
     },
     })
