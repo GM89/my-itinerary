@@ -27,6 +27,9 @@ const itinerarySchema = new mongoose.Schema({
             type: String,
         
            },
+    price: {
+            type: Number,
+           },
     name_city: {
         type: String,
         ref: 'cities',  //hace referenci a la coleccion cities

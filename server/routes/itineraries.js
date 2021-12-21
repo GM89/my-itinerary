@@ -12,9 +12,8 @@ router.get('/prova', (req, res) => {
         );
 })
 /*en server.jsapp.use('/itineraries', require('./routes/itineraries'))
-la ruta será itineraries/all 
-*/
-  //------get--------------
+la ruta será itineraries/all */ 
+  //------get----itineraries/all----------
 
   router.get('/all',
     (req, res) => {
@@ -25,7 +24,7 @@ la ruta será itineraries/all
             .catch(err => console.log(err));
 });
 
-
+//-------GET  itineraries/barcelona -------------------
 router.get("/:name_city", (req, res) => {
     itineraryModel.find({ name_city : req.params.name_city }, (err, data) => {
       if (err) res.send(err);
@@ -33,34 +32,23 @@ router.get("/:name_city", (req, res) => {
     });
   });
 
-//----------------------------------post
-/* router.post('/', (req, res) => {
+
+// POST /itineraries/barcelona-------------------------------
+router.post("/:name_city", (req, res) => {
     const newItinerary = new itineraryModel({
-        title: req.body.title,
-       
-        city_id: req.body.city_id,
-        price: req.body.price,
-        rating: req.body.price,
-        picture: req.body.img,
-        duration: req.body.duration,
-        hashtag:req.body.hashtag
-    })
+      title: req.body.title,
 
-    itineraryModel.findOne({ title: newItinerary.title })
-    .then(itinerary => {
-        if (itinerary) res.status(500).send("Choose another title, this already exists in the DB")
-    }) 
-    
-    newItinerary.save()
-        .then(itinerary => {
-        res.send(itinerary)
-        })
-        .catch(err => {
-            res.status(500).send("Error" + err)
-        })
-}) */
-//findone está haciendo una query, busca city: barcelona en la lista de documentos de la colección.
-//req.params.name
-
+      picture: req.body.picture,
+      rating: req.body.rating,
+      duration: req.body.duration,
+      price: req.body.price,
+      hashtag: req.body.hashtag,    
+      name_city: req.body.name_city,
+ 
+    });
+    newItinerary.save().then(itinerary => res.send(itinerary));
+  });
+  
+  
 
 module.exports = router;
