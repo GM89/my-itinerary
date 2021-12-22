@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {fetchCities} from '../store/actions/cityActions.js';
 import { useSelector, useDispatch } from "react-redux";
-
+import { BrowserRouter, Route, Routes, NavLink , Link} from 'react-router-dom'
 
             /*   console.log(dispatch, 'el dispatch') */
             // Los estados se cargan antes que el componente se cargue, 
@@ -44,13 +44,26 @@ that is the ".data" key-value, and we do this when we write fetchedData.data.
    loadCities();
   },[dispatch] );
 
- let mapping =  ((cityData  && cityData.map(x=>{
-      return (
-        <tr key={x.city}>
-          <td> {x.city}</td>
-          <td> {x.country}</td> 
-          <td> <img  className="photoUrl" src={x.photoUrl} alt={x.city}/> </td>
-        </tr> ) })) ) 
+
+     
+    let mapping =  ((cityData  && cityData.map(x=>{  
+      let city_name_link_to_itinerary = (x.city)
+      
+    
+          return (
+          
+              <tr key={x.city}>
+                <td> {x.city}</td>
+                <td> {x.country}</td> 
+                <td> 
+                  <Link to={`itineraries/${city_name_link_to_itinerary}`}> Itinerary of {x.city} </Link>
+
+                </td>
+                <td> <img  className="photoUrl" src={x.photoUrl} alt={x.city}/> </td>
+                
+              </tr> ) 
+          })) ) 
+      
 
   return (
    <div>

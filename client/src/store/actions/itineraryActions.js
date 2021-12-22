@@ -9,8 +9,9 @@ import axios from 'axios';
 //note that in order to access data we select "data.data"
 const port = '5000';
 const url = `http://localhost:${port}/`;
-const selectedCity = 'Barcelona'
-const selectedItineraryId= ''
+let  selectedCity = 'Barcelona'
+selectedCity = selectedCity.toLowerCase()
+let selectedItineraryId = ''
 
 export const fetchAllItineraries = () => {
 return async dispatch =>  {
@@ -20,7 +21,18 @@ return async dispatch =>  {
   dispatch(actionFetchSuccess(fetchedData.data));
 }}
 
-
+/*
+//`${url}itineraries/${city}`
+export const fetchItineraryByCity = (city) => {
+  return async dispatch =>  {
+    city.toLowerCase()
+    const  response = await axios.get('http://localhost:5000/itineraries/barcelona');
+    const fetchedData = await response;
+    dispatch(actionFetchSuccess(fetchedData.data));
+  }}*/
+  
+  
+  
 
 
 const actionFetchInit = () => {

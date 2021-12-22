@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import {fetchAllItineraries, fetchItineraryByCity} from '../store/actions/itineraryActions.js';
+import {fetchAllItineraries} from '../store/actions/itineraryActions.js';
 import { useSelector, useDispatch } from "react-redux";
-import {useParams} from 'react-router-dom';
 
 
             /*   console.log(dispatch, 'el dispatch') */
@@ -21,14 +20,7 @@ import {useParams} from 'react-router-dom';
             //const [data, setData] = useState('')
             */
 
-     
-function Itinerary() {
-
-
-  const {city} = useParams();
- 
-  console.log(city, "useparams city")
-
+function Itineraries() {
 
 /* Note! There could have been asyncrony troubles here. itineraryData intitial data is read and mounted before useEffect, meaning that fetch has not been done
 therefore we don't have access to entire state object, but just partially. 
@@ -47,17 +39,15 @@ that is the ".data" key-value, and we do this when we write fetchedData.data.
 
   useEffect( () => {
    const loadItineraries = async()=> {
-    await dispatch(fetchAllItineraries())
+   await dispatch(fetchAllItineraries())
    };
    loadItineraries();
   },[dispatch] );
 
-  
-
  let mapping =  ((itineraryData  && itineraryData.map(x=>{
       return (
         <tr key={x.title}>
-          <td> {x.title}</td> 
+          <td> {x.title}</td>
           <td> {x.name_itineraries}</td> 
           <td> {x.rating}</td> 
           <td> <img  className="photoUrl" src={x.picture} alt={x.name_itineraries}/> </td>
@@ -65,8 +55,7 @@ that is the ".data" key-value, and we do this when we write fetchedData.data.
 
   return (
    <div>
-    <p>itinerary of Wakanda will be here</p>
-    <p> {city}</p>
+    <p>itineraries.js is here</p>
 
     <table>
      {mapping}
@@ -80,6 +69,6 @@ that is the ".data" key-value, and we do this when we write fetchedData.data.
 
 
 
-export  {Itinerary};
+export  {Itineraries};
 
 
