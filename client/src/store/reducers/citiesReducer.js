@@ -8,7 +8,7 @@ const initialState = {
 
 
 
-const itineraryReducers = (state = initialState, action) => {
+const citiesReducers = (state = initialState, action) => {
   switch(action.type) {
 
      case 'FETCH/get_list_success':
@@ -24,7 +24,7 @@ const itineraryReducers = (state = initialState, action) => {
 }
 
 
-export {itineraryReducers}
+export {citiesReducers}
 
 /*
 Reducers 3 laws:

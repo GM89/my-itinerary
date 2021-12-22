@@ -1,11 +1,14 @@
 import { combineReducers } from "redux";
-import {itineraryReducers} from "./citiesReducer.js"
+import {citiesReducers} from "./citiesReducer.js"
+import {itinerariesReducers} from "./itinerariesReducer.js"
 import errorReducer from "./errorReducer.js";
 
 
 const rootReducer = combineReducers(
-    { cities: itineraryReducers,
+    { cities: citiesReducers,
       error: errorReducer,
+      itineraries: itinerariesReducers,
+      
     }
     );
 

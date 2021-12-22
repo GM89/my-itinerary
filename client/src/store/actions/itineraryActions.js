@@ -10,14 +10,17 @@ import axios from 'axios';
 const port = '5000';
 const url = `http://localhost:${port}/`;
 const selectedCity = 'Barcelona'
+const selectedItineraryId= ''
 
-export const fetchItineraries = () => {
+export const fetchAllItineraries = () => {
 return async dispatch =>  {
-  const  response = await axios.get(`${url}cities/${selectedCity}`);
+  const  response = await axios.get(`${url}itineraries/all`);
   const fetchedData = await response;
   
   dispatch(actionFetchSuccess(fetchedData.data));
 }}
+
+
 
 
 const actionFetchInit = () => {

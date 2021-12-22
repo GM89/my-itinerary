@@ -13,6 +13,8 @@ router.get('/prova', (req, res) => {
 })
 /*en server.jsapp.use('/itineraries', require('./routes/itineraries'))
 la ruta será itineraries/all */ 
+
+// ---------------GET -------------------------
   //------get----itineraries/all----------
 
   router.get('/all',
@@ -24,14 +26,28 @@ la ruta será itineraries/all */
             .catch(err => console.log(err));
 });
 
-//-------GET  itineraries/barcelona -------------------
+//-------GET  itineraries by city /barcelona -------------------
 router.get("/:name_city", (req, res) => {
     itineraryModel.find({ name_city : req.params.name_city }, (err, data) => {
       if (err) res.send(err);
       res.send(data);
     });
   });
+  
 
+            ///-------------------ESTO NO FUNCIONA
+          // ---------------GET  ONE SINGLE ITINERARY BY ID -------------
+            router.get('/:id',
+            (req, res) => {
+                  let itineraryRequested = req.params.id;
+                  itineraryModel.findOne({ _id: itineraryRequested })
+                    .then(itinerary => {
+                        res.send(itinerary)
+                        
+                    })
+                    .catch(err => console.log(err));
+            });
+            
 
 // POST /itineraries/barcelona-------------------------------
 router.post("/:name_city", (req, res) => {
@@ -48,7 +64,7 @@ router.post("/:name_city", (req, res) => {
     newItinerary.save().then(itinerary => res.send(itinerary));
   });
   
-//UPDATE itineraries/barcelona --------
+//UPDATE itineraries/barcelona ----------------------
 
   // UPDATE /api/itineraries/:itineraryId
   router.put("/:itineraryId", /*auth,*/ (req, res) => {
@@ -66,7 +82,7 @@ router.post("/:name_city", (req, res) => {
       .catch(() => res.status(404).json({ success: false }));
   });
   
-    // DELETE /itineraries/:itineraryId
+    // DELETE /itineraries/:itineraryId--------------------------------------
     router.delete("/:itineraryId", /*auth,*/ (req, res) => {
       itineraryModel.deleteOne({ _id: req.params.itineraryId })
         .then(itinerary => res.json({ success: true }))
