@@ -85,6 +85,63 @@ router.post('/all', (req, res) => {
           .catch(err => console.log(err));
 });
 
+
+
+
+
+router.get('/all',
+(req, res) => {
+    cityModel.find({})
+        .then(files => {
+            res.send(files)
+        })
+        .catch(err => console.log(err));
+});
+
+//-------GET  cities/barcelona -------------------
+router.get("/:name_city", (req, res) => {
+cityModel.find({ name_city : req.params.name_city }, (err, data) => {
+  if (err) res.send(err);
+  res.send(data);
+});
+});
+
+
+// POST /cities/barcelona-------------------------------
+router.post("/:name_city", (req, res) => {
+const newCity = new cityModel({
+  city: req.body.city,
+  country: req.body.country,
+  photoUrl: req.body.photoUrl,
+ });
+newCity.save().then(city => res.send(city));
+});
+
+
+
+// UPDATE /city/:cityId
+router.put("/:cityId", /*auth,*/ (req, res) => {
+const updatedCity = {
+    city: req.body.city,
+    country: req.body.country,
+    photoUrl: req.body.photoUrl,
+};
+cityModel.findOneAndUpdate({ _id: req.params.cityId }, updatedCity)
+  .then(city => res.json({ success: true }))
+  .catch(() => res.status(404).json({ success: false }));
+});
+
+
+  // DELETE /cities/:cityId
+  router.delete("/:cityId", /*auth,*/ (req, res) => {
+    cityModel.deleteOne({ _id: req.params.cityId })
+      .then(city => res.json({ success: true }))
+      .catch(err => res.status(404).json({ success: false }));
+  });
+
+
 module.exports = router;
+
+
 
 

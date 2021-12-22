@@ -37,7 +37,6 @@ router.get("/:name_city", (req, res) => {
 router.post("/:name_city", (req, res) => {
     const newItinerary = new itineraryModel({
       title: req.body.title,
-
       picture: req.body.picture,
       rating: req.body.rating,
       duration: req.body.duration,
@@ -49,6 +48,29 @@ router.post("/:name_city", (req, res) => {
     newItinerary.save().then(itinerary => res.send(itinerary));
   });
   
+//UPDATE itineraries/barcelona --------
+
+  // UPDATE /api/itineraries/:itineraryId
+  router.put("/:itineraryId", /*auth,*/ (req, res) => {
+    const updatedItinerary = {
+      title: req.body.title,
+      picture: req.body.picture,
+      rating: req.body.rating,
+      duration: req.body.duration,
+      price: req.body.price,
+      hashtag: req.body.hashtag,
+      name_city: req.body.name_city,
+    };
+    itineraryModel.findOneAndUpdate({ _id: req.params.itineraryId }, updatedItinerary)
+      .then(itinerary => res.json({ success: true }))
+      .catch(() => res.status(404).json({ success: false }));
+  });
   
+    // DELETE /itineraries/:itineraryId
+    router.delete("/:itineraryId", /*auth,*/ (req, res) => {
+      itineraryModel.deleteOne({ _id: req.params.itineraryId })
+        .then(itinerary => res.json({ success: true }))
+        .catch(err => res.status(404).json({ success: false }));
+    });
 
 module.exports = router;
