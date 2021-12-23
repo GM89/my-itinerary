@@ -26,8 +26,8 @@ function Itinerary(props) {
 
 
   const {city} = useParams();
- 
-  console.log(city, "useparams city")
+  const cityLowerCase = city.toLowerCase()
+  console.log(city.toLowerCase(), "useparams city")
 
 
 /* Note! There could have been asyncrony troubles here. itineraryData intitial data is read and mounted before useEffect, meaning that fetch has not been done
@@ -46,9 +46,8 @@ that is the ".data" key-value, and we do this when we write fetchedData.data.
 
 
   useEffect( () => {
-    console.log(props)
    const loadItineraries = async()=> {
-    await dispatch(fetchItineraryByCity(props.city))
+    await dispatch(fetchItineraryByCity(cityLowerCase))
    };
    loadItineraries();
   },[dispatch] );

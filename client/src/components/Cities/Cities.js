@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import {fetchCities} from '../store/actions/cityActions.js';
+import {fetchCities} from '../../store/actions/cityActions.js';
 import { useSelector, useDispatch } from "react-redux";
 import { BrowserRouter, Route, Routes, NavLink , Link} from 'react-router-dom'
 
+import {City} from './City.js'
             /*   console.log(dispatch, 'el dispatch') */
             // Los estados se cargan antes que el componente se cargue, 
             //const [filter, setFilter] = useState('')
@@ -47,30 +48,22 @@ that is the ".data" key-value, and we do this when we write fetchedData.data.
 
      
     let mapping =  ((cityData  && cityData.map(x=>{  
-      let city_name_link_to_itinerary = (x.city)
-      
+      let city = (x.city)
+      let cityLowCase = city.lowerCase()
+      let props = {city: x.city, cityLowcase: cityLowCase, country:cityLowCase, photoUrl:x.photoUrl}
     
           return (
+            
+            <City {...props}/>
           
-              <tr key={x.city}>
-                <td> {x.city}</td>
-                <td> {x.country}</td> 
-                <td> 
-                  <Link to={`itineraries/${city_name_link_to_itinerary}`}> Itinerary of {x.city} </Link>
-                  
-                  
-
-                </td>
-                <td> <img  className="photoUrl" src={x.photoUrl} alt={x.city}/> </td>
-                
-              </tr> ) 
+            ) 
           })) ) 
       
 
   return (
    <div>
     <p>cities.js is here</p>
-
+  
     <table>
      {mapping}
     </table>
