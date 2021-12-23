@@ -57,6 +57,8 @@ that is the ".data" key-value, and we do this when we write fetchedData.data.
                 <td> {x.country}</td> 
                 <td> 
                   <Link to={`itineraries/${city_name_link_to_itinerary}`}> Itinerary of {x.city} </Link>
+                  
+                  
 
                 </td>
                 <td> <img  className="photoUrl" src={x.photoUrl} alt={x.city}/> </td>
@@ -92,7 +94,7 @@ export  {Cities};
         onChange={event => setFilter(event.target.value) || filter === ''} /> .
         
         
-              {Object.keys(data).filter(objectCity => data[objectCity].city.toLowerCase().startsWith(filter.toLowerCase()))
+              {Object.+(data).filter(objectCity => data[objectCity].city.toLowerCase().startsWith(filter.toLowerCase()))
         .map(x => <li key={data[x].city}>{data[x].city}</li>)}
         */
 

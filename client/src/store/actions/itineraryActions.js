@@ -21,19 +21,17 @@ return async dispatch =>  {
   dispatch(actionFetchSuccess(fetchedData.data));
 }}
 
-/*
+
 //`${url}itineraries/${city}`
 export const fetchItineraryByCity = (city) => {
   return async dispatch =>  {
-    city.toLowerCase()
-    const  response = await axios.get('http://localhost:5000/itineraries/barcelona');
+    //city.toLowerCase()
+    const  response = await axios.get(`http://localhost:5000/itineraries/${city}`);
     const fetchedData = await response;
     dispatch(actionFetchSuccess(fetchedData.data));
-  }}*/
+  }}
   
   
-  
-
 
 const actionFetchInit = () => {
     return {

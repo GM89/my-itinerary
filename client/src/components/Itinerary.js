@@ -22,7 +22,7 @@ import {useParams} from 'react-router-dom';
             */
 
      
-function Itinerary() {
+function Itinerary(props) {
 
 
   const {city} = useParams();
@@ -46,8 +46,9 @@ that is the ".data" key-value, and we do this when we write fetchedData.data.
 
 
   useEffect( () => {
+    console.log(props)
    const loadItineraries = async()=> {
-    await dispatch(fetchAllItineraries())
+    await dispatch(fetchItineraryByCity(props.city))
    };
    loadItineraries();
   },[dispatch] );
@@ -55,6 +56,7 @@ that is the ".data" key-value, and we do this when we write fetchedData.data.
   
 
  let mapping =  ((itineraryData  && itineraryData.map(x=>{
+  
       return (
         <tr key={x.title}>
           <td> {x.title}</td> 
