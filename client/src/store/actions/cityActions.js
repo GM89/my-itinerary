@@ -9,6 +9,8 @@ import axios from 'axios';
 //note that in order to access data we select "data.data"
 const port = '5000';
 const url = `http://localhost:${port}/`;
+
+
 export const fetchCities = () => {
 return async dispatch =>  {
   const  response = await axios.get(`${url}cities/all`);
