@@ -58,12 +58,50 @@ that is the ".data" key-value, and we do this when we write fetchedData.data.
  let mapping =  ((itineraryData  && itineraryData.map(x=>{
   
       return (
+
+        <div id = "itinerary">
+            <h1> {x.title}</h1>
+
+            <img  className="photoUrl" src={x.picture} alt={x.title}/> 
+                  <p>Price: {x.price}</p> 
+                  <p>Rating:{x.rating}</p> 
+          <div class="accordion" id="accordionExample">
+              <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    Activites
+                    </button>
+                  </h2>
+                  <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                    
+                      
+                      
+
+
+                    </div>
+                  </div>
+              </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+/* 
         <tr key={x.title}>
           <td> {x.title}</td> 
           <td> {x.name_itineraries}</td> 
           <td> {x.rating}</td> 
           <td> <img  className="photoUrl" src={x.picture} alt={x.name_itineraries}/> </td>
-        </tr> ) })) ) 
+        </tr>  */
+        
+        ) })) ) 
 
   return (
    <div>
@@ -82,6 +120,42 @@ that is the ".data" key-value, and we do this when we write fetchedData.data.
 
 
 
+
+
+
+  
+
+
 export  {Itinerary};
 
+/*
 
+
+
+function  SingleItinerary(props) {
+    const id =Object.keys(props.itinerary.title)
+ 
+  return (
+    
+        <tr key={props.itinerary.title}>
+          <td> {props.itinerary.title}</td> 
+          <td> City:{props.itinerary.name_city}</td> 
+          <td> Rating: {props.itinerary.rating}</td> 
+          <td> Duration:{props.itinerary.duration}</td> 
+          <td> Price:{props.itinerary.price}</td> 
+          <td> hashtag: {props.itinerary.hashtag}</td>           
+          <td> <img  className="photoUrl" src={props.itinerary.picture} alt={props.itinerary.name_city}/> </td>
+        </tr> ) 
+ 
+      }
+let mapping =  ((itineraryData  && itineraryData.map(x=>{
+  
+  return (
+    <tr key={x.title}>
+      <td> {x.title}</td> 
+      <td> {x.name_itineraries}</td> 
+      <td> {x.rating}</td> 
+      <td> <img  className="photoUrl" src={x.picture} alt={x.name_itineraries}/> </td>
+    </tr> 
+    
+    ) })) ) */

@@ -6,4 +6,4 @@ function Activity(props) {}
 
 
 
-export Activity
+export {Activity}
