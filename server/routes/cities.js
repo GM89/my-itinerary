@@ -54,7 +54,7 @@ router.post('/all', (req, res) => {
         photoUrl: req.body.photoUrl
     })
 
-    cityModel.findOne( {city: cityModel.city})
+    cityModel.findOne( {city: newCity.city})
         .then(city=>{
             if(city) res.status(500).send('This city is repeated')
         })

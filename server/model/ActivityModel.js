@@ -5,39 +5,39 @@ const activitySchema = new mongoose.Schema({
         required: true
     },
 
-    itineraryId: {
+    name_city: {
         type: String,
         required: true
+        
     },
-
-    name: {
+   
+    activityId: {
         type: String,
         required: true
+        
     },
-
-    ubication: {
-        type: String,
-        required: true
-    },
-/*  */
     rating: {
         type: String,
-        required: true
+        
+    },
+    location: {
+        type: String,
+       
     },
 
     duration: {
         type: String,
-        required: true
+       
     },
 
-    cost: {
-        type: String,
-        required: true
+    price: {
+        type: Number,
+        
     },
 
     comments: {
         type: Array,
-        required: true
+       
     },
 })
 

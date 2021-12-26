@@ -61,6 +61,12 @@ router.post("/:name_city", (req, res) => {
       name_city: req.body.name_city,
  
     });
+
+    itineraryModel.findOne( {title: newItinerary.title})
+    .then(title=>{
+        if(title) res.status(500).send('This itinerary is repeated')
+    })
+
     newItinerary.save().then(itinerary => res.send(itinerary));
   });
   
