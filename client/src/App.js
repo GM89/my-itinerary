@@ -28,7 +28,7 @@ function App() {
             <Routes>         
                   <Route path='/landing' element={<Landing/>}> </Route>
                   <Route exact path='/cities' element={<Cities/>}> </Route>
-                  <Route exact path='/cities/itineraries/all' element={<Itineraries/>}> </Route>
+                  <Route exact path='/itineraries/all' element={<Itineraries/>}> </Route>
                   <Route exact path='/cities/itineraries/:city' element={<Itinerary/>}> </Route>
             </Routes>
       </BrowserRouter>

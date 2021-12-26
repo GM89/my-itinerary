@@ -2,6 +2,7 @@ const express = require('express')
 
 const router = express.Router()
 const activityModel = require('../model/ActivityModel.js')
+const db = require("../keys").mongoURI;
 
 //test route:
 
@@ -34,6 +35,21 @@ router.get("/:activityId", (req, res) => {
       res.send(data);
     });
   });
+
+  ///-------------------ESTO NO FUNCIONA
+  //-------GET  activities by _id -------------------
+/*
+var id = req.params._id;       
+var o_id = new ObjectId(id);
+
+
+router.get("/id/:_id", (req, res) => {
+  
+  activityModel.find({_id: o_id} , (err, data) => {
+    if (err) res.send(err);
+    res.send(data);
+  });
+})*/
   
 //-------GET  ALL activities by city -------------------
 
@@ -43,19 +59,8 @@ router.get("/:activityId", (req, res) => {
       res.send(data); 
     });
   });
-            ///-------------------ESTO NO FUNCIONA
-         /* // ---------------GET  ONE SINGLE ITINERARY BY ID -------------
-            router.get('/:id',
-            (req, res) => {
-                  let itineraryRequested = req.params.id;
-                  itineraryModel.findOne({ _id: itineraryRequested })
-                    .then(itinerary => {
-                        res.send(itinerary)
-                        
-                    })
-                    .catch(err => console.log(err));
-            });*/
             
+                   
 
 // POST /itineraries/barcelona-------------------------------
 router.post("/:activity_id", (req, res) => {

@@ -13,7 +13,7 @@ const activitySchema = new mongoose.Schema({
    
     activityId: {
         type: String,
-        required: true
+        
         
     },
     rating: {

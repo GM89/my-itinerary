@@ -15,7 +15,7 @@ let selectedItineraryId = ''
 
 export const fetchAllItineraries = () => {
 return async dispatch =>  {
-  const  response = await axios.get(`${url}itineraries/all`);
+  const  response = await axios.get("http://localhost:5000/itineraries/all");
   const fetchedData = await response;
   
   dispatch(actionFetchSuccess(fetchedData.data));
