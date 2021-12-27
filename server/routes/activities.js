@@ -36,6 +36,25 @@ router.get("/:activityId", (req, res) => {
     });
   });
 
+  //-------GET  activities by _id -------------------
+router.get("/id/:_id", (req, res) => {
+  
+  activityModel.find({ _id : req.params._id }, (err, data) => {
+    if (err) res.send(err);
+    res.send(data);
+  });
+});
+
+  //-------GET  activities by itineraryId -------------------
+router.get("/it_id/:itineraryId", (req, res) => {
+  
+  activityModel.find({itineraryId : req.params.itineraryId }, (err, data) => {
+      if (err) res.send(err);
+    res.send(data);
+  });
+});
+
+
   ///-------------------ESTO NO FUNCIONA
   //-------GET  activities by _id -------------------
 /*
@@ -103,7 +122,7 @@ router.post("/:activity_id", (req, res) => {
       .catch(() => res.status(404).json({ success: false }));
   });
   
-    // DELETE /itineraries/:itineraryId--------------------------------------
+    // DELETE /itineraries/:activityId--------------------------------------
     router.delete("/:activityId", /*auth,*/ (req, res) => {
       activityModel.deleteOne({ _id: req.params.activityId })
         .then(activity => res.json({ success: true }))

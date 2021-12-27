@@ -16,6 +16,13 @@ const activitySchema = new mongoose.Schema({
         
         
     },
+    itineraryId: {
+        type: String,
+        required: true
+    
+        
+        
+    },
     rating: {
         type: String,
         

@@ -9,27 +9,35 @@ import axios from 'axios';
 //note that in order to access data we select "data.data"
 const port = '5000';
 const url = `http://localhost:${port}/`;
-let  selectedCity = 'Barcelona'
-selectedCity = selectedCity.toLowerCase()
-let selectedItineraryId = ''
 
-export const fetchAllItineraries = () => {
+
+export const fetchAllActivities = () => {
 return async dispatch =>  {
-  const  response = await axios.get(`${url}itineraries/all`);
+  const  response = await axios.get(`${url}activities/all`);
   const fetchedData = await response;
   
   dispatch(actionFetchSuccess(fetchedData.data));
 }}
 
-
-//`${url}itineraries/${city}`
-export const fetchItineraryByCity = (city) => {
+//------fetch by itineraryId
+//`${url}activities/it_it/${itineraryId}`
+export const fetchActivitiesByItineraryId = (itineraryId) => {
   return async dispatch =>  {
-    //city.toLowerCase()
-    const  response = await axios.get(`http://localhost:5000/itineraries/${city}`);
+        const  response = await axios.get(`http://localhost:5000/activities/it_id/${itineraryId}`);
     const fetchedData = await response;
     dispatch(actionFetchSuccess(fetchedData.data));
   }}
+  
+
+//------fetch by _id
+//`${url}activities/id/${_id}`
+export const fetchActivityById = (_id) => {
+  return async dispatch =>  {
+        const  response = await axios.get(`http://localhost:5000/activities/id/${_id}`);
+    const fetchedData = await response;
+    dispatch(actionFetchSuccess(fetchedData.data));
+  }}
+   
   
   
 

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import {fetchAllItineraries, fetchItineraryByCity} from '../store/actions/itineraryActions.js';
 import { useSelector, useDispatch } from "react-redux";
 import {useParams} from 'react-router-dom';
+import {Activity} from './Activity'
 
 
             /*   console.log(dispatch, 'el dispatch') */
@@ -56,7 +57,7 @@ that is the ".data" key-value, and we do this when we write fetchedData.data.
   
 
  let mapping =  ((itineraryData  && itineraryData.map(x=>{
-  
+  console.log(x._id, 'elobjectid')
       return (
 
         <div id = "itinerary">
@@ -74,9 +75,8 @@ that is the ".data" key-value, and we do this when we write fetchedData.data.
                   </h2>
                   <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                     <div class="accordion-body">
-                    
-                      
-                      
+                    {/*   <Activity itineraryId={x._id}/> */}
+                                         
 
 
                     </div>
