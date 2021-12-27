@@ -11,7 +11,7 @@ const initialState = {
 const activitiesReducers = (state = initialState, action) => {
   switch(action.type) {
 
-     case 'FETCH/get_list_success':
+     case 'FETCH_ACTIVITIES/get_list_success':
       return{
                  ...state,
                 activities: action.payload,

@@ -17,7 +17,28 @@ const  errorReducer  = (state = initialState, action) => {
         status: action.payload.status, 
         id: action.payload.id
             }
- 
+    
+    case 'ERROR_CITIES/get_list_failure':
+      return{
+        msg: action.payload.message,
+        status: action.payload.status, 
+        id: action.payload.id
+          }
+      
+      case 'ERROR_ITINERARIES/get_list_failure':
+        return{
+          msg: action.payload.message,
+          status: action.payload.status, 
+          id: action.payload.id
+            }
+
+      case 'ERROR_ACTIVITES/get_list_failure':
+        return{
+          msg: action.payload.message,
+          status: action.payload.status, 
+          id: action.payload.id
+            }
+
     default:
     return state
   }

@@ -11,9 +11,12 @@ function Activity(props) {
     const dispatch = useDispatch();
 
     useEffect( () => {
-        console.log(props.itineraryId, "itineraryId")
-       const loadActivities = async()=> {
+        console.log(props.itineraryId, "props.itineraryId ")
+           const loadActivities = async()=> {
         await dispatch(fetchActivitiesByItineraryId(props.itineraryId))
+        
+        console.log(activitiesData[0], 'activities data in Activity.js')
+
        };
        loadActivities();
       },[dispatch] );
@@ -24,9 +27,10 @@ function Activity(props) {
       
             return (
                 <div>
-                    <p>{x.activityName}</p>
+                    <h3>{x.activityName}</h3>
+                    <p>{x.itineraryId}</p>
                     <p>{x.location}</p>
-                    <p>{x.duration  }</p>
+                    <p>{x.duration}</p>
                     <p>{x.comments}</p>
                 </div>
 
@@ -35,8 +39,10 @@ function Activity(props) {
 
 
 return(
-
-    <p>activitiesData</p>
+    <div>
+          
+        {mapping}
+    </div>
     
 )
 }

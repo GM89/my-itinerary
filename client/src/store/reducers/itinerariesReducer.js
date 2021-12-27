@@ -11,7 +11,7 @@ const initialState = {
 const itinerariesReducers = (state = initialState, action) => {
   switch(action.type) {
 
-     case 'FETCH/get_list_success':
+     case 'FETCH_ITINERARIES/get_list_success':
       return{
                  ...state,
                 itineraries: action.payload,

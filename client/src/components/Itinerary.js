@@ -58,6 +58,10 @@ that is the ".data" key-value, and we do this when we write fetchedData.data.
 
  let mapping =  ((itineraryData  && itineraryData.map(x=>{
   console.log(x._id, 'elobjectid')
+  let itineraryIdString = x._id.valueOf()
+
+  console.log(itineraryIdString, 'itineraryIdString ')
+  console.log(typeof itineraryIdString)
       return (
 
         <div id = "itinerary">
@@ -75,7 +79,7 @@ that is the ".data" key-value, and we do this when we write fetchedData.data.
                   </h2>
                   <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                     <div class="accordion-body">
-                    {/*   <Activity itineraryId={x._id}/> */}
+                   <Activity itineraryId={itineraryIdString}/> 
                                          
 
 
@@ -84,6 +88,7 @@ that is the ".data" key-value, and we do this when we write fetchedData.data.
               </div>
             </div>
         </div>
+        
 
 
 
@@ -108,9 +113,9 @@ that is the ".data" key-value, and we do this when we write fetchedData.data.
     <p>itinerary of Wakanda will be here</p>
     <p> {city}</p>
 
-    <table>
-     {mapping}
-    </table>
+    <div>
+      {mapping}
+     </div>
   </div>  
 
   )

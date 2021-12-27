@@ -41,7 +41,7 @@ const actionFetchInit = () => {
   
    const actionFetchSuccess = (data)=> {
     return {
-      type: 'FETCH/get_list_success',
+      type: 'FETCH_ITINERARIES/get_list_success',
       payload: {
         data
       }
@@ -51,7 +51,7 @@ const actionFetchInit = () => {
    
     const actionFetchFailure = (msg, status, id) => {
     return {
-      type: 'ERROR/get_list_failure',
+      type: 'ERROR_ITINERARIES/get_list_failure',
       payload: {
          msg, status, id 
      }
