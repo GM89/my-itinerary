@@ -48,6 +48,7 @@ that is the ".data" key-value, and we do this when we write fetchedData.data.
 
   useEffect( () => {
     console.log(city)
+    
    const loadItineraries = async()=> {
     await dispatch(fetchItineraryByCity(city))
    };

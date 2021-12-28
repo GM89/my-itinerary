@@ -11,12 +11,13 @@ function Activity(props) {
     const dispatch = useDispatch();
 
     useEffect( () => {
-        console.log(props.itineraryId, "props.itineraryId ")
+        console.log(props.itineraryId, "props.itineraryId,ciao ")
         const loadActivities = async()=> {
         await dispatch(fetchActivitiesByItineraryId(props.itineraryId))
                
        };
        loadActivities();
+       console.log(loadActivities(),'prova')
       },[dispatch] );
     
   
