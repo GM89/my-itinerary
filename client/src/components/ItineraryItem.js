@@ -26,7 +26,9 @@ import {fetchAllActivities, fetchActivitiesByItineraryId, fetchActivityById} fro
 function ItineraryItem(props) {
 
 
+  const {city} = useParams();
  
+  console.log(city, "useparams city")
 
 
 /* Note! There could have been asyncrony troubles here. itineraryData intitial data is read and mounted before useEffect, meaning that fetch has not been done
@@ -40,7 +42,7 @@ console.log(itineraryData,'itineraryData here');
 /*UseEffect invoked immediately after a component is mounted.it is also called everytime its dispatch change its values, that is, when there's a new fetch
 On the previous section topic, here we have access to whole already fetched state, so we could go itineraries.itineraries.data.data. Where do we do this?
 In the itinerariesActions fetchitineraries() downloads the whole state as 'fetchedData', and now we can access to where the itineraries are.
-that is the "ssss.data" key-value, and we do this when we write fetchedData.data.
+that is the ".data" key-value, and we do this when we write fetchedData.data.
  */
 
 
@@ -62,7 +64,7 @@ that is the "ssss.data" key-value, and we do this when we write fetchedData.data
                   </h2>
                   <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                     <div class="accordion-body">
-                        <Activity itineraryId={props.itineraryId}/>      
+                   <Activity itineraryId={props.itineraryId}/> 
                                          
 
 
