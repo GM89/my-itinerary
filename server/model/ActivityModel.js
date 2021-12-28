@@ -18,8 +18,8 @@ const activitySchema = new mongoose.Schema({
     },
     itineraryId: {
         type: String,
-        required: true
-    
+        required: true,
+        ref:'itineraries'   
         
         
     },

@@ -3,7 +3,7 @@ import {fetchAllItineraries, fetchItineraryByCity} from '../store/actions/itiner
 import { useSelector, useDispatch } from "react-redux";
 import {useParams} from 'react-router-dom';
 import {Activity} from './Activity'
-import {ItineraryItem} from './ItineraryItem'
+import {fetchAllActivities, fetchActivitiesByItineraryId, fetchActivityById} from '../store/actions/activityActions.js';
 
             /*   console.log(dispatch, 'el dispatch') */
             // Los estados se cargan antes que el componente se cargue, 
@@ -23,7 +23,7 @@ import {ItineraryItem} from './ItineraryItem'
             */
 
      
-function Itinerary(props) {
+function ItineraryItem(props) {
 
 
   const {city} = useParams();
@@ -46,48 +46,36 @@ that is the ".data" key-value, and we do this when we write fetchedData.data.
  */
 
 
-  useEffect( () => {
-    console.log(city)
-   const loadItineraries = async()=> {
-    await dispatch(fetchItineraryByCity(city))
-   };
-   loadItineraries();
-  },[dispatch] );
 
-  
-
- let mapping =  ((itineraryData  && itineraryData.map(x=>{
-  console.log(x._id, 'elobjectid')
-  let itineraryIdString = x._id.valueOf()
-
-  console.log(itineraryIdString, 'itineraryIdString ')
-  console.log(typeof itineraryIdString)
       return (
 
         <div id = "itinerary">
-            
+            <h1> {props.title}</h1>
+
+            <img  className="photoUrl" src={props.picture} alt={props.title}/> 
+                  <p>Price: {props.price}</p> 
+                  <p>Rating:{props.rating}</p> 
+          <div class="accordion" id="accordionExample">
+              <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    Activites
+                    </button>
+                  </h2>
+                  <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                   <Activity itineraryId={props.itineraryId}/> 
                                          
-            <ItineraryItem itineraryId={itineraryIdString}
-              title={x.title}
-              price={x.price}
-              rating={x.rating}
-              picture={x.picture}/>
-          </div>
 
+
+                    </div>
+                  </div>
+              </div>
+            </div>
+        </div>
+      )
         
-        ) })) ) 
 
-  return (
-   <div>
-    <p>itinerary of Wakanda will be here</p>
-    <p> {city}</p>
-
-    <div>
-      {mapping}
-     </div>
-  </div>  
-
-  )
 } 
 
   
@@ -100,36 +88,5 @@ that is the ".data" key-value, and we do this when we write fetchedData.data.
   
 
 
-export  {Itinerary};
+export  {ItineraryItem};
 
-/*
-
-
-
-function  SingleItinerary(props) {
-    const id =Object.keys(props.itinerary.title)
- 
-  return (
-    
-        <tr key={props.itinerary.title}>
-          <td> {props.itinerary.title}</td> 
-          <td> City:{props.itinerary.name_city}</td> 
-          <td> Rating: {props.itinerary.rating}</td> 
-          <td> Duration:{props.itinerary.duration}</td> 
-          <td> Price:{props.itinerary.price}</td> 
-          <td> hashtag: {props.itinerary.hashtag}</td>           
-          <td> <img  className="photoUrl" src={props.itinerary.picture} alt={props.itinerary.name_city}/> </td>
-        </tr> ) 
- 
-      }
-let mapping =  ((itineraryData  && itineraryData.map(x=>{
-  
-  return (
-    <tr key={x.title}>
-      <td> {x.title}</td> 
-      <td> {x.name_itineraries}</td> 
-      <td> {x.rating}</td> 
-      <td> <img  className="photoUrl" src={x.picture} alt={x.name_itineraries}/> </td>
-    </tr> 
-    
-    ) })) ) */

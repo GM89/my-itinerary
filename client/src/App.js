@@ -6,6 +6,7 @@ import {Landing} from './components/Landing.js'
 import {Cities} from './components/cities/Cities.js'
 import { Itineraries } from './components/Itineraries';
 import { Itinerary } from './components/Itinerary';
+import { ItineraryItem } from './components/ItineraryItem';
 
 //routes és equivalent a Switch
 
@@ -30,6 +31,7 @@ function App() {
                   <Route exact path='/cities' element={<Cities/>}> </Route>
                   <Route exact path='/itineraries/all' element={<Itineraries/>}> </Route>
                   <Route exact path='/cities/itineraries/:city' element={<Itinerary/>}> </Route>
+                  
             </Routes>
       </BrowserRouter>
             
