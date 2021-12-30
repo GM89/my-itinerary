@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { createStore, applyMiddleware } from 'redux';
 import axios from 'axios';
-
+import { useSelector, useDispatch } from "react-redux";
 
 
 //Fetch actions 
@@ -22,13 +22,17 @@ return async dispatch =>  {
 //------fetch by itineraryId
 //`${url}activities/it_it/${itineraryId}`
 export const fetchActivitiesByItineraryId = (itineraryId) => {
+
+
   return async dispatch =>  {
+       /*  const responseIt = await axios.get() */
         const  response = await axios.get(`http://localhost:5000/activities/it_id/${itineraryId}`);
     const fetchedData = await response;
+    console.log(itineraryId,' itinerary ID , and fetch is done')
     dispatch(actionFetchSuccess(fetchedData.data));
   }}
   
-
+/*
 //------fetch by _id
 //`${url}activities/id/${_id}`
 export const fetchActivityById = (_id) => {
@@ -37,13 +41,13 @@ export const fetchActivityById = (_id) => {
     const fetchedData = await response;
     dispatch(actionFetchSuccess(fetchedData.data));
   }}
-   
+   */
   
   
 
 const actionFetchInit = () => {
     return {
-      type: 'FETCH/fetch_init',
+      type: 'FETCH_ACTIVITY/fetch_init',
     }
   }
   

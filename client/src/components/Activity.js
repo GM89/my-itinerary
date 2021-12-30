@@ -18,11 +18,12 @@ function Activity(props) {
        };
        loadActivities();
       },[dispatch] );
-    
+
   
 
       let mapping =  ((activitiesData  && activitiesData.map(x=>{
       
+        console.log(x.activityName, "activity Id")
             return (
                 <div>
                     <h3>{x.activityName}</h3>

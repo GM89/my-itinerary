@@ -15,6 +15,7 @@ const itinerariesReducers = (state = initialState, action) => {
       return{
                  ...state,
                 itineraries: action.payload,
+              
                 //loading: false
             }
  
