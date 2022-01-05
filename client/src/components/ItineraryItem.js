@@ -64,6 +64,7 @@ that is the ".data" key-value, and we do this when we write fetchedData.data.
                   </h2>
                   <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                     <div class="accordion-body">
+                      
                    <Activity itineraryId={props.itineraryId}/> 
                                          
 

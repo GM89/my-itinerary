@@ -1,0 +1,21 @@
+}
+
+
+//This is like useSelector.
+/* me permite sacar info del state, pero no es lo que quiero ahcer, sino sacar
+del componente padre */
+const mapsStateToProps = (state, ownProps) => {
+    
+    const activityItineraryId = ownProps.itineraryId 
+    const listOfActivities =  state.activities.filter(x => activities.ItineraryId == ItineraryId)    
+    const data =fetchActivitiesByItineraryId(activityItineraryId)
+    
+    return {
+        listOfActivities
+    }
+  }
+
+export default connect(mapsStateToProps)(Activity)
+
+
+export {Activity}

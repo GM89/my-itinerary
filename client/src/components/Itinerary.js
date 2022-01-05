@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import {fetchAllItineraries, fetchItineraryByCity} from '../store/actions/itineraryActions.js';
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector, useDispatch, ReactReduxContext } from "react-redux";
 import {useParams} from 'react-router-dom';
 import {Activity} from './Activity'
 import {ItineraryItem} from './ItineraryItem'
+import {connect} from "react-redux";
 
-            /*   console.log(dispatch, 'el dispatch') */
+             /*   console.log(dispatch, 'el dispatch') */
             // Los estados se cargan antes que el componente se cargue, 
             //const [filter, setFilter] = useState('')
                 /* useEffect(() => {
@@ -36,68 +37,65 @@ therefore we don't have access to entire state object, but just partially.
 state.itineraries.itineraries.data.data (where the itineraries are) can't be read right now because fetch hasn't download it. 
 So initialy itineraryData is dummy variable that only gets itineraries.itineraries.data*/
 const itineraryData = useSelector(state => state.itineraries.itineraries.data)
-const dispatch = useDispatch();
-console.log(itineraryData,'itineraryData here');
+    const dispatch = useDispatch();
+    console.log(itineraryData,'itineraryData here');
 
-/*UseEffect invoked immediately after a component is mounted.it is also called everytime its dispatch change its values, that is, when there's a new fetch
-On the previous section topic, here we have access to whole already fetched state, so we could go itineraries.itineraries.data.data. Where do we do this?
-In the itinerariesActions fetchitineraries() downloads the whole state as 'fetchedData', and now we can access to where the itineraries are.
-that is the ".data" key-value, and we do this when we write fetchedData.data.
- */
+    /*UseEffect invoked immediately after a component is mounted.it is also called everytime its dispatch change its values, that is, when there's a new fetch
+    On the previous section topic, here we have access to whole already fetched state, so we could go itineraries.itineraries.data.data. Where do we do this?
+    In the itinerariesActions fetchitineraries() downloads the whole state as 'fetchedData', and now we can access to where the itineraries are.
+    that is the ".data" key-value, and we do this when we write fetchedData.data.
+    */
 
 
-  useEffect( () => {
-    console.log(city)
-   const loadItineraries = async()=> {
-    await dispatch(fetchItineraryByCity(city))
-   };
-   loadItineraries();
-  },[dispatch] );
+      useEffect( () => {
+        console.log(city)
+      const loadItineraries = async()=> {
+        await dispatch(fetchItineraryByCity(city))
+      };
+      loadItineraries();
+      },[dispatch] );
 
-  
+      
 
- let mapping =  ((itineraryData  && itineraryData.map(x=>{
-  console.log(x._id, 'elobjectid')
-  let itineraryIdString = x._id.valueOf()
+    let mapping =  ((itineraryData  && itineraryData.map(x=>{
+      console.log(x._id, 'elobjectid')
+      let itineraryIdString = x._id.valueOf()
 
-  console.log(itineraryIdString, 'itineraryIdString ')
-  console.log(typeof itineraryIdString)
-      return (
+      console.log(itineraryIdString, 'itineraryIdString ')
+      console.log(typeof itineraryIdString)
+          return (
 
-        <div id = "itinerary">
+            <div id = "itinerary">
+                
+                                            
+                <ItineraryItem itineraryId={itineraryIdString}
+                  title={x.title}
+                  price={x.price}
+                  rating={x.rating}
+                  picture={x.picture}/>
+              </div>
+
             
-                                         
-            <ItineraryItem itineraryId={itineraryIdString}
-              title={x.title}
-              price={x.price}
-              rating={x.rating}
-              picture={x.picture}/>
-          </div>
+            ) })) ) 
 
-        
-        ) })) ) 
+      return (
+      <div>
+        <p>itinerary of Wakanda will be here</p>
+        <p> {city}</p>
 
-  return (
-   <div>
-    <p>itinerary of Wakanda will be here</p>
-    <p> {city}</p>
+        <div>
+          {mapping}
+        </div>
+      </div>  
 
-    <div>
-      {mapping}
-     </div>
-  </div>  
-
-  )
+      )
 } 
 
   
+export default connect()(Itinerary);
 
 
-
-
-
-
-  
+ 
 
 
 export  {Itinerary};

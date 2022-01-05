@@ -28,6 +28,7 @@ const activitiesReducers = (state = initialState, action) => {
                
                 
             }
+    
  
     default:
     return state

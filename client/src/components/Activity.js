@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {fetchAllActivities, fetchActivitiesByItineraryId, fetchActivityById} from '../store/actions/activityActions.js';
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector, useDispatch, connect } from "react-redux";
 import {useParams} from 'react-router-dom';
-
 
      
 function Activity(props) {
@@ -11,7 +10,7 @@ function Activity(props) {
     const dispatch = useDispatch();
 
     useEffect( () => {
-        console.log(props.itineraryId, "props.itineraryId ")
+              console.log(props.itineraryId, "props.itineraryId ")
         const loadActivities = async()=> {
         await dispatch(fetchActivitiesByItineraryId(props.itineraryId))
                
@@ -45,6 +44,23 @@ return(
     
 )
 }
+
+
+//This is like useSelector.
+/* me permite sacar info del state, pero no es lo que quiero ahcer, sino sacar
+del componente padre 
+const mapsStateToProps = (state, ownProps) => {
+    
+    const activityItineraryId = ownProps.itineraryId 
+    const listOfActivities =  state.activities.filter(x => activities.ItineraryId == ItineraryId)    
+    const data =fetchActivitiesByItineraryId(activityItineraryId)
+
+    return {
+        listOfActivities
+    }
+  }
+
+export default connect(mapsStateToProps)(Activity)*/
 
 
 export {Activity}

@@ -25,6 +25,7 @@ return async dispatch =>  {
 //`${url}itineraries/${city}`
 export const fetchItineraryByCity = (city) => {
   return async dispatch =>  {
+    dispatch(actionFetchInit());
     //city.toLowerCase()
     const  response = await axios.get(`http://localhost:5000/itineraries/${city}`);
     const fetchedData = await response;
@@ -35,7 +36,7 @@ export const fetchItineraryByCity = (city) => {
 
 const actionFetchInit = () => {
     return {
-      type: 'FETCH/fetch_init',
+      type: 'FETCH_ITINERARY/fetch_init',
     }
   }
   
