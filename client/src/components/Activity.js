@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import {fetchAllActivities, fetchActivitiesByItineraryId, fetchActivityById} from '../store/actions/activityActions.js';
-import { useSelector, useDispatch, connect } from "react-redux";
-import {useParams} from 'react-router-dom';
+import React, {  useEffect } from 'react';
+import { fetchActivitiesByItineraryId} from '../store/actions/activityActions.js';
+import { useSelector, useDispatch } from "react-redux";
 
      
 function Activity(props) {
@@ -13,6 +12,7 @@ function Activity(props) {
               console.log(props.itineraryId, "props.itineraryId ")
         const loadActivities = async()=> {
         await dispatch(fetchActivitiesByItineraryId(props.itineraryId))
+        console.log()
                
        };
        loadActivities();

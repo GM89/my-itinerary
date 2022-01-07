@@ -6,22 +6,6 @@ import {Activity} from './Activity'
 import {ItineraryItem} from './ItineraryItem'
 import {connect} from "react-redux";
 
-             /*   console.log(dispatch, 'el dispatch') */
-            // Los estados se cargan antes que el componente se cargue, 
-            //const [filter, setFilter] = useState('')
-                /* useEffect(() => {
-                    getData()
-                    }, [])*/
-              
-            // Dentro del map hay código html. Neceistaríamos indicar el resultado dentro de un return? No es necesario.
-            /* Dado que map ya está dentro de un return.
-            Analizamos el siguiente pedazo de código:
-            filter(objectitineraries => data[objectitineraries].itineraries.toLowerCase().includes(filter.toLowerCase()))
-            objectitineraries es cada object que está en la array data.
-            Queremos ir a la propiedad itineraries de cada objeto 
-            data[objectitineraries].itineraries Ssnos permite hacer eso. Aqui data[objectitineraries] actúa como un índice. 
-            //const [data, setData] = useState('')
-            */
 
      
 function Itinerary(props) {
@@ -63,6 +47,7 @@ const itineraryData = useSelector(state => state.itineraries.itineraries.data)
 
       console.log(itineraryIdString, 'itineraryIdString ')
       console.log(typeof itineraryIdString)
+      //hay Berlin Standard y Berlin Alternativo
           return (
 
             <div id = "itinerary">

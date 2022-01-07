@@ -22,39 +22,53 @@ return async dispatch =>  {
 //------fetch by itineraryId
 //`${url}activities/it_it/${itineraryId}`
 
-
+/*
 export const fetchActivitiesByItineraryId = (itineraryId) => {
-
+  const url = `http://localhost:5000/activities/it_id/${itineraryId}`
    
     return async dispatch =>  {
-  
-      dispatch(actionFetchInit())
-        /*  const responseIt = await axios.get() */
-      const  response = await axios.get(`http://localhost:5000/activities/it_id/${itineraryId}`);
-      const fetchedData = await response;
-      console.log(itineraryId,' itinerary ID , and fetch is done')
-      dispatch(actionFetchSuccess(fetchedData.data));
-    }}
+      dispatch(actionFetchInit());
+      axios
+        .get(`http://localhost:5000/activities/it_id/${itineraryId}`)
+        .then(res =>
+            dispatch({
+                type: 'FETCH_ACTIVITIES/get_list_success',
+                payload: res.data
+            }))
+        .catch(err => dispatch(actionFetchFailure(err.response.data, err.response.status)))
+    }}*/
+    
+
+
+    export const fetchActivitiesByItineraryId = (itineraryId) => dispatch => {
+      const url = `http://localhost:5000/activities/it_id/${itineraryId}`
+      dispatch(actionFetchInit());
+      axios
+          .get(`http://localhost:5000/activities/it_id/${itineraryId}`)
+          .then(res =>
+              dispatch({
+                  type: 'FETCH_ACTIVITIES/get_list_success',
+                  payload: res.data
+              }))
+          .catch(err => dispatch(actionFetchFailure(err.response.data, err.response.status)))
+  }
 
 
 
-/*
-//------fetch by _id
-//`${url}activities/id/${_id}`
-export const fetchActivityById = (_id) => {
-  return async dispatch =>  {
-        const  response = await axios.get(`http://localhost:5000/activities/id/${_id}`);
-    const fetchedData = await response;
-    dispatch(actionFetchSuccess(fetchedData.data));
-  }}
-   */
-  
-  
+
+
+
+
+
+
+
+
 
 const actionFetchInit = () => {
+  console.log('fetch init de la actividad')
     return {
       type: 'FETCH_ACTIVITY/fetch_init',
-      
+     
     }
   }
   
@@ -68,11 +82,11 @@ const actionFetchInit = () => {
   }
   
    
-    const actionFetchFailure = (msg, status, id) => {
+    const actionFetchFailure = (msg, status) => {
     return {
       type: 'ERROR_ACTIVITES/get_list_failure',
       payload: {
-         msg, status, id 
+         msg, status
      }
     }
   }
