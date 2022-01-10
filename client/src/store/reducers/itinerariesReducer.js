@@ -18,7 +18,8 @@ const itinerariesReducers = (state = initialState2, action) => {
       return{
                  ...state,
                 itineraryLoaded: false,
-                
+                itineraries: []
+                                
             }
 
      case 'FETCH_ITINERARIES/get_list_success':
