@@ -18,7 +18,6 @@ const itinerariesReducers = (state = initialState2, action) => {
       return{
                  ...state,
                 itineraryLoaded: false,
-               
                 
             }
 

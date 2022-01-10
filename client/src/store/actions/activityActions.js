@@ -11,64 +11,65 @@ const port = '5000';
 const url = `http://localhost:${port}/`;
 
 
-export const fetchAllActivities = () => {
-return async dispatch =>  {
-  const  response = await axios.get(`${url}activities/all`);
-  const fetchedData = await response;
-  
-  dispatch(actionFetchSuccess(fetchedData.data));
-}}
+                          export const fetchAllActivities = () => {
+                          return async dispatch =>  {
+                            const  response = await axios.get(`${url}activities/all`);
+                            const fetchedData = await response;
+                            
+                            dispatch(actionFetchSuccess(fetchedData.data));
+                          }}
 
 //------fetch by itineraryId
 //`${url}activities/it_it/${itineraryId}`
 
-/*
+
+
 export const fetchActivitiesByItineraryId = (itineraryId) => {
-  const url = `http://localhost:5000/activities/it_id/${itineraryId}`
-   
+
+
     return async dispatch =>  {
-      dispatch(actionFetchInit());
-      axios
-        .get(`http://localhost:5000/activities/it_id/${itineraryId}`)
-        .then(res =>
-            dispatch({
-                type: 'FETCH_ACTIVITIES/get_list_success',
-                payload: res.data
-            }))
-        .catch(err => dispatch(actionFetchFailure(err.response.data, err.response.status)))
-    }}*/
-    
+     /*  dispatch(storeItineraryId(itineraryId)); */
+      dispatch(actionFetchInit())
 
-
-    export const fetchActivitiesByItineraryId = (itineraryId) => dispatch => {
-      const url = `http://localhost:5000/activities/it_id/${itineraryId}`
-      dispatch(actionFetchInit());
-      axios
-          .get(`http://localhost:5000/activities/it_id/${itineraryId}`)
-          .then(res =>
-              dispatch({
-                  type: 'FETCH_ACTIVITIES/get_list_success',
-                  payload: res.data
-              }))
-          .catch(err => dispatch(actionFetchFailure(err.response.data, err.response.status)))
-  }
+      try{
+        const  response = await axios.get(`http://localhost:5000/activities/it_id/${itineraryId}`);
+        const fetchedData = await response;
+        console.log("prova",fetchedData.data)
+        
+        dispatch(actionFetchSuccess(fetchedData.data));
+      }catch(e){
+        dispatch(actionFetchFailure)
+      }
+        /*  const responseIt = await axios.get() */
 
 
 
+    }}
+
+/*
+
+export const fetchActivitiesByItineraryId = (itineraryId) => dispatch => {
+  const url = `http://localhost:5000/activities/it_id/${itineraryId}`
+  dispatch(actionFetchInit());
+  axios
+      .get(`http://localhost:5000/activities/it_id/${itineraryId}`)
+      .then(res =>
+          dispatch({
+              type: 'FETCH_ACTIVITIES/get_list_success',
+              payload: res.data
+          }))
+      .catch(err => dispatch(actionFetchFailure(err.response.data, err.response.status)))
+}
+
+*/
 
 
+  
 
-
-
-
-
-
-
-const actionFetchInit = () => {
-  console.log('fetch init de la actividad')
+export const actionFetchInit = () => {
     return {
       type: 'FETCH_ACTIVITY/fetch_init',
-     
+      
     }
   }
   
@@ -82,11 +83,11 @@ const actionFetchInit = () => {
   }
   
    
-    const actionFetchFailure = (msg, status) => {
+    const actionFetchFailure = (msg, status, id) => {
     return {
       type: 'ERROR_ACTIVITES/get_list_failure',
       payload: {
-         msg, status
+         msg, status, id 
      }
     }
   }

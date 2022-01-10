@@ -16,7 +16,7 @@ const activitiesReducers = (state = initialState, action) => {
       return{
                  ...state,
                  activityLoaded: false,           
-               
+                 activities:[]
                 
             }
 
@@ -24,9 +24,7 @@ const activitiesReducers = (state = initialState, action) => {
       return{
                  ...state,
                  activityLoaded: true,
-                 activities: action.payload,
-               
-                
+                 activities:state.activities.concat(action.payload.data),               
             }
     
  

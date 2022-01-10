@@ -29,7 +29,7 @@ export const fetchItineraryByCity = (city) => {
     //city.toLowerCase()
     const  response = await axios.get(`http://localhost:5000/itineraries/${city}`);
     const fetchedData = await response;
-    dispatch(actionFetchSuccess(fetchedData.data));
+    dispatch(actionFetchSuccess(fetchedData.data)); 
   }}
   
   

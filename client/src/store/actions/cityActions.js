@@ -20,7 +20,7 @@ return async dispatch =>  {
 }}
 
 
-const actionFetchInit = () => {
+export const actionFetchInit = () => {
   return {
     type: 'FETCH/fetch_init',
   }
