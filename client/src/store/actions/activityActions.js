@@ -29,13 +29,13 @@ export const fetchActivitiesByItineraryId = (itineraryId) => {
 
     return async dispatch =>  {
      /*  dispatch(storeItineraryId(itineraryId)); */
-      dispatch(actionFetchInit())
+      dispatch(actionFetchInit()) //1
 
-      try{
+      try{ //2
         const  response = await axios.get(`http://localhost:5000/activities/it_id/${itineraryId}`);
         const fetchedData = await response;
         console.log("prova",fetchedData.data)
-        
+
         dispatch(actionFetchSuccess(fetchedData.data));
       }catch(e){
         dispatch(actionFetchFailure)
