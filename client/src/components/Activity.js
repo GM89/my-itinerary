@@ -22,18 +22,28 @@ function Activity(props) {
    console.log(activitiesData,'sono id')
 
       let mapping =  activitiesData && activitiesData.filter(x=>
-        x.itineraryId==props.itineraryId
-        )
+            x.itineraryId === props.itineraryId
+        ).map(y=>{
+            
+            return (
+                <div>
+                    <h3>{y.activityName}</h3>
+                    <p>Itinerary id: {y.itineraryId}</p>
+                    <p>{y.location}</p>
+                    <p>{y.duration}</p>
+                    <p>{y.comments}</p>
+                </div>
+            )
+           
+        })
       
          
        
 console.log(mapping,'ciao genis')
 return(
     <div>
-          
-        {mapping.map(x=>x.activityName)}
-    </div>
-    
+        {mapping}
+    </div> 
 )
 }
 
