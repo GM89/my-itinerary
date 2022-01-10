@@ -27,7 +27,7 @@ function Activity(props) {
             return (
                 <div>
                     <h3>{x.activityName}</h3>
-                    <p>Itinerary id:{x.itineraryId}</p>
+                    <p>Itinerary id: {x.itineraryId}</p>
                     <p>{x.location}</p>
                     <p>{x.duration}</p>
                     <p>{x.comments}</p>
