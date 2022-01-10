@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
      
 function Activity(props) {
 
-    const activitiesData = useSelector(state => state.activities.activities.data)
+    const activitiesData = useSelector(state => state.activities.activities)
     const dispatch = useDispatch();
 
     useEffect( () => {
@@ -19,33 +19,19 @@ function Activity(props) {
        loadActivities();
       },[dispatch] );
 
-  
+   console.log(activitiesData,'sono id')
 
-      let mapping = ()=> {
+      let mapping =  activitiesData && activitiesData.filter(x=>
+        x.itineraryId==props.itineraryId
+        )
       
          
-        const activitiesFiltered = activitiesData.filter(x=> x.itineraryId === props.itineraryId)
-        console.log('actividades filtradas', activitiesFiltered)
-        
-        activitiesFiltered.map(x=>{
-            console.log(x.activityName, "activity Id")
-                return (
-                    <div>
-                        <h3>{x.activityName}</h3>
-                        <p>Itinerary id:{x.itineraryId}</p>
-                        <p>{x.location}</p>
-                        <p>{x.duration}</p>
-                        <p>{x.comments}</p>
-                    </div>
-
-                )
-        })}
-
-
+       
+console.log(mapping,'ciao genis')
 return(
     <div>
           
-        {mapping}
+        {mapping.map(x=>x.activityName)}
     </div>
     
 )
