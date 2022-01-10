@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+
 import React from 'react';
 import './App.css'; 
 import { BrowserRouter, Route, Routes, NavLink , Link} from 'react-router-dom'
@@ -6,7 +6,7 @@ import {Landing} from './components/Landing.js'
 import {Cities} from './components/cities/Cities.js'
 import { Itineraries } from './components/Itineraries';
 import { Itinerary } from './components/Itinerary';
-import { ItineraryItem } from './components/ItineraryItem';
+
 
 //routes és equivalent a Switch
 

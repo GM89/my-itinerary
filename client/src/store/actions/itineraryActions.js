@@ -1,5 +1,4 @@
-import React, { useState } from 'react'
-import { createStore, applyMiddleware } from 'redux';
+
 import axios from 'axios';
 
 
@@ -9,9 +8,9 @@ import axios from 'axios';
 //note that in order to access data we select "data.data"
 const port = '5000';
 const url = `http://localhost:${port}/`;
-let  selectedCity = 'Barcelona'
+/*let  selectedCity = 'Barcelona'
 selectedCity = selectedCity.toLowerCase()
-let selectedItineraryId = ''
+let selectedItineraryId = ''*/
 
 export const fetchAllItineraries = () => {
 return async dispatch =>  {

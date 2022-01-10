@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import {fetchAllItineraries, fetchItineraryByCity} from '../store/actions/itineraryActions.js';
-import { useSelector, useDispatch, ReactReduxContext } from "react-redux";
+import React, {useEffect } from 'react';
+import {fetchItineraryByCity} from '../store/actions/itineraryActions.js';
+import { useSelector, useDispatch } from "react-redux";
 import {useParams} from 'react-router-dom';
-import {Activity} from './Activity'
+
 import {ItineraryItem} from './ItineraryItem'
 import {connect} from "react-redux";
 

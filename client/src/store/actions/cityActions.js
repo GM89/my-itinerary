@@ -1,6 +1,5 @@
 
-import React, { useState } from 'react'
-import { createStore, applyMiddleware } from 'redux';
+
 import axios from 'axios';
 
 

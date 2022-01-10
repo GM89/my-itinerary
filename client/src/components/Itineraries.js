@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import {fetchAllItineraries} from '../store/actions/itineraryActions.js';
 import { useSelector, useDispatch } from "react-redux";
 

@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import {fetchCities} from '../../store/actions/cityActions.js';
 import { useSelector, useDispatch } from "react-redux";
-import { BrowserRouter, Route, Routes, NavLink , Link} from 'react-router-dom'
+
 
 import {City} from './City.js'
             /*   console.log(dispatch, 'el dispatch') */
@@ -29,7 +29,7 @@ state.cities.cities.data.data (where the cities are) can't be read right now bec
 So initialy cityData is dummy variable that only gets cities.cities.data*/
 const cityData = useSelector(state => state.cities.cities.data)
 const dispatch = useDispatch();
-console.log(cityData,'cityData here');
+
 
 /*UseEffect invoked immediately after a component is mounted.it is also called everytime its dispatch change its values, that is, when there's a new fetch
 On the previous section topic, here we have access to whole already fetched state, so we could go cities.cities.data.data. Where do we do this?

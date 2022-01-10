@@ -3,14 +3,9 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter, Route, Routes, NavLink } from 'react-router-dom'
 
-import { composeWithDevTools } from "redux-devtools-extension";
-import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
-import thunk from "redux-thunk";
 
-import rootReducer from "./store/reducers/rootReducer";
 import {store} from './store/store.js'
 
 // If you want to start measuring performance in your app, pass a function

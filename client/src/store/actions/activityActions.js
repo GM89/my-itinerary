@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
-import { createStore, applyMiddleware } from 'redux';
+
+
 import axios from 'axios';
-import { useSelector, useDispatch, connect } from "react-redux";
+
 
 
 //Fetch actions 
@@ -34,7 +34,7 @@ export const fetchActivitiesByItineraryId = (itineraryId) => {
       try{ //2
         const  response = await axios.get(`http://localhost:5000/activities/it_id/${itineraryId}`);
         const fetchedData = await response;
-        console.log("prova",fetchedData.data)
+        console.log("Activit fetched Data",fetchedData.data)
 
         dispatch(actionFetchSuccess(fetchedData.data));
       }catch(e){
