@@ -46,23 +46,6 @@ export const fetchActivitiesByItineraryId = (itineraryId) => {
 
     }}
 
-/*
-
-export const fetchActivitiesByItineraryId = (itineraryId) => dispatch => {
-  const url = `http://localhost:5000/activities/it_id/${itineraryId}`
-  dispatch(actionFetchInit());
-  axios
-      .get(`http://localhost:5000/activities/it_id/${itineraryId}`)
-      .then(res =>
-          dispatch({
-              type: 'FETCH_ACTIVITIES/get_list_success',
-              payload: res.data
-          }))
-      .catch(err => dispatch(actionFetchFailure(err.response.data, err.response.status)))
-}
-
-*/
-
 
   
 

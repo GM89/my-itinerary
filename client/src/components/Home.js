@@ -1,6 +1,8 @@
 import React from 'react'
 import {useNavigate} from 'react-router-dom';
 
+
+/*
 const GoBackButton = () => {
 
     
@@ -11,25 +13,27 @@ const GoBackButton = () => {
         }
   
     return (
+     
       <button type="button" className="btn btn-secondary" onClick={handleClick}>
         Go back
       </button>
     );
-  }
+  }*/
 
 
 
-function Landing() {
+function Home() {
     return (
+
         <div>
-            <p>Landing page</p>
-            <p><GoBackButton/> </p>
+            <p>Home</p>
+            <p>{/* <GoBackButton/> */} </p>
         </div>
     )
 }
 
 
-export {Landing} 
+export {Home} 
 
 
 

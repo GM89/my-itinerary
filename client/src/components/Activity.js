@@ -1,5 +1,5 @@
 import React, {useEffect } from 'react';
-import { fetchActivitiesByItineraryId,actionFetchInit} from '../store/actions/activityActions.js';
+import { fetchActivitiesByItineraryId, actionFetchInit} from '../store/actions/activityActions.js';
 import { useSelector, useDispatch } from "react-redux";
 
 
@@ -7,7 +7,7 @@ import { useSelector, useDispatch } from "react-redux";
 function Activity(props) {
 
     const activitiesData = useSelector(state => state.activities.activities)
-    const dispatch = useDispatch();
+    const dispatch = useDispatch();      
 
     useEffect( () => {
         console.log(props.itineraryId, "props.itineraryId ciao")
@@ -34,11 +34,8 @@ function Activity(props) {
                     <p>{y.comments}</p>
                 </div>
             )
-           
         })
       
-         
-       
 console.log(mapping,'ciao genis')
 return(
     <div>
