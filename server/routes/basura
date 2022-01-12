@@ -1,0 +1,162 @@
+
+// -------------------find one user by userName-------------------------------
+/*
+//findOne está haciendo una query, busca city: barcelona en la lista de documentos de la colección.
+//busca fin
+//req.params.name
+
+router.get('/:userName',
+(req, res) => {
+    let userRequested = req.params.name;
+    userModel.findOne({ userName: userRequested })
+      .then(user => {
+          res.send(user)
+          
+      })
+      .catch(err => console.log(err));
+});
+
+
+
+
+
+
+//------- -------------------
+router.get("/:name_city", (req, res) => {
+userModel.find({ name_city : req.params.name_city }, (err, data) => {
+if (err) res.send(err);
+res.send(data);
+});
+});
+
+
+// POST /cities/barcelona-------------------------------
+router.post("/:name_city", (req, res) => {
+const newUser = new userModel({
+city: req.body.user,
+country: req.body.country,
+photoUrl: req.body.photoUrl,
+});
+newUser.save().then(user => res.send(user));
+});
+
+
+
+// UPDATE /city/:cityId
+router.put("/:cityId", /*auth,*/ (req, res) => {
+const updatedCity = {
+city: req.body.user,
+country: req.body.country,
+photoUrl: req.body.photoUrl,
+};
+userModel.findOneAndUpdate({ _id: req.params.userId }, updatedCity)
+.then(user => res.json({ success: true }))
+.catch(() => res.status(404).json({ success: false }));
+});
+
+
+// DELETE /cities/:cityId
+router.delete("/:cityId", /*auth,*/ (req, res) => {
+userModel.deleteOne({ _id: req.params.userId })
+  .then(user => res.json({ success: true }))
+  .catch(err => res.status(404).json({ success: false }));
+});
+
+
+module.exports = router;
+
+
+
+
+userModel.findOne( {user: newUser.user})
+        .then(user=>{
+            if(user) res.status(500).send('This city is repeated')
+        })
+
+    newUser.save()
+      .then(user => {
+      res.send(user)
+      })
+
+      .catch(err => {
+      res.status(500).send("Server error")}) 
+  });
+  
+  // -------------------findOne user by user name-------------------------------
+
+//findOne está haciendo una query, busca city: barcelona en la lista de documentos de la colección.
+//busca fin
+//req.params.name
+
+  router.get('/:name',
+  (req, res) => {
+        let cityRequested = req.params.name;
+        userModel.findOne({ city: cityRequested })
+          .then(user => {
+              res.send(user)
+              
+          })
+          .catch(err => console.log(err));
+});
+
+
+
+//---------get all users
+
+router.get('/all',
+(req, res) => {
+    userModel.find({})
+        .then(files => {
+            res.send(files)
+        })
+        .catch(err => console.log(err));
+});
+
+//-------GET  cities/barcelona -------------------
+router.get("/:name_city", (req, res) => {
+userModel.find({ name_city : req.params.name_city }, (err, data) => {
+  if (err) res.send(err);
+  res.send(data);
+});
+});
+
+
+
+// POST /user-------------------------------
+router.post("/register/:name_city", (req, res) => {
+const newUser = new userModel({
+  city: req.body.user,
+  country: req.body.country,
+  photoUrl: req.body.photoUrl,
+ });
+newUser.save().then(user => res.send(user));
+});
+
+
+
+// UPDATE /city/:cityId
+router.put("/:cityId", /*auth,*/ (req, res) => {
+const updatedCity = {
+    city: req.body.user,
+    country: req.body.country,
+    photoUrl: req.body.photoUrl,
+};
+userModel.findOneAndUpdate({ _id: req.params.userId }, updatedCity)
+  .then(user => res.json({ success: true }))
+  .catch(() => res.status(404).json({ success: false }));
+});
+
+
+  // DELETE /cities/:cityId
+  router.delete("/:cityId", /*auth,*/ (req, res) => {
+    userModel.deleteOne({ _id: req.params.userId })
+      .then(user => res.json({ success: true }))
+      .catch(err => res.status(404).json({ success: false }));
+  });
+
+
+module.exports = router;
+*/
+
+
+
