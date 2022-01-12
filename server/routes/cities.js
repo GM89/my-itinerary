@@ -11,14 +11,6 @@ The path and a callback function with our request object and
 response object as parameters. */
 
 
-router.get('/test', (req, res) => {
-   
-    res.send(
-        { msg: 'Cities test route.' }
-        );
-
-    res.json({city:"sevilla", country:"spain", photoUrl: "none"})
-})
 
 
 

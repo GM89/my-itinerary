@@ -40,25 +40,27 @@ If resolved it can send back the object created in my response. If rejected we'l
 
 ///--------------post user
 
-// router.post('/register', (req, res) => {
-//     const newUser = new userModel({
-//         userName: req.body.userName,
-//         email: req.body.email,
-//         password: req.body.password,
-//         profilePicture: req.body.profilePicture
-//     })
+router.post('/register', (req, res) => {
+    const newUser = new userModel({
+        userName: req.body.userName,
+        email: req.body.email,
+        password: req.body.password,
+        profilePicture: req.body.profilePicture
+    })
 
-//     userModel.findOne( {user: newUser.user})
-//     .then(user=>{
-//         if(user) res.status(500).send('This users already exists')
-//     })
+    userModel.findOne( {user: newUser.user})
+    .then(user=>{
+        if(user) res.status(500).send('This users already exists')
+    })
 
-// newUser.save()
-//   .then(user => {
-//   res.send(user)
-//   })
+newUser.save()
+  .then(user => {
+  res.send(user)
+  })
 
-//   .catch(err => {
-//   res.status(500).send("Server error")}) 
-// });
+  .catch(err => {
+  res.status(500).send("Server error")}) 
+});
+
+
 module.exports = router;
