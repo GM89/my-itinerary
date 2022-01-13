@@ -5,12 +5,7 @@ const itineraryModel = require('../model/ItineraryModel')
 
 //test route:
 
-router.get('/prova', (req, res) => {
-    console.log("ciaoo mondo!")
-    res.send(
-        { msg: 'prova' }
-        );
-})
+
 /*en server.jsapp.use('/itineraries', require('./routes/itineraries'))
 la ruta será itineraries/all */ 
 

@@ -1,5 +1,6 @@
 
 const mongoose = require('mongoose')
+
 /* we need to create a model of our resource so that we may ensure 
 some sort of structure for the documents in our database collection.
 
@@ -27,10 +28,10 @@ const usersSchema = new mongoose.Schema({
            },
     
     })
-/*
-    usersSchema.pre('save', async function (next){
+
+/*     usersSchema.pre('save', async function (next){
         try{
-            console.log("called before saving an user")
+            console.log("called before saving an user!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
         }
         catch(error){
             console.log(error)
@@ -40,15 +41,15 @@ const usersSchema = new mongoose.Schema({
     })
 
 
-    usersSchema.pre('save', async function (next){
+    usersSchema.post('save', async function (next){
         try{
-            console.log("called before saving an user")
+            console.log("called before saving an user!!!!!!!1!!!!!!!!!!!!!!!!!!!!!!!!!!1")
         }
         catch(error){
             console.log(error)
             next(error)
         }
 
-    })*/
+    }) */
 //We set the export to a variable ‘city’ which was defined as 'Schema' on line6, and we exported as a mongoose model
 module.exports = mongoose.model('users', usersSchema)
