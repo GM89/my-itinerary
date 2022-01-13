@@ -47,25 +47,29 @@ If resolved it can send back the object created in my response. If rejected we'l
 
 
 
-router.post('/all', (req, res) => {
-    const newCity = new cityModel({
+
+router.post('/add',  async  (req, res) => {
+    try{
+       const newCity = new cityModel({
         city: req.body.city,
         country: req.body.country,
         photoUrl: req.body.photoUrl
-    })
-
-    cityModel.findOne( {city: newCity.city})
+       })
+    
+ await  cityModel.findOne( {city: newCity.city})
         .then(city=>{
             if(city) res.status(500).send('This city is repeated')
         })
 
-    newCity.save()
+    await newCity.save()
       .then(city => {
       res.send(city)
       })
-
-      .catch(err => {
+    } catch{
+      (err => {
       res.status(500).send("Server error")}) 
+  }
+      
   });
   
   // -------------------findOne city-------------------------------
@@ -106,16 +110,6 @@ cityModel.find({ name_city : req.params.name_city }, (err, data) => {
 });
 });
 
-
-// POST /cities/barcelona-------------------------------
-router.post("/:name_city", (req, res) => {
-const newCity = new cityModel({
-  city: req.body.city,
-  country: req.body.country,
-  photoUrl: req.body.photoUrl,
- });
-newCity.save().then(city => res.send(city));
-});
 
 
 

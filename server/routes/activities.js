@@ -82,9 +82,12 @@ router.get("/id/:_id", (req, res) => {
                    
 
 // POST /itineraries/barcelona-------------------------------
-router.post("/:activity_id", (req, res) => {
+router.post("/newActivity",async (req, res) => {
+
+  try {
     const newActivity = new activityModel({
       activityName: req.body.activityName,
+      itineraryId: req.body.itineraryId,
       name_city: req.body.name_city,
       rating: req.body.rating,
       activityId: req.body.activityId,
@@ -94,13 +97,17 @@ router.post("/:activity_id", (req, res) => {
       comments: req.body.comments,   
     });
 
-    activityModel.findOne( {activityId: newActivity.activityId})
+    await activityModel.findOne( {activityId: newActivity.activityId})
     .then(activity=>{
         if(activity) res.status(500).send('This activity is repeated')
     })
 
-    newActivity.save().then(activity => res.send(activity));
-  });
+   await  newActivity.save().then(activity => res.send(activity));
+  } catch{
+    (err => {
+    res.status(500).send("Server error")}) 
+}
+});
   
 //UPDATE itineraries/barcelona ----------------------
 

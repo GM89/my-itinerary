@@ -50,7 +50,8 @@ router.get("/:name_city", (req, res) => {
             
 
 // POST /itineraries/barcelona-------------------------------
-router.post("/:name_city", (req, res) => {
+router.post("/:name_city", async (req, res) => {
+  try{
     const newItinerary = new itineraryModel({
       title: req.body.title,
       picture: req.body.picture,
@@ -62,12 +63,16 @@ router.post("/:name_city", (req, res) => {
  
     });
 
-    itineraryModel.findOne( {title: newItinerary.title})
+    await itineraryModel.findOne( {title: newItinerary.title})
     .then(title=>{
         if(title) res.status(500).send('This itinerary is repeated')
     })
 
-    newItinerary.save().then(itinerary => res.send(itinerary));
+    await newItinerary.save().then(itinerary => res.send(itinerary));
+  } catch{
+        (err => {
+        res.status(500).send("Server error")}) 
+    }
   });
   
 //UPDATE itineraries/barcelona ----------------------

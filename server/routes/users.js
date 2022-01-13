@@ -38,29 +38,35 @@ Afterwards,I  call save(). This mongoose method will return a promise.
 If resolved it can send back the object created in my response. If rejected we'll need to debug!*/
 
 
-///--------------post user
+/
 
-router.post('/register', (req, res) => {
-    const newUser = new userModel({
-        userName: req.body.userName,
-        email: req.body.email,
-        password: req.body.password,
-        profilePicture: req.body.profilePicture
-    })
+///--------------post user-------------
 
-    userModel.findOne( {user: newUser.user})
-    .then(user=>{
-        if(user) res.status(500).send('This users already exists')
-    })
+router.post('/register', async (req, res) => {
+    try{
+        const newUser = new userModel({
+            userName: req.body.userName,
+            email: req.body.email,
+            password: req.body.password,
+            profilePicture: req.body.profilePicture
+        })
 
-newUser.save()
-  .then(user => {
-  res.send(user)
-  })
+    await userModel.findOne( {user: newUser.user})
+        .then(user=>{
+            if(user) res.status(500).send('This users already exists')
+        })
 
-  .catch(err => {
-  res.status(500).send("Server error")}) 
+         newUser.save()
+            .then(user => {
+            res.send(user)
+            })
+            
+    } catch{
+        (err => {
+        res.status(500).send("Server error")}) 
+    }
 });
+
 
 
 module.exports = router;
