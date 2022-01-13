@@ -1,6 +1,7 @@
 
 const mongoose = require('mongoose')
-
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
 /* we need to create a model of our resource so that we may ensure 
 some sort of structure for the documents in our database collection.
 
@@ -17,7 +18,7 @@ const usersSchema = new mongoose.Schema({
     userName: {
             type: String,
             required: true,
-            unique:true
+            
           },
     password: {
             type: String,

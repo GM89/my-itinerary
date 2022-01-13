@@ -28,28 +28,32 @@ router.get('/get',
 ///--------------post user-------------
 
 router.post('/register', async (req, res) => {
-    try{
+    try{ 
+        
+       
+
         const newUser = new userModel({
             userName: req.body.userName,
             email: req.body.email,
             password: req.body.password,
             profilePicture: req.body.profilePicture
-        })
+        }) 
+       await bcrypt.genSalt(10,(err,salt)=>{
+            bcrypt.hash(newUser.password,salt,(err,hash)=>{
+                if(err) throw err;
+                newUser=hash;
+                
+            })
+
+          
+        }) 
 
     await userModel.findOne( {userName: newUser.userName})
         .then(userName=>{
             if(userName) res.status(500).send('This users already exists')
         })
 
-      await   newUser.save()
-            .then(user => {
-            res.send(user)
-            })
-            
-    } catch{
-        (err => {
-        res.status(500).send(err)}) 
-    }
+      
 });
 
 
