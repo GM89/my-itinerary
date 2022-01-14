@@ -9,7 +9,7 @@ const userModel = require('../model/UsersModel')
 // GET ROUTE---------------------------------------------------------------------------
 //Create route to retrieve all the cities from the database
 /*get all cities*/
-router.get('/get',
+router.get('/all',
     (req,res)=>{
         userModel.find({})
             .then(f=>{
@@ -29,33 +29,29 @@ router.get('/get',
 
 router.post('/register', async (req, res) => {
     try{ 
-        
-       
-
-        const newUser = new userModel({
+           const newUser = new userModel({
             userName: req.body.userName,
             email: req.body.email,
             password: req.body.password,
             profilePicture: req.body.profilePicture
         }) 
-       await bcrypt.genSalt(10,(err,salt)=>{
-            bcrypt.hash(newUser.password,salt,(err,hash)=>{
-                if(err) throw err;
-                newUser=hash;
-                
+        await userModel.findOne( {userName: newUser.userName})
+            .then(user =>{
+                if(user) res.status(500).send('This user already exists')
             })
 
-          
-        }) 
+        await userModel.save()
+        .then(user =>{
+            res.send(user)
+        });
 
-    await userModel.findOne( {userName: newUser.userName})
-        .then(userName=>{
-            if(userName) res.status(500).send('This users already exists')
-        })
+    } catch{
+        (err => {
+        res.status(500).send("Server error")})
+     }
+    });
 
       
-});
-
 
 
 module.exports = router;

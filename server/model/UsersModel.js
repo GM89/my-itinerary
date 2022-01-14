@@ -1,19 +1,12 @@
 
 const mongoose = require('mongoose')
 const bcrypt = require('bcrypt');
-const saltRounds = 10;
-/* we need to create a model of our resource so that we may ensure 
-some sort of structure for the documents in our database collection.
 
-
-itle, a profile picture(URL), a rating, a duration, a price and some hashtags
-*/
-//category: {type: Schema.Types.ObjectId, ref: 'itineraries'}, 
 const usersSchema = new mongoose.Schema({ 
     email: {
         type: String,
         required: true,
-        unique:true
+        unique: true,
       },
     userName: {
             type: String,
@@ -29,28 +22,30 @@ const usersSchema = new mongoose.Schema({
            },
     
     })
-
-/*     usersSchema.pre('save', async function (next){
+//middleware
+    usersSchema.pre('save', async function (next){
         try{
-            console.log("called before saving an user!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+            const  salt =  await bcrypt.genSalt(10)
+            hashpassword = await bcrypt.hash(this.password, salt)
+             console.log("before save");
+            this.password = hashpassword
+            next()
         }
         catch(error){
-            console.log(error)
+            console.log("userSchema", error)
             next(error)
         }
-
     })
 
-
-    usersSchema.post('save', async function (next){
+    usersSchema.post('save', async function(next){
         try{
-            console.log("called before saving an user!!!!!!!1!!!!!!!!!!!!!!!!!!!!!!!!!!1")
+            console.log("userSchema.post works ");
+        }catch(e){
+            console.log(e);
         }
-        catch(error){
-            console.log(error)
-            next(error)
-        }
+    })
+ 
 
-    }) */
+
 //We set the export to a variable ‘city’ which was defined as 'Schema' on line6, and we exported as a mongoose model
 module.exports = mongoose.model('users', usersSchema)

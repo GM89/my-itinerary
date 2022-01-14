@@ -63,7 +63,10 @@ router.post("/:name_city", async (req, res) => {
         if(title) res.status(500).send('This itinerary is repeated')
     })
 
-    await newItinerary.save().then(itinerary => res.send(itinerary));
+    await newItinerary.save()
+    .then(itinerary => {
+      res.send(itinerary)
+      });
   } catch{
         (err => {
         res.status(500).send("Server error")}) 

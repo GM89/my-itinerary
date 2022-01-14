@@ -56,10 +56,10 @@ router.post('/add',  async  (req, res) => {
         photoUrl: req.body.photoUrl
        })
     
- await  cityModel.findOne( {city: newCity.city})
-        .then(city=>{
-            if(city) res.status(500).send('This city is repeated')
-        })
+    await  cityModel.findOne( {city: newCity.city})
+            .then(city=>{
+                if(city) res.status(500).send('This city is repeated')
+            })
 
     await newCity.save()
       .then(city => {
@@ -68,7 +68,7 @@ router.post('/add',  async  (req, res) => {
     } catch{
       (err => {
       res.status(500).send("Server error")}) 
-  }
+    }
       
   });
   
