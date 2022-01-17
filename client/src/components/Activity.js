@@ -10,7 +10,7 @@ function Activity(props) {
     const dispatch = useDispatch();      
 
     useEffect( () => {
-        console.log(props.itineraryId, "props.itineraryId ciao")
+        
              dispatch(actionFetchInit())
         const loadActivities = async()=> {
         dispatch(fetchActivitiesByItineraryId(props.itineraryId))
@@ -36,7 +36,7 @@ function Activity(props) {
             )
         })
       
-console.log(mapping,'ciao genis')
+
 return(
     <div>
         {mapping}

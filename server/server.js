@@ -31,10 +31,7 @@ app.use('/cities', require('./routes/cities'));
 app.use('/cities/all', require('./routes/cities'));
 app.use('/itineraries', require('./routes/itineraries'));
 app.use('/activities', require('./routes/activities'));
-app.use('/user', require('./routes/users'));
-app.use('/testing',require('./routes/test.js'));
-
-//It works out without useNewUrlParser and useUnifiedTopology too!
+app.use('/members',require('./routes/members.js'));
 
 
 

@@ -7,7 +7,7 @@ const db = require("../keys").mongoURI;
 //test route:
 
 router.get('/prova', (req, res) => {
-    console.log("ciaoo mondo!")
+    
     res.send(
         { msg: 'activites.js works!' }
         );

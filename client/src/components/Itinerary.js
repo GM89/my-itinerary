@@ -6,7 +6,7 @@ import {useParams} from 'react-router-dom';
 import {ItineraryItem} from './ItineraryItem'
 import {connect} from "react-redux";
 
-             /*   console.log(dispatch, 'el dispatch') */
+           
             // Los estados se cargan antes que el componente se cargue, 
             //const [filter, setFilter] = useState('')
                 /* useEffect(() => {
@@ -28,8 +28,6 @@ function Itinerary(props) {
 
 
   const {city} = useParams();
- 
-  console.log(city, "useparams city")
 
 
 /* Note! There could have been asyncrony troubles here. itineraryData intitial data is read and mounted before useEffect, meaning that fetch has not been done
@@ -38,7 +36,7 @@ state.itineraries.itineraries.data.data (where the itineraries are) can't be rea
 So initialy itineraryData is dummy variable that only gets itineraries.itineraries.data*/
 const itineraryData = useSelector(state => state.itineraries.itineraries.data)
     const dispatch = useDispatch();
-    console.log(itineraryData,'itineraryData here');
+
 
     /*UseEffect invoked immediately after a component is mounted.it is also called everytime its dispatch change its values, that is, when there's a new fetch
     On the previous section topic, here we have access to whole already fetched state, so we could go itineraries.itineraries.data.data. Where do we do this?
@@ -48,7 +46,7 @@ const itineraryData = useSelector(state => state.itineraries.itineraries.data)
 
 
       useEffect( () => {
-        console.log(city)
+  
       const loadItineraries = async()=> {
         await dispatch(fetchItineraryByCity(city))
       };
@@ -58,11 +56,10 @@ const itineraryData = useSelector(state => state.itineraries.itineraries.data)
       
 
     let mapping =  ((itineraryData  && itineraryData.map(x=>{
-      console.log(x._id, 'elobjectid')
+
       let itineraryIdString = x._id.valueOf()
 
-      console.log(itineraryIdString, 'itineraryIdString ')
-      console.log(typeof itineraryIdString)
+
           return (
 
             <div id = "itinerary">

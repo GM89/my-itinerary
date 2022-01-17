@@ -2,11 +2,11 @@ const express = require('express')
 
 const router = express.Router()
 //const userModel = require('../model/UsersModel')
-const testModel = require('../model/testModel')
+const memberModel = require('../model/memberModel')
 
 
 router.get('/all',(req,res)=>{
-    testModel.find({})
+    memberModel.find({})
     .then(files=>{
         res.send(files)
     })
@@ -15,20 +15,20 @@ router.get('/all',(req,res)=>{
 }) 
 router.post("/add", async (req, res) => {
     try{
-      const newTest = new testModel({
+      const newMember = new memberModel({
        userName : req.body.userName,
        email:req.body.email,
        password:req.body.password
       });
   
-      await testModel.findOne( {userName: newTest.userName})
-      .then(test=>{
-          if(test) res.status(500).send('This itinerary is repeated')
+      await memberModel.findOne( {userName: newMember.userName})
+      .then(each_member=>{
+          if(each_member) res.status(500).send('This itinerary is repeated')
       })
   
-      await newTest.save()
-      .then(test => {
-        res.send(test)
+      await newMember.save()
+      .then(each_member => {
+        res.send(each_member)
         });
     } catch{
           (err => {
