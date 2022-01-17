@@ -18,7 +18,8 @@ router.post("/add", async (req, res) => {
       const newMember = new memberModel({
        userName : req.body.userName,
        email:req.body.email,
-       password:req.body.password
+       password:req.body.password,
+       profilePicture:req.body.profilePicture
       });
   
       await memberModel.findOne( {userName: newMember.userName})
@@ -36,7 +37,33 @@ router.post("/add", async (req, res) => {
       }
     });
 
-    router.post("/prova",(req,res)=>res.send("ciao"))
+
+
+      // UPDATE /members/:memberId
+  router.put("/:memberId", /*auth,*/ (req, res) => {
+    const updatedMember = {
+        userName : req.body.userName,
+        email:req.body.email,
+        password:req.body.password,
+        profilePicture:req.body.profilePicture
+    };
+    memberModel.findOneAndUpdate({ _id: req.params.memberId }, updatedMember)
+      .then(member => res.json({ success: true }))
+      .catch(() => res.status(404).json({ success: false }));
+  });
+  
+    // DELETE /members/:memberId--------------------------------------
+    router.delete("/:memberId", /*auth,*/ (req, res) => {
+        memberModel.deleteOne({ _id: req.params.memberId })
+        .then(member => res.json({ success: true }))
+        .catch(err => res.status(404).json({ success: false }));
+    });
+
+
+
+
+
+
 
 
 
