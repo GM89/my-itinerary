@@ -43,6 +43,10 @@ router.get("/:name_city", (req, res) => {
                     .catch(err => console.log(err));
             });
             
+            router.post("/prova",(req,res)=>{
+              res.send('I m try')
+            })
+            
 
 // POST /itineraries/barcelona-------------------------------
 router.post("/:name_city", async (req, res) => {

@@ -19,7 +19,9 @@ router.get('/all',
     }
     )
 
-
+router.post('/ciao',(req,res)=>{
+    res.send('ciaooooooo')
+})
 ///--------------encrypt-----
 
 
@@ -27,7 +29,7 @@ router.get('/all',
 
 ///--------------post user-------------
 
-router.post('/register', async (req, res) => {
+router.post('/add', async (req, res) => {
     try{ 
            const newUser = new userModel({
             userName: req.body.userName,

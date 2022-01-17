@@ -27,16 +27,22 @@ app.listen(port, () => {
 the api route and the relative path to the file where 
 we will defining our route methods.*/
 //------------------------routes-----------------------------------------
-app.use('/cities', require('./routes/cities'))
-app.use('/cities/all', require('./routes/cities'))
-app.use('/itineraries', require('./routes/itineraries'))
-app.use('/activities', require('./routes/activities'))
-app.use('/users', require('./routes/users'))
-//---------------------------------------------
+app.use('/cities', require('./routes/cities'));
+app.use('/cities/all', require('./routes/cities'));
+app.use('/itineraries', require('./routes/itineraries'));
+app.use('/activities', require('./routes/activities'));
+app.use('/user', require('./routes/users'));
+app.use('/testing',require('./routes/test.js'));
+
+//It works out without useNewUrlParser and useUnifiedTopology too!
+
+
+
 const db = require("./keys").mongoURI;
 const mongoose = require("mongoose");
 
-//It works out without useNewUrlParser and useUnifiedTopology too!
+
+
 mongoose.connect(db, { 
   useNewUrlParser: true, 
   useUnifiedTopology: true
