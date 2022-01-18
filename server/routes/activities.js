@@ -55,20 +55,7 @@ router.get("/it_id/:itineraryId", (req, res) => {
 });
 
 
-  ///-------------------ESTO NO FUNCIONA
-  //-------GET  activities by _id -------------------
-/*
-var id = req.params._id;       
-var o_id = new ObjectId(id);
-
-
-router.get("/id/:_id", (req, res) => {
   
-  activityModel.find({_id: o_id} , (err, data) => {
-    if (err) res.send(err);
-    res.send(data);
-  });
-})*/
   
 //-------GET  ALL activities by city -------------------
 

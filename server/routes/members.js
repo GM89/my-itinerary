@@ -1,4 +1,9 @@
+//import the jwt module: 
+const jwt = require("jsonwebtoken");
 const express = require('express')
+const key = require("../keys.js");
+
+
 
 const router = express.Router()
 //const userModel = require('../model/UsersModel')
@@ -24,7 +29,7 @@ router.post("/add", async (req, res) => {
   
       await memberModel.findOne( {userName: newMember.userName})
       .then(each_member=>{
-          if(each_member) res.status(500).send('This itinerary is repeated')
+          if(each_member) res.status(500).send('This member already exists')
       })
   
       await newMember.save()
