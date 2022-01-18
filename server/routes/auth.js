@@ -18,7 +18,21 @@ router.post("/", async (req, res) => {
   
       await memberModel.findOne( {email: newMember.email})
       .then(memberFound=>{
-          if(memberFound) res.status(500).send(memberFound)
+        bcrypt.compare(newMember.password,memberFound.password,(err,res)=>{
+
+            if(err){
+               throw err;
+            }
+          else  if(!res){
+                console.log("is not res")
+            }
+            else{
+                console.log("match!")
+            }
+
+        }) 
+       
+         
       })
 
 
