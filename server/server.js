@@ -2,10 +2,23 @@ const express = require("express");
 const app = express();
 
 
+
+const session =require("express-session")
+const MongoStore = require("connect-mongo");
+
+
+//const mongoose = require("mongoose")
+const passport = require("./config/passport.js");
+const auth = require("./routes/auth")
+
+
+
 const port = process.env.PORT || 5000;
 
 const bodyParser = require("body-parser");
 const cors = require("cors");
+
+//-------------------------
 
 app.use(bodyParser.json());
 app.use(
@@ -34,12 +47,9 @@ app.use('/activities', require('./routes/activities'));
 app.use('/members',require('./routes/members.js'));
 app.use('/auth',require('./routes/auth.js'));
 
-
+// Database ----------------
 const db = require("./keys").mongoURI;
 const mongoose = require("mongoose");
-
-
-
 mongoose.connect(db, { 
   useNewUrlParser: true, 
   useUnifiedTopology: true
@@ -51,6 +61,39 @@ mongoose.connect(db, {
 
 
 
-//routes
-/* nd pass in two arguments, the api route and the relative path to the file where we will defining our route method*/
 
+//Bodyparse middleware, extended false does not allow nested payloads
+app.use(express.json());
+app.use(express.urlencoded({extended:false}));
+
+
+
+//express session
+app.use(
+  session({
+    secret: "secret",
+    resave:false,
+    saveUninitialized:true, 
+    store: MongoStore.create({ mongoUrl: 'mongodb://localhost/' })
+  })
+)
+
+//Passport middleware
+app.use(passport.initialize())
+app.use(passport.session())
+
+//Routes
+app.use("auth", auth)
+app.get("/", (req,res) => res.send("Good morning sunshine!"));
+
+
+
+
+
+/* 
+Cómo sabe qué es 
+passport.initialize
+ passport.session
+ estos métodos no están descritos en passport.je
+
+*/

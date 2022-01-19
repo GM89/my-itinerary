@@ -7,10 +7,8 @@ import axios from 'axios';
 
 //note that in order to access data we select "data.data"
 const port = '5000';
-const url = `http://localhost:${port}/`;
-/*let  selectedCity = 'Barcelona'
-selectedCity = selectedCity.toLowerCase()
-let selectedItineraryId = ''*/
+/* const url = `http://localhost:${port}/`; */
+
 
 export const fetchAllItineraries = () => {
 return async dispatch =>  {
@@ -49,13 +47,13 @@ const actionFetchInit = () => {
   }
   
    
-    const actionFetchFailure = (msg, status, id) => {
+  /*   const actionFetchFailure = (msg, status, id) => {
     return {
       type: 'ERROR_ITINERARIES/get_list_failure',
       payload: {
          msg, status, id 
      }
     }
-  }
+  } */
   
   

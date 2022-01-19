@@ -97,34 +97,3 @@ export default connect()(Itinerary);
 
 export  {Itinerary};
 
-/*
-
-
-
-function  SingleItinerary(props) {
-    const id =Object.keys(props.itinerary.title)
- 
-  return (
-    
-        <tr key={props.itinerary.title}>
-          <td> {props.itinerary.title}</td> 
-          <td> City:{props.itinerary.name_city}</td> 
-          <td> Rating: {props.itinerary.rating}</td> 
-          <td> Duration:{props.itinerary.duration}</td> 
-          <td> Price:{props.itinerary.price}</td> 
-          <td> hashtag: {props.itinerary.hashtag}</td>           
-          <td> <img  className="photoUrl" src={props.itinerary.picture} alt={props.itinerary.name_city}/> </td>
-        </tr> ) 
- 
-      }
-let mapping =  ((itineraryData  && itineraryData.map(x=>{
-  
-  return (
-    <tr key={x.title}>
-      <td> {x.title}</td> 
-      <td> {x.name_itineraries}</td> 
-      <td> {x.rating}</td> 
-      <td> <img  className="photoUrl" src={x.picture} alt={x.name_itineraries}/> </td>
-    </tr> 
-    
-    ) })) ) */

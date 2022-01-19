@@ -1,7 +1,7 @@
 
 import React from 'react';
 import './App.css'; 
-import { BrowserRouter, Route, Routes, NavLink , Link} from 'react-router-dom'
+import { BrowserRouter, Route, Routes} from 'react-router-dom'
 import {Home} from './components/Home.js'
 import {Cities} from './components/cities/Cities.js'
 import { Itineraries } from './components/Itineraries';

@@ -35,14 +35,14 @@ export const actionFetchInit = () => {
 }
 
  
-  const actionFetchFailure = (msg, status, id) => {
+ /*  const actionFetchFailure = (msg, status, id) => {
   return {
     type: 'ERROR_CITIES/get_list_failure',
     payload: {
        msg, status, id 
    }
   }
-}
+} */
 
 
 

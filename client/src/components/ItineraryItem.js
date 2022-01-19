@@ -24,10 +24,10 @@ import {Activity} from './Activity'
      
 function ItineraryItem(props) {
 
-console.log('ItineraryItem:', props.title, props.itineraryId)
+
   const {city} = useParams();
  
-  console.log(city, "useparams city")
+  
 
 
 /* Note! There could have been asyncrony troubles here. itineraryData intitial data is read and mounted before useEffect, meaning that fetch has not been done

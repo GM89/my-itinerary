@@ -19,7 +19,7 @@ function Activity(props) {
        loadActivities();
       },[dispatch] );
 
-   console.log(activitiesData,'sono id')
+ 
 
       let mapping =  activitiesData && activitiesData.filter(x=>
             x.itineraryId === props.itineraryId
