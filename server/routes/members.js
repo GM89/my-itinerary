@@ -7,7 +7,7 @@ const key = require("../keys.js");
 
 const router = express.Router()
 //const userModel = require('../model/UsersModel')
-const memberModel = require('../model/memberModel')
+const memberModel = require('../model/MemberModel')
 
 
 router.get('/all',(req,res)=>{
