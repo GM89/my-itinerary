@@ -1,11 +1,14 @@
 const express = require("express");
 const app = express();
 
+const urlMongoDB =  require('./keys')
 
+
+const db = require("./keys").mongoURI;
+const mongoose = require("mongoose");
+const MongoStore = require("connect-mongo")
 
 const session =require("express-session")
-const MongoStore = require("connect-mongo");
-
 
 //const mongoose = require("mongoose")
 const passport = require("./config/passport.js");
@@ -48,8 +51,7 @@ app.use('/members',require('./routes/members.js'));
 app.use('/auth',require('./routes/auth.js'));
 
 // Database ----------------
-const db = require("./keys").mongoURI;
-const mongoose = require("mongoose");
+
 mongoose.connect(db, { 
   useNewUrlParser: true, 
   useUnifiedTopology: true
@@ -68,17 +70,19 @@ app.use(express.urlencoded({extended:false}));
 
 
 
-//express session
+//express session------------------------------------------------------------
 app.use(
   session({
     secret: "secret",
     resave:false,
     saveUninitialized:true, 
-    store: MongoStore.create({ mongoUrl: 'mongodb://localhost/' })
+   /*  store: new MongoStore ({mongooseConnection: mongoose.connection}) */
+    store: MongoStore.create({ mongoUrl: urlMongoDB.mongoURI })
   })
 )
 
 //Passport middleware
+/* app.use(flash()); */
 app.use(passport.initialize())
 app.use(passport.session())
 
