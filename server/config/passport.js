@@ -9,30 +9,9 @@ const Member = require('../model/MemberModel.js')
 
 
 
-/*userNameField is the default name that here  we change0 to 'email'.
- So we would identify members by email
- The second argument is the function that will be called to authenticate the user (fucntion authenticateUser)*/
- passport.use(new LocalStrategy({
-    usernameField: 'email' }, 
-    (userName, email, password, done) =>{
-      User.findOne({email: email})
-        .then(
-            bcrypt.compare(password, user.password, (err, isMatch)=> {
-              if(err) throw err;
-              if(!isMatch){
-                return done (null, user);
-              } else{
-                return done(null, false,  {message: "wrong password"})
-              }
-          }) 
-        ).catch(err =>{
-          return done(null, false, {message: err})
-        })
-
-
-        }))
-
-
+/* How does this work?  
+Express.session is a middleware written in server.js. It collects the signed up user.
+Passport library collects the user when it is serialize  and deserialize it. Then  it applies the local strategy.  */
 //we store the id in the "session"
 passport.serializeUser( (user, done) => {
   done(null, user._id)
@@ -44,6 +23,38 @@ passport.deserializeUser(function(_id, done) {
         done(err, user);
     });
 });
+
+/*userNameField is the default name that here  we change0 to 'email'.
+ So we would identify members by email
+ The second argument is the function that will be called to authenticate 
+ the user (fucntion authenticateUser)*/
+ passport.use(new LocalStrategy(
+   {    usernameField: 'email' }, 
+    (userName, email, password, done) =>{
+      User.findOne({email: email})
+        .then(user=>{
+              bcrypt.compare(password, user.password, (err, isMatch)=> {
+                if(err) {
+                  console.log("passport.use error")
+                  throw err;
+                }
+                if(isMatch){
+                  console.log("user found & passport matched")
+                  return done (null, user);
+                } else{
+                  console.log("wrong password!")
+                  return done(null, false, {message: "wrong password"})
+                }
+            }) 
+        }).catch(err =>{
+          return done(null, false, {message: err})
+        })
+          
+
+      }
+      ))
+
+
 module.exports = passport;
 
 

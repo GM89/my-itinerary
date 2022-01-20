@@ -9,20 +9,29 @@ const passport = require('passport');
 Then, we compare the password wrote by the user (re.body.passowrd) with that from our database (loggedMember.password)
 We save the result in "comparison".*/
 
-
+/* app.post('/login',
+  passport.authenticate('local'),
+  function(req, res) {
+    // If this function gets called, authentication was successful.
+    // `req.user` contains the authenticated user.
+    res.redirect('/users/' + req.user.username);
+  });*/
 
 router.post("/login", (req,res, next) => {
+  
   passport.authenticate("local", function(err, user, info){
     if (err){
+      console.log("There's an error in authenticate process")
       return res.status(400).json({errors:err});
     }
     if(!user){
+      console.log("Error in authenticate process: user not found")
       return res.status(400).json({errors: "no users found"});
     }
     req.logIn(user, function(err){
         if(err){
           return res.status(400).json({errors:err})
-        }
+        }//if loggin success
          return res.status(200).json({success: `logged in ${user.id}`});
         })
     }) (req,res,next);
