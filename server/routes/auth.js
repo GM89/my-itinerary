@@ -21,7 +21,8 @@ router.post("/login", (req,res, next) => {
   
   passport.authenticate("local", function(err, user, info){
     if (err){
-      console.log("There's an error in authenticate process")
+      console.log(err, "There's an error in authenticate process")
+
       return res.status(400).json({errors:err});
     }
     if(!user){

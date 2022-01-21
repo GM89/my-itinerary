@@ -22,16 +22,21 @@ passport.deserializeUser(function(_id, done) {
     Member.findById(_id, function(err, user) {
         done(err, user);
     });
-});
+}
+);
 
 /*userNameField is the default name that here  we change0 to 'email'.
  So we would identify members by email
  The second argument is the function that will be called to authenticate 
  the user (fucntion authenticateUser)*/
  passport.use(new LocalStrategy(
-   {    usernameField: 'email' }, 
-    (userName, email, password, done) =>{
-      User.findOne({email: email})
+   {    usernameField: 'email', }, 
+   async  (
+      email, 
+      password, 
+      done
+      ) =>{
+     await Member.findOne({email: email})
         .then(user=>{
               bcrypt.compare(password, user.password, (err, isMatch)=> {
                 if(err) {
@@ -47,7 +52,7 @@ passport.deserializeUser(function(_id, done) {
                 }
             }) 
         }).catch(err =>{
-          return done(null, false, {message: err})
+          return done(null, false, {message: 'ciao'})
         })
           
 
