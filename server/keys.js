@@ -4,6 +4,5 @@
 let databaseName = 'myFirstDatabase'
 module.exports = {
     mongoURI:`mongodb+srv://genis123:admin123@sandbox.h6gff.mongodb.net/${databaseName}?retryWrites=true&w=majority`,
-    secretOrKey: "secret"
     
   };

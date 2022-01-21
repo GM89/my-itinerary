@@ -43,7 +43,7 @@ app.listen(port, () => {
 the api route and the relative path to the file where 
 we will defining our route methods.*/
 //------------------------routes-----------------------------------------
-app.use('/cities', require('./routes/cities'));
+app.use('/cities', require('./routes/cities'),);
 app.use('/cities/all', require('./routes/cities'));
 app.use('/itineraries', require('./routes/itineraries'));
 app.use('/activities', require('./routes/activities'));

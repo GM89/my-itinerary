@@ -1,12 +1,18 @@
+const Member = require('../model/MemberModel.js')
 
 //Import the main Passport and Express-Session library
 const passport = require('passport')
-const session = require('express-session')
 //Import the secondary "Strategy" library
+const passportJWT = require("passport-jwt");
+const JWTStrategy   = passportJWT.Strategy;
+const ExtractJWT = passportJWT.ExtractJwt;
 const LocalStrategy = require('passport-local').Strategy
 const bcrypt = require('bcrypt');
-const Member = require('../model/MemberModel.js')
 
+
+var opts = {};
+opts.jwtFromRequest = ExtractJWT.fromAuthHeaderAsBearerToken();
+opts.secretOrKey = 'secret';
 
 
 /* How does this work?  
@@ -58,6 +64,7 @@ passport.deserializeUser(function(_id, done) {
 
       }
       ))
+
 
 
 module.exports = passport;

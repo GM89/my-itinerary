@@ -4,6 +4,10 @@ const Member = require('../model/MemberModel')
 const jwt = require("jsonwebtoken");
 const bcrypt = require('bcrypt');
 const passport = require('passport');
+const { secretOrKey } = require('../config/secret');
+
+//protected
+
 
 /*we find a {Member} based on the email writen on the form (req.body.email), and when found we'll name it loggedMember
 Then, we compare the password wrote by the user (re.body.passowrd) with that from our database (loggedMember.password)
@@ -17,9 +21,11 @@ We save the result in "comparison".*/
     res.redirect('/users/' + req.user.username);
   });*/
 
+
+  //Note, that we pass {session: false} in passport options, so that it wont save the user in the session. 
 router.post("/login", (req,res, next) => {
   
-  passport.authenticate("local", function(err, user, info){
+  passport.authenticate("local",{session: false}, function(err, user, info){
     if (err){
       console.log(err, "There's an error in authenticate process")
 
@@ -29,38 +35,27 @@ router.post("/login", (req,res, next) => {
       console.log("Error in authenticate process: user not found")
       return res.status(400).json({errors: "no users found"});
     }
-    req.logIn(user, function(err){
+    req.logIn(user, {session: false}, function(err){
         if(err){
           return res.status(400).json({errors:err})
         }//if loggin success
-         return res.status(200).json({success: `logged in ${user.id}`});
+        console.log(user)
+        const payload = {
+          userName: user.userName,
+          email: user.email
+        }
+      
+        const options = {
+          subject:`${user._id}`,
+          expiresIn:60000
+        }
+        const token = jwt.sign(payload, 'secret',options
+        );
+        // return res.status(200).json({success: `logged in ${user.id}`.user, token});
+        return res.json({user, token})
         })
     }) (req,res,next);
   })
-
-
-
-/* 
-router.post("/login", async (req, res) => {
-  try {
-    const loggedMember = await Member.findOne({ email: req.body.email, userName: req.body.userName });
-    console.log(loggedMember);
-    if (loggedMember) {
-      const comparison = await bcrypt.compare(req.body.password, loggedMember.password);
-      if (comparison) {
-        //   ..... further code to maintain authentication like jwt or sessions
-        res.send("Auth Successful");
-      } else {
-        res.send("Wrong password.");
-      }
-    } else {
-      res.send("Wrong email or user name");
-    }
-  } catch (error) {
-    console.log(error);
-    res.status(500).send("Internal Server error Occured");
-  }
-}); */
 
 module.exports = router;
 
