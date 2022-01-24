@@ -49,6 +49,8 @@ app.use('/itineraries', require('./routes/itineraries'));
 app.use('/activities', require('./routes/activities'));
 app.use('/members',require('./routes/members.js'));
 app.use('/auth',require('./routes/auth.js'));
+app.use('/auth/api/google',require('./routes/googleAuth.js'));
+
 
 // Database ----------------
 

@@ -23,11 +23,17 @@ const GoBackButton = () => {
 
 
 function Home() {
+
+
+ 
     return (
 
         <div>
             <p>Home</p>
-            <p>{/* <GoBackButton/> */} </p>
+      
+
+            
+           
         </div>
     )
 }

@@ -49,8 +49,7 @@ router.post("/login", (req,res, next) => {
           subject:`${user._id}`,
           expiresIn:60000
         }
-        const token = jwt.sign(payload, 'secret',options
-        );
+        const token = jwt.sign(payload, secretOrKey, options);
         // return res.status(200).json({success: `logged in ${user.id}`.user, token});
         return res.json({user, token})
         })
