@@ -49,7 +49,7 @@ app.use('/itineraries', require('./routes/itineraries'));
 app.use('/activities', require('./routes/activities'));
 app.use('/members',require('./routes/members.js'));
 app.use('/auth',require('./routes/auth.js'));
-app.use('/auth/api/google',require('./routes/googleAuth.js'));
+app.use('/auth/google',require('./routes/googleAuth.js'));
 
 
 // Database ----------------
@@ -72,6 +72,12 @@ app.use(express.urlencoded({extended:false}));
 
 
 
+
+//-----------isLoggedIn flag-----------------
+
+function isLoggedIn(req, res, next) {
+  req.user ? next() : res.sendStatus(401);
+}
 //express session------------------------------------------------------------
 app.use(
   session({
@@ -96,10 +102,3 @@ app.get("/", (req,res) => res.send("Good morning sunshine!"));
 
 
 
-/* 
-Cómo sabe qué es 
-passport.initialize
- passport.session
- estos métodos no están descritos en passport.je
-
-*/

@@ -16,10 +16,16 @@ const memberSchema = new mongoose.Schema({
     },
     password: {
         type: String,
-        required: true,
+        //It is not 'required' because some users can login with Google, and then password is not used.
+       // required: true, )
     },
     profilePicture: {
         type: String,
+    },
+    
+    googleId: {
+        type: String,
+        unique: true,
     },
 
 })

@@ -44,7 +44,7 @@ router.post("/add", async (req, res) => {
 
 
 
-      // UPDATE /members/:memberId
+      // UPDATE /members/:memberId------
   router.put("/:memberId", /*auth,*/ (req, res) => {
     const updatedMember = {
         userName : req.body.userName,

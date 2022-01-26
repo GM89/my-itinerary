@@ -9,6 +9,8 @@ import { Itinerary } from './components/Itinerary';
 import { Login } from './components/Login';
 import { Navbar } from './components/Navbar';
 
+
+
 //routes és equivalent a Switch
 
 //Switch is deprecated, instead we use Routes.

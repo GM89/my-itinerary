@@ -2,34 +2,13 @@ import React from 'react';
 
 import { useNavigate, Link } from "react-router-dom";
 
-  
-const RenderButton = () => {
+import { useEffect} from "react";
 
-    const navigate = useNavigate();
-      function handleClick() {
-        navigate('/home');
-    }
+import {GoogleAuthButton} from "./GoogleAuthButton.js"
 
-
-
-  //    <button type="button"  onClick={handleClick} class="btn btn-primary">Large button</button>
-  return (
-
-
-                <Link to="/">
-                <button size="large" class="btn btn-secondary">
-                  home
-                </button>
-              </Link>
-
-     
-  );
-}
-  
 function Navbar() {
 
-
-  
+ 
 return(
               
               <div className="miNavbar">
@@ -55,8 +34,8 @@ return(
                                                 <a className="nav-link" href="/login">Login</a>
                                           </li> 
                                           <li className="nav-item ">
-                                              <RenderButton/>
-                                           
+                                                <GoogleAuthButton/>
+                                            
                                           </li> 
 
 

@@ -1,5 +1,5 @@
-const Member = require('../model/MemberModel.js')
-
+const MemberModel = require('../model/MemberModel.js')
+const googleClientId = require("./config.json")
 //Import the main Passport and Express-Session library
 const passport = require('passport')
 //Import the secondary "Strategy" library
@@ -25,7 +25,7 @@ passport.serializeUser( (user, done) => {
 //with the ID, we find the whole user from the database
 
 passport.deserializeUser(function(_id, done) {
-    Member.findById(_id, function(err, user) {
+    MemberModel.findById(_id, function(err, user) {
         done(err, user);
     });
 }
@@ -42,7 +42,7 @@ passport.deserializeUser(function(_id, done) {
       password, 
       done
       ) =>{
-     await Member.findOne({email: email})
+     await MemberModel.findOne({email: email})
         .then(user=>{
               bcrypt.compare(password, user.password, (err, isMatch)=> {
                 if(err) {
@@ -65,6 +65,58 @@ passport.deserializeUser(function(_id, done) {
       }
       ))
 
+
+
+//GOOGLE STRATEGY---------------------------------------------------------------------------------
+
+const GOOGLE_CLIENT_ID = googleClientId.postman.client_id
+const GOOGLE_CLIENT_SECRET = googleClientId.postman.client_secret
+var GoogleStrategy = require('passport-google-oauth20').Strategy;
+
+passport.use(new GoogleStrategy({
+  clientID: GOOGLE_CLIENT_ID,
+  clientSecret: GOOGLE_CLIENT_SECRET,
+  callbackURL: "http://localhost:5000/auth/google/callback", //if success?
+  passReqToCallback: true,
+},
+// cb = callback
+// profile
+  function (accessToken, refreshToken, profile, cb) {
+    MemberModel.findOrCreate({ googleId: profile.id }, function (err, user) {
+      return cb(err, user);
+    });
+  }
+));
+
+/* 
+  async  (
+     email, 
+     password, 
+     done
+     ) =>{
+    await MemberModel.findOne({email: email})
+       .then(user=>{
+             bcrypt.compare(password, user.password, (err, isMatch)=> {
+               if(err) {
+                 console.log("passport.use error")
+                 throw err;
+               }
+               if(isMatch){
+                 console.log("user found & passport matched")
+                 return done (null, user);
+               } else{
+                 console.log("wrong password!")
+                 return done(null, false, {message: "wrong password"})
+               }
+           }) 
+       }).catch(err =>{
+         return done(null, false, {message: 'ciao'})
+       })
+         
+
+     }
+     ))
+ */
 
 
 module.exports = passport;
