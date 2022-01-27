@@ -22,31 +22,27 @@ const GoogleAuthButton = () => {
                 window.gapi.auth2
                 .init({
                     client_id: process.env.REACT_APP_CLIENT_ID, 
-                    scope: "email",
+                    scope: "email", //scope:email
                 })
                 .then(() => {
                     //gapi.auth2 becomes an state of our function component
                     setAuthState(window.gapi.auth2.getAuthInstance());
                     // update state so that component will re-render
-                    isSignedInSetState({ isSignedIn: authState.isSignedIn.get() });
-                   
-                    
+                    isSignedInSetState(authState.isSignedIn.get());
+       
                     // listen for changes to authentication status
-                    authState.isSignedIn.listen(onAuthChange)
-
-
-
-                     
+                    authState.isSignedIn.listen(isSignedInState)
+ 
                 })
             } )
         },[])
 
 
-    
+        
      // updates auth state to current auth status
      // triggered when authentication status changes
          const onAuthChange = () => {
-            isSignedInSetState(authState.isSignedIn.get())
+            isSignedInSetState({isSignedIn: authState.isSignedIn.get()})
           }
         
          const  onSignInClick = () => {
@@ -57,11 +53,25 @@ const GoogleAuthButton = () => {
             authState.signOut()
           }
         
+            console.log("valor de onAuthChange", onAuthChange) // todo lo que hay dentro de la fórmula
+
+            console.log("isSignedInState", isSignedInState) //{isSigned: null}
+            
+            console.log("está signin? ", isSignedInState.isSignedIn) //nullx    
+ 
 
         function authButton  () { 
-            if (isSignedInState === null) {
-            return null
-        } else if (isSignedInState ===  true) {
+            if (isSignedInState.isSignedIn === null) {
+                return (
+                   <div>
+                    <p>null</p>
+                    <button onClick={onSignInClick} className="ui red google button">
+                    
+                        Sign In
+                    </button>
+                     </div>
+                    )
+        } else if (isSignedInState.isSignedIn ===  true) {
             return (
             <button onClick={onSignOutClick} className="ui red google button">
                 {/* <i className="google icon" /> */}
@@ -79,11 +89,16 @@ const GoogleAuthButton = () => {
         }
         
         console.log("authentication", authState)
-
+console.log("authButton", authButton)
 
         return (
+            <div>
+            <p>a button, some day...</p>
             <div>{authButton}</div>
+            </div>
         )
+
+     
 
     
     }

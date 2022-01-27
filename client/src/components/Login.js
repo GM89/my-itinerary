@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 
-
+import {GoogleAuthButton} from './GoogleAuthButton'
 /*
 async function loginUser(credentials) {
  return fetch('http://localhost:8080/login', {
@@ -48,6 +48,12 @@ async function loginUser(credentials) {
   
 
   return(
+    <div>
+
+      <p> Google Login</p>
+      <GoogleAuthButton/>
+  
+    
     <div className="login-wrapper">
       <h1>Register</h1>
       <form onSubmit={registerUser}>
@@ -68,6 +74,9 @@ async function loginUser(credentials) {
         </div>
       </form>
     </div>
+    </div>
+
+   
   )
 }
 
