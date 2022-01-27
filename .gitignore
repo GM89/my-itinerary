@@ -1,8 +1,9 @@
 # See https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files
 
 # dependencies
-*/node_modules
-*/.env
+node_modules
+**/node_modules
+**/.env
 /.pnp
 .pnp.js
 /server/config.json

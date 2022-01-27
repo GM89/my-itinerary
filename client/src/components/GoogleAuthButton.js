@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 
 const GoogleAuthButton = () => {
     const  [isSignedInState, isSignedInSetState] = useState({ isSignedIn: null });
-    const  [authState, setAuthState] = useState({});
+    const auth = useRef(null)
    
     console.log("client_id",process.env.REACT_APP_CLIENT_ID)
 
@@ -26,47 +26,44 @@ const GoogleAuthButton = () => {
                 })
                 .then(() => {
                     //gapi.auth2 becomes an state of our function component
-                    setAuthState(window.gapi.auth2.getAuthInstance());
+                    auth.current = window.gapi.auth2.getAuthInstance();
+                    console.log("auth.current", auth.current)
                     // update state so that component will re-render
-                    isSignedInSetState(authState.isSignedIn.get());
+                    isSignedInSetState(auth.current.isSignedIn.get());
        
                     // listen for changes to authentication status
-                    authState.isSignedIn.listen(isSignedInState)
- 
+                    auth.current.isSignedIn.listen(onAuthChange)
+
                 })
             } )
-        },[])
+        },[isSignedInState])
 
 
-        
+        //window.gapi.auth2.getAuthInstance().isSignedIn.get()
      // updates auth state to current auth status
      // triggered when authentication status changes
          const onAuthChange = () => {
-            isSignedInSetState({isSignedIn: authState.isSignedIn.get()})
+            isSignedInSetState({isSignedIn: auth.current.isSignedIn.get()})
           }
         
          const  onSignInClick = () => {
-            authState.signIn()
+            auth.current.signIn()
           }
 
          const  onSignOutClick = () => {
-            authState.signOut()
+            auth.current.signOut()
           }
         
             console.log("valor de onAuthChange", onAuthChange) // todo lo que hay dentro de la fórmula
-
-            console.log("isSignedInState", isSignedInState) //{isSigned: null}
-            
+            console.log("isSignedInState", isSignedInState) //{isSigned: null}         
             console.log("está signin? ", isSignedInState.isSignedIn) //nullx    
  
-
         function authButton  () { 
             if (isSignedInState.isSignedIn === null) {
                 return (
                    <div>
                     <p>null</p>
                     <button onClick={onSignInClick} className="ui red google button">
-                    
                         Sign In
                     </button>
                      </div>
@@ -85,11 +82,11 @@ const GoogleAuthButton = () => {
                 Sign In
             </button>
             )
-        }
+        
         }
         
-        console.log("authentication", authState)
-console.log("authButton", authButton)
+        console.log("Esto es el auth.current", auth.current)
+        console.log("Sacro caballeri Mirko:  authButton", authButton)
 
         return (
             <div>
@@ -97,10 +94,6 @@ console.log("authButton", authButton)
             <div>{authButton}</div>
             </div>
         )
-
-     
-
-    
     }
 
 
