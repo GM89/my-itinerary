@@ -48,7 +48,7 @@ async function loginUser(credentials) {
   return(
     <div>
   
-      <p> Google Login</p>
+     
       <GoogleAuthButton/>
   
     
