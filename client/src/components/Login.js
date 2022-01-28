@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 
-import {GoogleAuthButton} from './GoogleAuthButton'
+import {GoogleAuthButton} from './GoogleAuthButton.js'
+
 /*
 async function loginUser(credentials) {
  return fetch('http://localhost:8080/login', {
@@ -38,18 +39,15 @@ async function loginUser(credentials) {
     })
   }
 
-
- /* 1017   e.preventDefault();
-    const token = await loginUser({
-      username,
-      password
-    });
-    setToken(token); }*/
+//This doesn't work
+  //const prova = () => { return (<div>buenos días!</div>) }
   
+
+
 
   return(
     <div>
-
+  
       <p> Google Login</p>
       <GoogleAuthButton/>
   

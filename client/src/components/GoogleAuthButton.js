@@ -57,6 +57,9 @@ const GoogleAuthButton = () => {
             console.log("valor de onAuthChange", onAuthChange) // todo lo que hay dentro de la fórmula
             console.log("isSignedInState", isSignedInState) //{isSigned: null}         
             console.log("está signin? ", isSignedInState.isSignedIn) //nullx    
+
+
+        
  
         function authButton  () { 
             if (isSignedInState.isSignedIn === null) {
@@ -68,33 +71,37 @@ const GoogleAuthButton = () => {
                     </button>
                      </div>
                     )
-        } else if (isSignedInState.isSignedIn ===  true) {
-            return (
-            <button onClick={onSignOutClick} className="ui red google button">
-                {/* <i className="google icon" /> */}
-                Sign Out
-            </button>
-            )
-        } else {
-            return (
-            <button onClick={onSignInClick} className="ui red google button">
-                {/* <i className="google icon" /> */}
-                Sign In
-            </button>
-            )
-        
+            } else if (isSignedInState.isSignedIn ===  true) {
+                return (
+                <button onClick={onSignOutClick} className="ui red google button">
+                    {/* <i className="google icon" /> */}
+                    Sign Out
+                </button>
+                )
+            } else {
+                return (
+                <button onClick={onSignInClick} className="ui red google button">
+                    {/* <i className="google icon" /> */}
+                    Sign In
+                </button>
+                )        
+            }
         }
         
         console.log("Esto es el auth.current", auth.current)
         console.log("Sacro caballeri Mirko:  authButton", authButton)
-
-        return (
-            <div>
-            <p>a button, some day...</p>
-            <div>{authButton}</div>
-            </div>
-        )
+        
+        
+           return(            
+                <div>
+                    <p> Google auth</p>
+                    <p>a button, some day...</p>
+                    <div>{authButton}</div>
+                </div>
+            )
+        
     }
+
 
 
 export {GoogleAuthButton}
