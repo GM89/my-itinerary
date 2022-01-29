@@ -30,13 +30,6 @@ router.get('/auth/google/callback',
 
 
 
-/* router.get('/all',(req,res)=>{
-    MemberModel.find({})
-    .then(files=>{
-        res.send(files)
-    })
-    .catch(e=>console.log(e))
-    
-})  */
+
 module.exports = router;
 

@@ -60,15 +60,20 @@ passport.deserializeUser(function(_id, done) {
         }).catch(err =>{
           return done(null, false, {message: 'ciao'})
         })
-          
-
       }
       ))
-
+/*The “done()” function is then used to pass the “{authenticated_user}” to the serializeUser() function. 
+- if user not found, 
+done( <no error> so null, <no matching user> so false),
+- if user found but password does not match,
+done ( <no error> so null, <no matching user> so false)
+- if user found and password matches, we found 
+our authenticated user and done ( <no error> so null, <pass authenticated user to serializeUser()>)
+*/
 
 
 //GOOGLE STRATEGY---------------------------------------------------------------------------------
-
+ 
 const GOOGLE_CLIENT_ID = googleClientId.postman.client_id
 const GOOGLE_CLIENT_SECRET = googleClientId.postman.client_secret
 var GoogleStrategy = require('passport-google-oauth20').Strategy;

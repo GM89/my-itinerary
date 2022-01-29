@@ -125,7 +125,7 @@ const GoogleAuthButton = () => {
                     <div>{authButton()}</div>
 
                     <p>user status logged in: {String(isSignedIn)}</p>
-                    {mensaje}
+                
                 </div>
             )
         

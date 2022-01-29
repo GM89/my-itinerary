@@ -5,22 +5,13 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require('bcrypt');
 const passport = require('passport');
 const { secretOrKey } = require('../config/secret');
-
+const logOut = require('express-passport-logout');
 //protected
 
 
 /*we find a {Member} based on the email writen on the form (req.body.email), and when found we'll name it loggedMember
 Then, we compare the password wrote by the user (re.body.passowrd) with that from our database (loggedMember.password)
 We save the result in "comparison".*/
-
-/* app.post('/login',
-  passport.authenticate('local'),
-  function(req, res) {
-    // If this function gets called, authentication was successful.
-    // `req.user` contains the authenticated user.
-    res.redirect('/users/' + req.user.username);
-  });*/
-
 
   //Note, that we pass {session: false} in passport options, so that it wont save the user in the session. 
 router.post("/login", (req,res, next) => {
@@ -55,6 +46,43 @@ router.post("/login", (req,res, next) => {
         })
     }) (req,res,next);
   })
+
+/* Req.logOut clears both "req.session.passport"  and "req.user"
+"req.session.passport"  -------> {}
+"req.user" ------->  undefined 
+  router.get("/logout", (req,res) => {
+    req.logOut()
+    console.log(`-------> User Logged out`)
+    res.send('you have logged out')
+   // return {message: "you have logged out"}
+ })*/
+
+
+
+ 
+// LOG OUT ------------------------------
+
+ //Middlware
+/*middleware que no funciona
+const checkLoggedIn = (req, res, next) => {
+  if (req.isAuthenticated()) { 
+       return res.redirect("/dashboard")
+   }
+  next()
+}*/
+
+
+
+
+// logout
+ 
+ router.get('/logout', function (req, res) {
+  logOut();
+  console.log('logged out');
+  res.send('you have logged out')
+
+})
+
 
 module.exports = router;
 

@@ -11,6 +11,7 @@ const MongoStore = require("connect-mongo")
 const session =require("express-session")
 
 //const mongoose = require("mongoose")
+
 const passport = require("./config/passport.js");
 const auth = require("./routes/auth")
 
@@ -78,7 +79,7 @@ app.use(express.urlencoded({extended:false}));
 function isLoggedIn(req, res, next) {
   req.user ? next() : res.sendStatus(401);
 }
-//express session------------------------------------------------------------
+//express session: middleware------------------------------------------------------------
 app.use(
   session({
     secret: "secret",
@@ -90,9 +91,9 @@ app.use(
 )
 
 //Passport middleware
-/* app.use(flash()); */
-app.use(passport.initialize())
-app.use(passport.session())
+
+app.use(passport.initialize())// init passport on every route call.
+app.use(passport.session())// allow passport to use "express-session".
 
 //Routes
 app.use("auth", auth)
