@@ -12,7 +12,7 @@ export function  authLocal(){
 return async dispatch =>  {
     dispatch(loginUserBegin());
   try{
-    const  response = await axios.get(`${url}login`);
+    const  response = await axios.post(`${url}auth/login`);
     const fetchedData = await response;
     dispatch(loginUserSuccess(fetchedData));
   } catch(error){
@@ -24,12 +24,12 @@ return async dispatch =>  {
 export function authGoogle() {
     return async dispatch =>  {
       dispatch(loginUserBegin());
-      try{
-      const  response = await axios.get(`${url}auth/google`);
+    try{
+      const  response = await axios.post(`${url}auth/google`);
       const fetchedData = await response;
       
       dispatch(loginUserSuccess(fetchedData));
-      } catch(error){
+    } catch(error){
         dispatch(loginUserFailure(error));
       }
     }}

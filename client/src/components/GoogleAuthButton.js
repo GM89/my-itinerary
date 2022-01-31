@@ -15,7 +15,7 @@ const GoogleAuthButton = () => {
 
   
 
-    const loggedIn = useSelector(state => state.members.loggedIn)   
+    const loggedIn = useSelector(state => state.members.loggedIn);   
   /*construir un botón que trigger una formula. esa fórmula lanza
    una acción,  */    
    function signInGoogle () {

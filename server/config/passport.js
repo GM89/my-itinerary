@@ -1,4 +1,8 @@
-const MemberModel = require('../model/MemberModel.js')
+//----strategy-------------
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
+const LocalStrategy = require('passport-local').Strategy
+
+
 const googleClientId = require("./config.json")
 //Import the main Passport and Express-Session library
 const passport = require('passport')
@@ -6,8 +10,9 @@ const passport = require('passport')
 const passportJWT = require("passport-jwt");
 const JWTStrategy   = passportJWT.Strategy;
 const ExtractJWT = passportJWT.ExtractJwt;
-const LocalStrategy = require('passport-local').Strategy
 const bcrypt = require('bcrypt');
+const MemberModel = require('../model/MemberModel.js')
+
 
 
 var opts = {};
@@ -74,24 +79,39 @@ our authenticated user and done ( <no error> so null, <pass authenticated user t
 
 
 //GOOGLE STRATEGY---------------------------------------------------------------------------------
- 
+ //  When the project is ready to test its front-end, change 'postman' to 'web'
 const GOOGLE_CLIENT_ID = googleClientId.postman.client_id
 const GOOGLE_CLIENT_SECRET = googleClientId.postman.client_secret
-var GoogleStrategy = require('passport-google-oauth20').Strategy;
 
 passport.use(new GoogleStrategy({
-  clientID: GOOGLE_CLIENT_ID,
-  clientSecret: GOOGLE_CLIENT_SECRET,
-  callbackURL: "http://localhost:5000/auth/google/callback", //if success?
-  passReqToCallback: true,
-},
+    clientID: GOOGLE_CLIENT_ID,
+    clientSecret: GOOGLE_CLIENT_SECRET,
+    callbackURL: "http://localhost:5000/auth/google/callback", //if success?
+    passReqToCallback: true,
+  },
 // cb = callback
 // profile
-  function (accessToken, refreshToken, profile, cb) {
-    MemberModel.findOrCreate({ googleId: profile.id }, function (err, user) {
-      return cb(err, user);
-    });
-  }
+  function (accessToken, refreshToken, profile,  cb) {
+    console.log(profile);
+    //profile with google 
+    MemberModel.findOne({email:profile.email}).then(existingUser=>{
+      if(existingUser){
+        done(null, existingUser);
+      } else {
+        new MemberModel.findOne({
+          //username: profile.name.givenName,
+          email: profile.email,
+          googleId: profile.id,
+          //profilePicture:profile._json.picture,
+
+        })
+      .save()
+          .then(user => {
+            done(null, user);
+            //null means that there isn' any error
+          });
+      }}
+    )}
 ));
 
 

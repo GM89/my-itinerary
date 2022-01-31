@@ -13,7 +13,7 @@ const initialState = {
   loading: false,
   loadingFav: false,
   errorMsg: "",
-  popup: false,
+  //popup: false,
   loggedIn: false,
 }
 
@@ -26,7 +26,7 @@ const loginReducer = (state = initialState, action) => {
     case 'LOGIN_USER_BEGIN':
       return {
         user: {
-          favorites: [],
+          //favorites: [],
           _id: "",
           userName: "",
           email: "",
@@ -34,9 +34,9 @@ const loginReducer = (state = initialState, action) => {
         
         },
         loading: true,
-        loadingFav: true,
+        //loadingFav: true,
         errorMsg: "",
-        popup: false,
+        //popup: false,
         loggedIn: false,
         
       };
@@ -46,14 +46,14 @@ const loginReducer = (state = initialState, action) => {
           ...state,
           user: action.payload,
           loading: false,
-          popup: false,
+          //popup: false,
           loggedIn: true
         };
       case 'LOGIN_USER_FAILURE':
         return {
           ...state,
           loading: false,
-          popup: true,
+          //popup: true,
           loggedIn: false
         };
  
