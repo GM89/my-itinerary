@@ -36,6 +36,7 @@ passport.deserializeUser(function(_id, done) {
  The second argument is the function that will be called to authenticate 
  the user (fucntion authenticateUser)*/
  passport.use(new LocalStrategy(
+       // by default passport uses [username] in `usernameField` so we override it with [email]
    {    usernameField: 'email', }, 
    async  (
       email, 
@@ -92,36 +93,6 @@ passport.use(new GoogleStrategy({
     });
   }
 ));
-
-/* 
-  async  (
-     email, 
-     password, 
-     done
-     ) =>{
-    await MemberModel.findOne({email: email})
-       .then(user=>{
-             bcrypt.compare(password, user.password, (err, isMatch)=> {
-               if(err) {
-                 console.log("passport.use error")
-                 throw err;
-               }
-               if(isMatch){
-                 console.log("user found & passport matched")
-                 return done (null, user);
-               } else{
-                 console.log("wrong password!")
-                 return done(null, false, {message: "wrong password"})
-               }
-           }) 
-       }).catch(err =>{
-         return done(null, false, {message: 'ciao'})
-       })
-         
-
-     }
-     ))
- */
 
 
 module.exports = passport;

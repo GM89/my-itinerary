@@ -21,6 +21,12 @@ router.get('/auth/google/callback',
     // Successful authentication, redirect home.
     res.redirect('/home');
   });
+/*app.get('/auth/google/callback', passport.authenticate( 'google', {
+   successRedirect: '/dashboard',
+   failureRedirect: '/login'
+})); */
+
+
 
 
 

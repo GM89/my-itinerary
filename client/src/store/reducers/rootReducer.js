@@ -3,6 +3,7 @@ import {citiesReducers} from "./citiesReducer.js"
 import {itinerariesReducers} from "./itinerariesReducer.js"
 import {activitiesReducers} from "./activitiesReducer.js"
 import errorReducer from "./errorReducer.js";
+import { loginReducer } from "./loginReducer.js";
 
 
 const rootReducer = combineReducers(
@@ -10,7 +11,8 @@ const rootReducer = combineReducers(
       error: errorReducer,
       itineraries: itinerariesReducers,
       activities: activitiesReducers,
-      
+      members: loginReducer,
+            
     }
     );
 

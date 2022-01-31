@@ -1,11 +1,13 @@
 const express = require('express')
 const router = express.Router()
-
+//const  checkLoggedIn = require ('./middlewares/checkLoggedIn')
 const jwt = require("jsonwebtoken");
 const bcrypt = require('bcrypt');
 const passport = require('passport');
 const { secretOrKey } = require('../config/secret');
 const logOut = require('express-passport-logout');
+
+
 //protected
 
 
@@ -66,7 +68,7 @@ router.post("/login", (req,res, next) => {
 /*middleware que no funciona
 const checkLoggedIn = (req, res, next) => {
   if (req.isAuthenticated()) { 
-       return res.redirect("/dashboard")
+    res.send({message:"you're already logged in"})
    }
   next()
 }*/
@@ -79,6 +81,9 @@ const checkLoggedIn = (req, res, next) => {
  router.get('/logout', function (req, res) {
   logOut();
   console.log('logged out');
+  if(req.user){
+  res.send("We did NOT logged out. You're still logged")
+  }
   res.send('you have logged out')
 
 })

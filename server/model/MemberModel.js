@@ -27,8 +27,16 @@ const memberSchema = new mongoose.Schema({
         type: String,
         unique: true,
     },
+    
+    favorites: {
+        type: Array,
+    },
 
 })
+
+
+// The following middleware creates a crypted function before creating a member schema
+//Therefore, when adding a new user, it will stored in MongoDB with a encrypted password. 
 
 memberSchema.pre('save', async function (next) {
     try {

@@ -91,13 +91,15 @@ app.use(
 )
 
 //Passport middleware
+ 
+// LOG OUT ------------------------------
+
 
 app.use(passport.initialize())// init passport on every route call.
 app.use(passport.session())// allow passport to use "express-session".
 
 //Routes
 app.use("auth", auth)
-app.get("/", (req,res) => res.send("Good morning sunshine!"));
 
 
 
