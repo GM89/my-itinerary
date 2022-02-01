@@ -1,7 +1,6 @@
 //import the jwt module: 
 const jwt = require("jsonwebtoken");
 const express = require('express')
-const key = require("../keys.js");
 
 
 

@@ -3,7 +3,7 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const LocalStrategy = require('passport-local').Strategy
 
 
-const googleClientId = require("./config.json")
+const googleConfig = require("./config.json")
 //Import the main Passport and Express-Session library
 const passport = require('passport')
 //Import the secondary "Strategy" library
@@ -80,8 +80,8 @@ our authenticated user and done ( <no error> so null, <pass authenticated user t
 
 //GOOGLE STRATEGY---------------------------------------------------------------------------------
  //  When the project is ready to test its front-end, change 'postman' to 'web'
-const GOOGLE_CLIENT_ID = googleClientId.postman.client_id
-const GOOGLE_CLIENT_SECRET = googleClientId.postman.client_secret
+const GOOGLE_CLIENT_ID = googleConfig.postman.client_id
+const GOOGLE_CLIENT_SECRET = googleConfig.postman.client_secret
 
 passport.use(new GoogleStrategy({
     clientID: GOOGLE_CLIENT_ID,

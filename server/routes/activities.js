@@ -2,7 +2,7 @@ const express = require('express')
 
 const router = express.Router()
 const activityModel = require('../model/ActivityModel.js')
-const db = require("../keys").mongoURI;
+
 
 //test route:
 

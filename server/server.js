@@ -1,19 +1,18 @@
 const express = require("express");
 const app = express();
+const secret = require('./config/secret');
 
-const urlMongoDB =  require('./keys')
+const db = require("./config/keys");
 
-
-const db = require("./keys").mongoURI;
 const mongoose = require("mongoose");
-const MongoStore = require("connect-mongo")
+const MongoStore = require("connect-mongo");
 
-const session =require("express-session")
+const session =require("express-session");
 
 //const mongoose = require("mongoose")
 
 const passport = require("./config/passport.js");
-const auth = require("./routes/auth")
+const auth = require("./routes/auth");
 
 
 
@@ -55,7 +54,7 @@ app.use('/auth/google',require('./routes/googleAuth.js'));
 
 // Database ----------------
 
-mongoose.connect(db, { 
+mongoose.connect(db.mongoURI, { 
   useNewUrlParser: true, 
   useUnifiedTopology: true
   
@@ -82,11 +81,11 @@ function isLoggedIn(req, res, next) {
 //express session: middleware------------------------------------------------------------
 app.use(
   session({
-    secret: "secret",
+    secret: secret.secretOrKey,
     resave:false,
     saveUninitialized:true, 
    /*  store: new MongoStore ({mongooseConnection: mongoose.connection}) */
-    store: MongoStore.create({ mongoUrl: urlMongoDB.mongoURI })
+    store: MongoStore.create({ mongoUrl: db.mongoURI })
   })
 )
 
@@ -95,11 +94,11 @@ app.use(
 // LOG OUT ------------------------------
 
 
-app.use(passport.initialize())// init passport on every route call.
-app.use(passport.session())// allow passport to use "express-session".
+app.use(passport.initialize());// init passport on every route call.
+app.use(passport.session());// allow passport to use "express-session".
 
 //Routes
-app.use("auth", auth)
+app.use("auth", auth);
 
 
 

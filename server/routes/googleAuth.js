@@ -7,7 +7,6 @@ const MemberModel = require('../model/MemberModel');
 const jwt = require("jsonwebtoken");
 const bcrypt = require('bcrypt');
 const passport = require('passport');
-const { secretOrKey } = require('../config/secret');
 
 const googleconfig = require("./../config/config.json")
 const GOOGLE_CLIENT_ID = googleconfig.postman.client_id
