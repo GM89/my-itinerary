@@ -7,6 +7,7 @@ import {Cities} from './components/cities/Cities.js'
 import { Itineraries } from './components/Itineraries';
 import { Itinerary } from './components/Itinerary';
 import { Login } from './components/Login';
+import { Register } from './components/Register';
 import { Navbar } from './components/Navbar';
 
 
@@ -26,6 +27,7 @@ function App() {
                         <Route exact path='/itineraries/all' element={<Itineraries/>}> </Route>
                         <Route exact path='/cities/itineraries/:city' element={<Itinerary/>}> </Route>
                         <Route exact path='/login' element={<Login/>}> </Route>
+                        <Route exact path='/register' element={<Register/>}> </Route>
                         
                   </Routes>
             </BrowserRouter>

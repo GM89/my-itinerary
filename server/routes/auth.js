@@ -16,6 +16,9 @@ Then, we compare the password wrote by the user (re.body.passowrd) with that fro
 We save the result in "comparison".*/
 
   //Note, that we pass {session: false} in passport options, so that it wont save the user in the session. 
+
+  ///--------------------------------LOGIN 
+  
 router.post("/login", (req,res, next) => {
   
   passport.authenticate("local",{session: false}, function(err, user, info){
@@ -44,7 +47,8 @@ router.post("/login", (req,res, next) => {
         }
         const token = jwt.sign(payload, secretOrKey, options);
         // return res.status(200).json({success: `logged in ${user.id}`.user, token});
-        return res.json({user, token})
+        /* localStorage.setItem('token', token); */
+        return res.json({user, token});
         })
     }) (req,res,next);
   })
@@ -62,7 +66,8 @@ router.post("/login", (req,res, next) => {
 
 
  
-// LOG OUT ------------------------------
+
+  ///---------------------------LOG OUT
 
  //Middlware
 /*middleware que no funciona
