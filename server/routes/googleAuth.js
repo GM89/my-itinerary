@@ -8,15 +8,10 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require('bcrypt');
 const passport = require('passport');
 
-const googleconfig = require("./../config/config.json")
-const GOOGLE_CLIENT_ID = googleconfig.postman.client_id
-const GOOGLE_CLIENT_SECRET = googleconfig.postman.client_secret
 //-----------------------------
 //auth/google 
 router.get('/',
   passport.authenticate('google', { scope: ['profile', 'email'] }));
-
-
 
 
 

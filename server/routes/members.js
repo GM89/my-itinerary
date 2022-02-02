@@ -17,6 +17,7 @@ router.get('/all',(req,res)=>{
     .catch(e=>console.log(e))
     
 }) 
+
 router.post("/add", async (req, res) => {
     try{
       const newMember = new memberModel({

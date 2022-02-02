@@ -36,6 +36,8 @@ router.post("/login", (req,res, next) => {
           return res.status(400).json({errors:err})
         }//if loggin success
         console.log(user)
+
+        //--Token--------
         const payload = {
           userName: user.userName,
           email: user.email
@@ -47,7 +49,8 @@ router.post("/login", (req,res, next) => {
         }
         const token = jwt.sign(payload, secretOrKey, options);
         // return res.status(200).json({success: `logged in ${user.id}`.user, token});
-        /* localStorage.setItem('token', token); */
+        localStorage.setItem('token', token)
+        console.log("look at this token", token)
         return res.json({user, token});
         })
     }) (req,res,next);

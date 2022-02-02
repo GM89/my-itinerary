@@ -29,7 +29,17 @@ app.use(
     extended: true
   })
 );
-app.use(cors());
+
+
+app.use(
+  cors({
+      origin: 'http://localhost:3000',
+      methods: "GET, POST, PATCH, DELETE, PUT",
+      //allowedHeaders: "Content-Type, Authorization",
+      'Authorization': 'Bearer key',
+  
+  }));
+
 
 
 

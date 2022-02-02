@@ -88,6 +88,7 @@ passport.use(new GoogleStrategy({
     clientSecret: GOOGLE_CLIENT_SECRET,
     callbackURL: "http://localhost:5000/auth/google/callback", //if success?
     passReqToCallback: true,
+    proxy:true
   },
 // cb = callback
 // profile
@@ -115,6 +116,8 @@ passport.use(new GoogleStrategy({
 ));
 
 
+
+///----------- Middleware for protected requests using token----
 module.exports = passport;
 
 

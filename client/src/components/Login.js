@@ -45,8 +45,7 @@ async function loginUser(credentials) {
 
   }
 
-//This doesn't work
-  //const prova = () => { return (<div>buenos días!</div>) }
+
   
 
 
@@ -55,7 +54,7 @@ async function loginUser(credentials) {
     <div>
   
      
-     {/*  <GoogleAuthButton/> */}
+      <GoogleAuthButton/>
 
     <div className="login-wrapper">
       <h1>Login</h1>
