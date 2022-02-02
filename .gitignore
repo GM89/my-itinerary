@@ -3,12 +3,12 @@
 # dependencies
 node_modules
 /**/node_modules
-/**/.env
+#/**/.env
 
 /.pnp
 .pnp.js
-/server/config.json
-/server/keys.js
+#/server/config.json
+#/server/keys.js
 
 # testing
 /coverage

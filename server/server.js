@@ -30,15 +30,21 @@ app.use(
   })
 );
 
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  next();
+});
 
-app.use(
-  cors({
-      origin: 'http://localhost:3000',
-      methods: "GET, POST, PATCH, DELETE, PUT",
-      //allowedHeaders: "Content-Type, Authorization",
-      'Authorization': 'Bearer key',
+// app.use(
+//   cors({
+//      // origin: 'http://localhost:5000',
+//       methods: "GET, POST, PATCH, DELETE, PUT",
+//       //"Access-Control-Allow-Origin": window.location.origin,
+
+//       //allowedHeaders: "Content-Type, Authorization",
+//       'Authorization': 'Bearer key',
   
-  }));
+//   }));
 
 
 
@@ -98,6 +104,8 @@ app.use(
     store: MongoStore.create({ mongoUrl: db.mongoURI })
   })
 )
+
+
 
 //Passport middleware
  

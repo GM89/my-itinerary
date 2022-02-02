@@ -11,16 +11,28 @@ const passport = require('passport');
 //-----------------------------
 //auth/google 
 router.get('/',
-  passport.authenticate('google', { scope: ['profile', 'email'] }));
+  passport.authenticate('google', { scope: ['profile','email'] }));
 
 
 
 router.get('/callback', 
-  passport.authenticate('google', { failureRedirect: 'http://localhost:3000/login' }),
+  passport.authenticate('google', { failureRedirect: '/', session:false }),
   function(req, res) {
-    // Successful authentication, redirect home.,0
-    res.redirect('http://localhost:3000/');
-  });
+    var token = req.user.token;
+    res.redirect("http://localhost:3000/?token=" + token);
+}
+);
+ 
+
+  const authenticated = (req, res, next) => { 
+    const customError = new Error('you are not logged in'); 
+    customError.statusCode = 401; (!req.user) ? next(customError) : next() 
+  }
+  
+router.get('/getUser', authenticated,(req,res)=>res.send(req.user))
+
+
+
 /*app.get('/auth/google/callback', passport.authenticate( 'google', {
    successRedirect: '/dashboard',
    failureRedirect: '/login'

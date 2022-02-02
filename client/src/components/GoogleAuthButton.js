@@ -12,7 +12,7 @@ const GoogleAuthButton = () => {
    una acción,  */    
    function signInGoogle () {
        dispatch(authGoogle())
-       alert("signin button pressed")
+      console.log(authGoogle(),'g');
   
    }
    function signOut(){

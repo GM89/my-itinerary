@@ -32,7 +32,7 @@ async function loginUser(credentials) {
     await fetch('http://localhost:5000/auth/login', {
         method: 'POST',
         headers:{
-          'Content-Type':'application/json',
+          "Access-control-allow-origin" : "localhost:5000",
         },
         body: JSON.stringify({
           userName: user.name,

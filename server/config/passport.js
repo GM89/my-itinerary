@@ -1,11 +1,14 @@
-//----strategy-------------
-const GoogleStrategy = require('passport-google-oauth20').Strategy;
-const LocalStrategy = require('passport-local').Strategy
 
 
 const googleConfig = require("./config.json")
 //Import the main Passport and Express-Session library
 const passport = require('passport')
+//----strategy-------------
+
+const GoogleStrategy = require('passport-google-oauth20').OAuth2Strategy;
+const LocalStrategy = require('passport-local').Strategy
+
+
 //Import the secondary "Strategy" library
 const passportJWT = require("passport-jwt");
 const JWTStrategy   = passportJWT.Strategy;
@@ -88,7 +91,7 @@ passport.use(new GoogleStrategy({
     clientSecret: GOOGLE_CLIENT_SECRET,
     callbackURL: "http://localhost:5000/auth/google/callback", //if success?
     passReqToCallback: true,
-    proxy:true
+    
   },
 // cb = callback
 // profile
@@ -109,7 +112,7 @@ passport.use(new GoogleStrategy({
       .save()
           .then(user => {
             done(null, user);
-            //null means that there isn' any error
+             //null means that there isn' any error
           });
       }}
     )}

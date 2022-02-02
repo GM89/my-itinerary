@@ -25,7 +25,8 @@ export function authGoogle() {
     return async dispatch =>  {
       dispatch(loginUserBegin());
     try{
-      const  response = await axios.get(`${url}auth/google/`);
+      const  response = await axios.get(`${url}auth/google/`
+      );
       const fetchedData = await response;
       
       dispatch(loginUserSuccess(fetchedData));
