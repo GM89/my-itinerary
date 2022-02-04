@@ -10,7 +10,7 @@ const memberSchema = new mongoose.Schema({
     },
     userName: {
         type: String,
-        required: true,
+        //required: true,
         //unique: true,
 
     },
@@ -38,19 +38,22 @@ const memberSchema = new mongoose.Schema({
 // The following middleware creates a crypted function before creating a member schema
 //Therefore, when adding a new user, it will stored in MongoDB with a encrypted password. 
 
+
+
 /* Google authentication doesn't create a password, and instead it returns password =null or undefined. */
 memberSchema.pre('save', async function (next) {
     try {
         if(!this.password===null|| this.password===undefined){
             this.password = "contrasenya";
-            const salt = await bcrypt.genSalt(10)
-            hashpassword = await bcrypt.hash(this.password, salt)
+            const salt = await bcrypt.genSalt(10);
+            hashpassword = await bcrypt.hash(this.password, salt);
 
-        }
-        const salt = await bcrypt.genSalt(10)
-        hashpassword = await bcrypt.hash(this.password, salt)
+        }else{
+        const salt = await bcrypt.genSalt(10);
+        hashpassword = await bcrypt.hash(this.password, salt);
         
         this.password = hashpassword
+        }
         next()
     }
     catch (error) {
@@ -66,7 +69,6 @@ memberSchema.post('save', async function (next) {
         console.log(e);
     }
 })
-
 
 
 //We set the export to a variable ‘city’ which was defined as 'Schema' on line6, and we exported as a mongoose model

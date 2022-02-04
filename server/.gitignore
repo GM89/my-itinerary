@@ -4,7 +4,9 @@
 /node_modules
 /.pnp
 .pnp.js
-**/keys
+#**/keys.js
+#**/config.json
+#**/secret.js
 
 # testing
 /coverage

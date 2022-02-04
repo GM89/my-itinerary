@@ -1,6 +1,8 @@
 import React, {useState} from 'react'
+import {GoogleAuthButton} from './GoogleAuthButton'
+import {authGoogle} from './../store/actions/loginActions'
 
-import {GoogleAuthButton} from './GoogleAuthButton.js'
+
 
 /*
 async function loginUser(credentials) {
@@ -13,8 +15,6 @@ async function loginUser(credentials) {
  })
    .then(data => data.json())
 }*/
-
-
  function Login({ setToken }) {
    const[user, setUser] = useState({
      userName:"",
@@ -52,9 +52,7 @@ async function loginUser(credentials) {
 
   return(
     <div>
-  
-     
-      <GoogleAuthButton/>
+  <GoogleAuthButton/>
 
     <div className="login-wrapper">
       <h1>Login</h1>

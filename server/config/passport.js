@@ -89,26 +89,25 @@ const GOOGLE_CLIENT_SECRET = googleConfig.postman.client_secret
 passport.use(new GoogleStrategy({
     clientID: GOOGLE_CLIENT_ID,
     clientSecret: GOOGLE_CLIENT_SECRET,
-    callbackURL: "http://localhost:5000/auth/google/callback",
-    //passReqToCallback: true, //if success?
-    
+    callbackURL: "http://localhost:5000/auth/google/callback", //callback if success
     
   },
 // cb = callback
 // profile
 async (accessToken, refreshToken, profile, done) => {
-  console.log('!!!!!!!!profile', profile)
-
+  console.log('profile!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!',profile)
+  console.log('ID!!!', typeof profile.id)
+  console.log('NAME!!!', typeof profile.name.familyName)
+  console.log('EMAIL!!!',typeof profile._json.email)
   try {
     const currentUser = await MemberModel.findOne({
-      email: profile._json.email,
       googleId: profile.id,
     });
     // create new user if the database doesn't have this user
     if (!currentUser) {
       const newUser = await new MemberModel({
         googleId: profile.id,
-        userName:profile.name.givenName,
+       userName:profile.name.familyName,
         email:profile._json.email,
         password:null
       }).save();
@@ -129,6 +128,7 @@ async (accessToken, refreshToken, profile, done) => {
 
 ///----------- Middleware for protected requests using token----
 module.exports = passport;
+
 
 
   
