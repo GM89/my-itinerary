@@ -1,6 +1,4 @@
 import React, {useState} from 'react'
-import { GoogleLoginButton } from 'react-social-login-buttons';
-import {authGoogle} from './../store/actions/loginActions'
 
 import {GoogleAuthButton} from './GoogleAuthButton.js'
 
@@ -15,11 +13,7 @@ async function loginUser(credentials) {
  })
    .then(data => data.json())
 }*/
-function SocialGoogleSignin(){
-  
-  window.open("http://localhost:5000/auth/google","_self")
-  
-}
+
 
  function Login({ setToken }) {
    const[user, setUser] = useState({
@@ -58,8 +52,7 @@ function SocialGoogleSignin(){
 
   return(
     <div>
-      
-      <GoogleLoginButton onClick={SocialGoogleSignin}/>
+  
      
       <GoogleAuthButton/>
 
