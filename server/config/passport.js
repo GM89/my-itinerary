@@ -5,7 +5,7 @@ const googleConfig = require("./config.json")
 const passport = require('passport')
 //----strategy-------------
 
-const GoogleStrategy = require('passport-google-oauth20').OAuth2Strategy;
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const LocalStrategy = require('passport-local').Strategy
 
 
@@ -89,40 +89,46 @@ const GOOGLE_CLIENT_SECRET = googleConfig.postman.client_secret
 passport.use(new GoogleStrategy({
     clientID: GOOGLE_CLIENT_ID,
     clientSecret: GOOGLE_CLIENT_SECRET,
-    callbackURL: "http://localhost:5000/auth/google/callback", //if success?
-    passReqToCallback: true,
+    callbackURL: "http://localhost:5000/auth/google/callback",
+    //passReqToCallback: true, //if success?
+    
     
   },
 // cb = callback
 // profile
-  function (accessToken, refreshToken, profile,  cb) {
-    console.log(profile);
-    //profile with google 
-    MemberModel.findOne({email:profile.email}).then(existingUser=>{
-      if(existingUser){
-        done(null, existingUser);
-      } else {
-        new MemberModel.findOne({
-          //username: profile.name.givenName,
-          email: profile.email,
-          googleId: profile.id,
-          //profilePicture:profile._json.picture,
+async (accessToken, refreshToken, profile, done) => {
+  console.log('!!!!!!!!profile', profile)
 
-        })
-      .save()
-          .then(user => {
-            done(null, user);
-             //null means that there isn' any error
-          });
-      }}
-    )}
-));
+  try {
+    const currentUser = await MemberModel.findOne({
+      email: profile._json.email,
+      googleId: profile.id,
+    });
+    // create new user if the database doesn't have this user
+    if (!currentUser) {
+      const newUser = await new MemberModel({
+        googleId: profile.id,
+        userName:profile.name.givenName,
+        email:profile._json.email,
+        password:null
+      }).save();
+      if (newUser) {
+        done(null, newUser);
+      }
+    }
+    done(null, currentUser);
+  } catch (error) {
+    return done(error);
+  }
+}
+)
+);
+
 
 
 
 ///----------- Middleware for protected requests using token----
 module.exports = passport;
-
 
 
   
