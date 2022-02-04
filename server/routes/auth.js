@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 //const  checkLoggedIn = require ('./middlewares/checkLoggedIn')
 const jwt = require("jsonwebtoken");
-const bcrypt = require('bcrypt');
+
 const passport = require('passport');
 const { secretOrKey } = require('../config/secret');
 const logOut = require('express-passport-logout');

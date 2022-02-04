@@ -34,8 +34,7 @@ import {GoogleAuthButton} from './GoogleAuthButton.js'
         })
       }).then(data => data.json())
 
-      console.log("i hope it works")
-
+   
   }
 
 //This doesn't work

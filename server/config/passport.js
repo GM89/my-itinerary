@@ -107,7 +107,7 @@ async (accessToken, refreshToken, profile, done) => {
     if (!currentUser) {
       const newUser = await new MemberModel({
         googleId: profile.id,
-       userName:profile.name.familyName,
+       userName:profile._json.name,
         email:profile._json.email,
         password:null
       }).save();
@@ -115,6 +115,7 @@ async (accessToken, refreshToken, profile, done) => {
         done(null, newUser);
       }
     }
+    //if user was found in the database
     done(null, currentUser);
   } catch (error) {
     return done(error);

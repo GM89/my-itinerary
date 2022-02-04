@@ -5,7 +5,7 @@ const express = require('express');
 const router = express.Router();
 const MemberModel = require('../model/MemberModel');
 const jwt = require("jsonwebtoken");
-const bcrypt = require('bcrypt');
+
 const passport = require('passport');
 
 //-----------------------------
@@ -18,8 +18,8 @@ router.get('/',
 router.get('/callback', 
   passport.authenticate('google', { failureRedirect: '/', session:false }),
   function(req, res) {
-    var token = req.user.token;
-    res.redirect("http://localhost:3000/?token=" + token);
+    //var token = req.user.token;
+    res.redirect("http://localhost:3000")
 }
 );
  
