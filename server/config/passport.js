@@ -6,7 +6,14 @@ const passport = require('passport')
 //----strategy-------------
 
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
-const LocalStrategy = require('passport-local').Strategy
+const LocalStrategy = require('passport-local').Strategy;
+const fs = require("fs");
+const path = require('path');
+
+//make OAuth2 Credentials file using Google Developer console and download it(credentials.json)
+//replace the 'web' using 'installed' in the file downloaded
+var pathToJson = path.resolve(__dirname, './credentials.json');
+const config = JSON.parse(fs.readFileSync(pathToJson));
 
 
 //Import the secondary "Strategy" library
@@ -55,14 +62,14 @@ passport.deserializeUser(function(_id, done) {
         .then(user=>{
               bcrypt.compare(password, user.password, (err, isMatch)=> {
                 if(err) {
-                  console.log("passport.use error")
+                  
                   throw err;
                 }
                 if(isMatch){
-                  console.log("user found & passport matched")
+                  
                   return done (null, user);
                 } else{
-                  console.log("wrong password!")
+                  
                   return done(null, false, {message: "wrong password"})
                 }
             }) 
@@ -94,12 +101,21 @@ passport.use(new GoogleStrategy({
   },
 // cb = callback
 // profile
-async (accessToken, refreshToken, profile, done) => {
-  console.log('profile!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!',profile)
+async (accessToken, refreshToken,otherTokenDetails, profile, done) => {
+  
   console.log('ID!!!', typeof profile.id)
   console.log('NAME!!!', typeof profile.name.familyName)
   console.log('EMAIL!!!',typeof profile._json.email)
   try {
+    let token = {
+      access_token:accessToken,
+      refresh_token:refreshToken,
+      scope: otherTokenDetails.scope,
+      token_type: otherTokenDetails.token_type,
+      expiry_date: otherTokenDetails.expires_in,
+    }
+    let data = JSON.stringify(token);
+        fs.writeFileSync('./tokens.json', data);
     const currentUser = await MemberModel.findOne({
       googleId: profile.id,
     });

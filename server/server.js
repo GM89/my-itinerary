@@ -1,3 +1,12 @@
+
+//----------------------------
+const fs = require("fs");
+const path = require("path");
+let pathToJson_1 =path.resolve(__dirname,'./config/credentials.json')
+const credentials = JSON.parse(fs.readFileSync(pathToJson_1));
+
+//-------------------------
+
 const express = require("express");
 const app = express();
 const secret = require('./config/secret');
@@ -10,6 +19,11 @@ const MongoStore = require("connect-mongo");
 const session =require("express-session");
 
 //const mongoose = require("mongoose")
+app.use(cookieSeesion({
+  name:'Reserve It',
+  maxAge: 1*60*60*1000,
+  keys: ['ranmalc6h12o6dewage']
+}))
 
 const passport = require("./config/passport.js");
 const auth = require("./routes/auth");
@@ -21,7 +35,11 @@ const port = process.env.PORT || 5000;
 const bodyParser = require("body-parser");
 const cors = require("cors");
 
-//-------------------------
+const cookieSession = require('cookie-session');
+const {google} = require('googleapis');
+
+//-----------
+
 
 app.use(bodyParser.json());
 app.use(
