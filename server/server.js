@@ -18,12 +18,7 @@ const MongoStore = require("connect-mongo");
 
 const session =require("express-session");
 
-//const mongoose = require("mongoose")
-app.use(cookieSeesion({
-  name:'Reserve It',
-  maxAge: 1*60*60*1000,
-  keys: ['ranmalc6h12o6dewage']
-}))
+
 
 const passport = require("./config/passport.js");
 const auth = require("./routes/auth");
@@ -39,7 +34,14 @@ const cookieSession = require('cookie-session');
 const {google} = require('googleapis');
 
 //-----------
+//const mongoose = require("mongoose")
+app.use(cookieSession({
+  name:'Reserve It',
+  maxAge: 1*60*60*1000,
+  keys: ['secret']
+}))
 
+//----------
 
 app.use(bodyParser.json());
 app.use(

@@ -102,10 +102,12 @@ passport.use(new GoogleStrategy({
 // cb = callback
 // profile
 async (accessToken, refreshToken,otherTokenDetails, profile, done) => {
-  
+  console.log("!!!!!!!!!!!TOKEN",accessToken)
   console.log('ID!!!', typeof profile.id)
   console.log('NAME!!!', typeof profile.name.familyName)
   console.log('EMAIL!!!',typeof profile._json.email)
+
+  
   try {
     let token = {
       access_token:accessToken,
@@ -133,6 +135,9 @@ async (accessToken, refreshToken,otherTokenDetails, profile, done) => {
     }
     //if user was found in the database
     done(null, currentUser);
+    window.setLocalStorage.setItem("accessToken", accessToken)
+
+
   } catch (error) {
     return done(error);
   }
