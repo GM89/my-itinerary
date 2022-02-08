@@ -5,15 +5,8 @@ const googleConfig = require("./config.json")
 const passport = require('passport')
 //----strategy-------------
 
-const GoogleStrategy = require('passport-google-oauth20').Strategy;
-const LocalStrategy = require('passport-local').Strategy;
-const fs = require("fs");
-const path = require('path');
-
-//make OAuth2 Credentials file using Google Developer console and download it(credentials.json)
-//replace the 'web' using 'installed' in the file downloaded
-var pathToJson = path.resolve(__dirname, './credentials.json');
-const config = JSON.parse(fs.readFileSync(pathToJson));
+const GoogleStrategy = require('passport-google-oauth20');
+const LocalStrategy = require('passport-local').Strategy
 
 
 //Import the secondary "Strategy" library
@@ -62,14 +55,14 @@ passport.deserializeUser(function(_id, done) {
         .then(user=>{
               bcrypt.compare(password, user.password, (err, isMatch)=> {
                 if(err) {
-                  
+                  console.log("passport.use error")
                   throw err;
                 }
                 if(isMatch){
-                  
+                  console.log("user found & passport matched")
                   return done (null, user);
                 } else{
-                  
+                  console.log("wrong password!")
                   return done(null, false, {message: "wrong password"})
                 }
             }) 
@@ -96,28 +89,28 @@ const GOOGLE_CLIENT_SECRET = googleConfig.postman.client_secret
 passport.use(new GoogleStrategy({
     clientID: GOOGLE_CLIENT_ID,
     clientSecret: GOOGLE_CLIENT_SECRET,
-    callbackURL: "http://localhost:5000/auth/google/callback", //callback if success
+    callbackURL: "http://localhost:5000/auth/google/callback", //if success?
+    passReqToCallback: true,
+    
     
   },
 // cb = callback
 // profile
-async (accessToken, refreshToken,otherTokenDetails, profile, done) => {
-  console.log("!!!!!!!!!!!TOKEN",accessToken)
-  console.log('ID!!!', typeof profile.id)
-  console.log('NAME!!!', typeof profile.name.familyName)
-  console.log('EMAIL!!!',typeof profile._json.email)
+async (accessToken, refreshToken, params, profile, done) => {
 
+   /*
+      params = { 
+        access_token: 'Long_string',
+        token_type: 'Bearer',
+        expires_in: 3599, // seconds
+        id_token: 'Longer_string'
+      }
+    */
+     // find expiry_date so it can be save in the database, along with access and refresh token
+     //const expiry_date = moment().add(params.expires_in, "s").format("X");
   
+  console.log("TOKEN", accessToken);
   try {
-    let token = {
-      access_token:accessToken,
-      refresh_token:refreshToken,
-      scope: otherTokenDetails.scope,
-      token_type: otherTokenDetails.token_type,
-      expiry_date: otherTokenDetails.expires_in,
-    }
-    let data = JSON.stringify(token);
-        fs.writeFileSync('./tokens.json', data);
     const currentUser = await MemberModel.findOne({
       googleId: profile.id,
     });
@@ -125,19 +118,19 @@ async (accessToken, refreshToken,otherTokenDetails, profile, done) => {
     if (!currentUser) {
       const newUser = await new MemberModel({
         googleId: profile.id,
-       userName:profile._json.name,
-        email:profile._json.email,
+       userName:profile.name.familyName,
+        email:profile.email,
         password:null
       }).save();
+      //token_type, expires_in, id_token
+      localStorage.setItem('x-auth-token', accessToken)
+      //cuando accessToken expira, utilizaré el refreshToken
+      localStorage.setItem('refresh token', refreshToken)
       if (newUser) {
         done(null, newUser);
       }
     }
-    //if user was found in the database
     done(null, currentUser);
-    window.setLocalStorage.setItem("accessToken", accessToken)
-
-
   } catch (error) {
     return done(error);
   }
