@@ -5,15 +5,10 @@ node_modules
 /**/node_modules
 #/**/.env
 
-//.pnp
+/.pnp
 .pnp.js
 #/server/config.json
 #/server/keys.js
-#./secret/config/keys.js
-#./secret/config/token.json
-#./secret/config/config.js
-#./secret/config/credentials.json
-#./secret/config
 
 # testing
 /coverage

@@ -55,7 +55,16 @@ app.use((req, res, next) => {
   next();
 });
 
+// app.use(
+//   cors({
+//      // origin: 'http://localhost:5000',
+//       methods: "GET, POST, PATCH, DELETE, PUT",
+//       //"Access-Control-Allow-Origin": window.location.origin,
 
+//       //allowedHeaders: "Content-Type, Authorization",
+//       'Authorization': 'Bearer key',
+  
+//   }));
 
 
 
@@ -70,7 +79,7 @@ app.listen(port, () => {
 the api route and the relative path to the file where 
 we will defining our route methods.*/
 //------------------------routes-----------------------------------------
-app.use('/cities', isLoggedIn, require('./routes/cities'),);
+app.use('/cities', require('./routes/cities'),);
 app.use('/cities/all', require('./routes/cities'));
 app.use('/itineraries', require('./routes/itineraries'));
 app.use('/activities', require('./routes/activities'));
@@ -117,24 +126,9 @@ app.use(
 )
 
 
-//  checktoken middleware---------
-const router = express.Router();
 
-const { checkToken } = require("./config/token-validator");
-
-
-
-
-// tell the router to use checkToken function
-router.use(checkToken);
-
-
-
-
-
-
-
-
+//Passport middleware
+ 
 // LOG OUT ------------------------------
 
 
@@ -143,6 +137,7 @@ app.use(passport.session());// allow passport to use "express-session".
 
 //Routes
 app.use("auth", auth);
+
 
 
 
