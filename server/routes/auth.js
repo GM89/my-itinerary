@@ -49,8 +49,7 @@ router.post("/login", (req,res, next) => {
         }
         const token = jwt.sign(payload, secretOrKey, options);
         // return res.status(200).json({success: `logged in ${user.id}`.user, token});
-        localStorage.setItem('token', token)
-        console.log("look at this token", token)
+     
         return res.json({user, token});
         })
     }) (req,res,next);
@@ -88,11 +87,11 @@ const checkLoggedIn = (req, res, next) => {
  
  router.get('/logout', function (req, res) {
   logOut();
-  console.log('logged out');
+    console.log('logged out');
   if(req.user){
-  res.send("We did NOT logged out. You're still logged")
-  }
-  res.send('you have logged out')
+    res.send("We did NOT logged out. You're still logged")
+  }else{
+    res.send('you have logged out')}
 
 })
 

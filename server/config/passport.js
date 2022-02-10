@@ -96,7 +96,7 @@ passport.use(new GoogleStrategy({
   },
 // cb = callback
 // profile
-async (accessToken, refreshToken, params, profile, done) => {
+async (accessToken, refreshToken, profile, done) => {
 
    /*
       params = { 

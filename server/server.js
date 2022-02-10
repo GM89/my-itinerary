@@ -70,7 +70,7 @@ app.listen(port, () => {
 the api route and the relative path to the file where 
 we will defining our route methods.*/
 //------------------------routes-----------------------------------------
-app.use('/cities', isLoggedIn, require('./routes/cities'),);
+app.use('/cities', require('./routes/cities'),);
 app.use('/cities/all', require('./routes/cities'));
 app.use('/itineraries', require('./routes/itineraries'));
 app.use('/activities', require('./routes/activities'));
@@ -102,9 +102,9 @@ app.use(express.urlencoded({extended:false}));
 
 //-----------isLoggedIn flag-----------------
 
-function isLoggedIn(req, res, next) {
+/* function isLoggedIn(req, res, next) {
   req.user ? next() : res.sendStatus(401);
-}
+} */
 //express session: middleware------------------------------------------------------------
 app.use(
   session({
@@ -117,7 +117,7 @@ app.use(
 )
 
 
-//  checktoken middleware---------
+/* //  checktoken middleware---------
 const router = express.Router();
 
 const { checkToken } = require("./config/token-validator");
@@ -133,7 +133,7 @@ router.use(checkToken);
 
 
 
-
+ */
 
 // LOG OUT ------------------------------
 
