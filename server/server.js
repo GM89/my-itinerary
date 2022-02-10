@@ -102,9 +102,9 @@ app.use(express.urlencoded({extended:false}));
 
 //-----------isLoggedIn flag-----------------
 
-/* function isLoggedIn(req, res, next) {
+function isLoggedIn(req, res, next) {
   req.user ? next() : res.sendStatus(401);
-} */
+}
 //express session: middleware------------------------------------------------------------
 app.use(
   session({
@@ -117,7 +117,7 @@ app.use(
 )
 
 
-/* //  checktoken middleware---------
+//  checktoken middleware---------
 const router = express.Router();
 
 const { checkToken } = require("./config/token-validator");
@@ -133,7 +133,7 @@ router.use(checkToken);
 
 
 
- */
+
 
 // LOG OUT ------------------------------
 
@@ -143,8 +143,6 @@ app.use(passport.session());// allow passport to use "express-session".
 
 //Routes
 app.use("auth", auth);
-
-
 
 
 
