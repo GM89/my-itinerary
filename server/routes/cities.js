@@ -107,7 +107,7 @@ router.get("/:name_city", (req, res) => {
 cityModel.find({ name_city : req.params.name_city }, (err, data) => {
   if (err) res.send(err);
   res.send(data);
-});
+  });
 });
 
 

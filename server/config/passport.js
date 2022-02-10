@@ -96,7 +96,7 @@ passport.use(new GoogleStrategy({
   },
 // cb = callback
 // profile
-async (accessToken, refreshToken, params, profile, done) => {
+async (accessToken, refreshToken, profile, done) => {
 
    /*
       params = { 
@@ -109,7 +109,7 @@ async (accessToken, refreshToken, params, profile, done) => {
      // find expiry_date so it can be save in the database, along with access and refresh token
      //const expiry_date = moment().add(params.expires_in, "s").format("X");
   
-  console.log("TOKEN", accessToken);
+
   try {
     const currentUser = await MemberModel.findOne({
       googleId: profile.id,
