@@ -3,6 +3,9 @@ import React, {useState} from 'react'
 import {GoogleAuthButton} from './GoogleAuthButton.js'
 
 
+
+
+
  function Register() {
    const[user, setUser] = useState({
      userName:"",
@@ -12,19 +15,18 @@ import {GoogleAuthButton} from './GoogleAuthButton.js'
    });
 
 
+
   async function registerUser(event) {
     /* prevent the default behaviour caused by the event itself.
      Keep it from attempting to refresh the browser as the browser
     tries to submit the form to some back end server that doesn't exist */
-
+    console.log('USUARIO', user)
     event.preventDefault()
-
-    
+   
     await fetch('http://localhost:5000/members/add', {
         method: 'POST',
         headers:{
-          //We post the data as json, and that's why we set it up content-type application/json
-          'Content-Type':'application/json',
+          'Content-Type':'application/json',  
         },
         body: JSON.stringify({
           userName: user.userName,
@@ -33,8 +35,8 @@ import {GoogleAuthButton} from './GoogleAuthButton.js'
           profilePicture: user.profilePicture,
         })
       }).then(data => data.json())
-
-   
+      .catch(error => console.error("ERROR: ",error));
+ 
   }
 
 //This doesn't work

@@ -4,17 +4,6 @@ import {authGoogle} from './../store/actions/loginActions'
 
 
 
-/*
-async function loginUser(credentials) {
- return fetch('http://localhost:8080/login', {
-   method: 'POST',
-   headers: {
-     'Content-Type': 'application/json'
-   },
-   body: JSON.stringify(credentials)
- })
-   .then(data => data.json())
-}*/
  function Login({ setToken }) {
    const[user, setUser] = useState({
      userName:"",
@@ -32,7 +21,7 @@ async function loginUser(credentials) {
     await fetch('http://localhost:5000/auth/login', {
         method: 'POST',
         headers:{
-          "Access-control-allow-origin" : "localhost:5000",
+          'Content-Type':'application/json',  
         },
         body: JSON.stringify({
           userName: user.name,
@@ -41,7 +30,7 @@ async function loginUser(credentials) {
         })
       }).then(data => data.json())
 
-      console.log("user has been authenticated")
+
 
   }
 

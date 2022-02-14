@@ -33,8 +33,15 @@ const cors = require("cors");
 const cookieSession = require('cookie-session');
 const {google} = require('googleapis');
 
+//credentials:true allows us to use cookies 
+app.use(
+  cors({
+    origin:"*",
+    credentials:true,
+  })
+)
+
 //-----------
-//const mongoose = require("mongoose")
 app.use(cookieSession({
   name:'Reserve It',
   maxAge: 1*60*60*1000,
@@ -77,6 +84,10 @@ app.use('/activities', require('./routes/activities'));
 app.use('/members',require('./routes/members.js'));
 app.use('/auth',require('./routes/auth.js'));
 app.use('/auth/google',require('./routes/googleAuth.js'));
+
+
+
+//------------------
 
 
 // Database ----------------
@@ -127,7 +138,6 @@ const { checkToken } = require("./config/token-validator");
 
 // tell the router to use checkToken function
 router.use(checkToken);
-
 
 
 
