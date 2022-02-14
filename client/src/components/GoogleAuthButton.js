@@ -1,13 +1,10 @@
 import React  from 'react';
 
 import {authGoogle} from './../store/actions/loginActions'
-import {useSelector, useDispatch} from 'react-redux'
+
 
 const GoogleAuthButton = () => {
-    const dispatch = useDispatch();
-
-    const loggedIn = useSelector(state => state.members.loggedIn);   
-
+ 
 
     
   /*construir un botón que trigger una formula. esa fórmula lanza
@@ -56,7 +53,7 @@ const GoogleAuthButton = () => {
 
          
 
-            <p>User status logged in: {loggedIn? "You are connected":"You are  NOT connected"}</p>
+  
         
         </div>
     )

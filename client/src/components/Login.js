@@ -1,10 +1,18 @@
 import React, {useState} from 'react'
 import {GoogleAuthButton} from './GoogleAuthButton'
 import {authGoogle} from './../store/actions/loginActions'
+import {useSelector, useDispatch} from 'react-redux'
 
 
 
  function Login({ setToken }) {
+
+
+
+
+  const loggedIn = useSelector(state => state.members.loggedIn);   
+  
+
    const[user, setUser] = useState({
      userName:"",
      email:"",
@@ -24,24 +32,19 @@ import {authGoogle} from './../store/actions/loginActions'
           'Content-Type':'application/json',  
         },
         body: JSON.stringify({
-          userName: user.name,
+          userName: user.userName,
           email: user.email, 
           password: user.password,
         })
       }).then(data => data.json())
-
-
-
   }
-
-
-  
-
 
 
   return(
     <div>
   <GoogleAuthButton/>
+
+  <p>User status logged in: {loggedIn? "You are connected":"You are  NOT connected"}</p>
 
     <div className="login-wrapper">
       <h1>Login</h1>
