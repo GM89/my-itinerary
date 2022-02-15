@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import {GoogleAuthButton} from './GoogleAuthButton'
 import {authGoogle} from './../store/actions/loginActions'
 import {useSelector, useDispatch} from 'react-redux'
+import {authLocal} from './../store/actions/loginActions'
 
 
 
@@ -37,6 +38,8 @@ import {useSelector, useDispatch} from 'react-redux'
           password: user.password,
         })
       }).then(data => data.json())
+      .catch(error => console.error("ERROR: ", error));
+ 
   }
 
 

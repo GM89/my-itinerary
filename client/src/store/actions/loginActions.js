@@ -8,12 +8,27 @@ const url = `http://localhost:${port}/`;
 
 
 
-export function  authLocal(){
+export function  authLocal(event, user){
+
+event.preventDefault()
 return async dispatch =>  {
     dispatch(loginUserBegin());
   try{
-    const  response = await axios.post(`${url}auth/login`);
+    const  response =  await fetch('http://localhost:5000/auth/login', {
+        method: 'POST',
+        headers:{
+          'Content-Type':'application/json',  
+        },
+        body: JSON.stringify({
+          userName: user.userName,
+          email: user.email, 
+          password: user.password,
+        })
+      }).then(data => data.json())
+      .catch(error => console.error("ERROR: ",error));
+      
     const fetchedData = await response;
+    console.log(fetchedData)
     dispatch(loginUserSuccess(fetchedData));
   } catch(error){
     dispatch(loginUserFailure(error));

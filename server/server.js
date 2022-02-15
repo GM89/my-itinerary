@@ -31,6 +31,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 
 const cookieSession = require('cookie-session');
+
 const {google} = require('googleapis');
 
 //credentials:true allows us to use cookies 
@@ -41,12 +42,12 @@ app.use(
   })
 )
 
-//-----------
-app.use(cookieSession({
+///-----------
+/*  app.use(cookieSession({
   name:'Reserve It',
   maxAge: 1*60*60*1000,
   keys: ['secret']
-}))
+})) */
 
 //----------
 
@@ -63,6 +64,25 @@ app.use((req, res, next) => {
 });
 
 
+
+//Middlware that logs the session and  user
+app.use((req,res,next)=>{
+  console.log("req.session", req.session);
+  console.log("req.user", req.user);
+  next();
+})
+
+
+/*
+/// middleware error handler
+function errorHandler(err, req, res, next){
+  //res.json({err:err}) //if you want to handle in the front end
+  if(err){
+    res.send('<h2> There was an error</h2>')
+  }
+}
+app.use(errorHandler)
+*/
 
 
 
@@ -91,7 +111,7 @@ app.use('/auth/google',require('./routes/googleAuth.js'));
 
 
 // Database ----------------
-
+//Connection with mongoDB
 mongoose.connect(db.mongoURI, { 
   useNewUrlParser: true, 
   useUnifiedTopology: true
@@ -105,6 +125,7 @@ mongoose.connect(db.mongoURI, {
 
 
 //Bodyparse middleware, extended false does not allow nested payloads
+// this to being able to parse json and urls. 
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
 
@@ -122,38 +143,18 @@ app.use(
     secret: secret.secretOrKey,
     resave:false,
     saveUninitialized:true, 
-   /*  store: new MongoStore ({mongooseConnection: mongoose.connection}) */
-    store: MongoStore.create({ mongoUrl: db.mongoURI })
-  })
+   /*  store: new MongoStore ({mongooseConnection: mongoose.connection, collection: 'sessions'}) */
+    store: MongoStore.create({ mongoUrl: db.mongoURI }),
+    cookie:{
+        maxAge: 1*60*60*2*1000, //1hour
+    },      
+    })
 )
 
 
-//  checktoken middleware---------
-const router = express.Router();
-
-const { checkToken } = require("./config/token-validator");
-
-
-
-
-// tell the router to use checkToken function
-router.use(checkToken);
-
-
-
-
-
-
-
-// LOG OUT ------------------------------
-
-
+//They must initiated at the end of the code. 
 app.use(passport.initialize());// init passport on every route call.
 app.use(passport.session());// allow passport to use "express-session".
-
-//Routes
-app.use("auth", auth);
-
 
 
 
