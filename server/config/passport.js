@@ -5,7 +5,7 @@ const googleConfig = require("./config.json")
 const passport = require('passport')
 //----strategy-------------
 
-const GoogleStrategy = require('passport-google-oauth20').Strategy;
+const GoogleStrategy = require('passport-google-oauth20');
 const LocalStrategy = require('passport-local').Strategy
 
 
@@ -30,8 +30,8 @@ Passport library collects the user when it is serialize  and deserialize it. The
 passport.serializeUser( (user, done) => {
   done(null, user._id)
 })
-
 //with the ID, we find the whole user from the database
+
 passport.deserializeUser(function(_id, done) {
     MemberModel.findById(_id, function(err, user) {
         done(err, user);

@@ -8,6 +8,7 @@ const { secretOrKey } = require('../config/secret');
 const logOut = require('express-passport-logout');
 
 
+//protected
 
 
 /*we find a {Member} based on the email writen on the form (req.body.email), and when found we'll name it loggedMember
@@ -55,23 +56,45 @@ router.post("/login", (req,res, next) => {
     }) (req,res,next);
   })
 
+/* Req.logOut clears both "req.session.passport"  and "req.user"
+"req.session.passport"  -------> {}
+"req.user" ------->  undefined 
+  router.get("/logout", (req,res) => {
+    req.logOut()
+    console.log(`-------> User Logged out`)
+    res.send('you have logged out')
+   // return {message: "you have logged out"}
+ })*/
+
+
+
+ 
+
+  ///---------------------------LOG OUT
+
+ //Middlware
+/*middleware que no funciona
+const checkLoggedIn = (req, res, next) => {
+  if (req.isAuthenticated()) { 
+    res.send({message:"you're already logged in"})
+   }
+  next()
+}*/
+
+
 
 
 // logout
  
  router.get('/logout', function (req, res) {
-   //req.logout()
   logOut();
   console.log('logged out');
   if(req.user){
   res.send("We did NOT logged out. You're still logged")
   }
   res.send('you have logged out')
-  res.redirect("/home")
 
 })
-
-
 
 
 module.exports = router;
