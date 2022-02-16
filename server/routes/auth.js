@@ -65,14 +65,18 @@ router.post("/login", (req,res, next) => {
   console.log('logged out');
   if(req.user){
   res.send("We did NOT logged out. You're still logged")
-  }
-  res.send('you have logged out')
-  res.redirect("/home")
-
+  }else{
+  res.send('you have logged out')}
 })
 
 
+/* router.post('/logout2', function(req, res){
 
+    res.clearCookie('Session_name');
+      res.send('you have logged out')
+  
+});
+ */
 
 module.exports = router;
 

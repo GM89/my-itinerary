@@ -132,11 +132,7 @@ app.use(express.urlencoded({extended:false}));
 
 
 
-//-----------isLoggedIn flag-----------------
-
-function isLoggedIn(req, res, next) {
-  req.user ? next() : res.sendStatus(401);
-}
+//
 //express session: middleware------------------------------------------------------------
 app.use(
   session({

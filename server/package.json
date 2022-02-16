@@ -10,9 +10,11 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "axios": "^0.26.0",
     "bcrypt": "^5.0.1",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
+    "classnames": "^2.3.1",
     "concurrently": "^6.4.0",
     "connect-mongo": "^4.6.0",
     "cookie-session": "^2.0.0",
@@ -35,6 +37,8 @@
     "passport-local-mongoose": "^6.1.0",
     "react-scripts": "^5.0.0",
     "react-social-login-buttons": "^3.6.0",
+    "redux": "^4.1.2",
+    "redux-thunk": "^2.4.1",
     "validation": "^0.0.1"
   },
   "devDependencies": {
