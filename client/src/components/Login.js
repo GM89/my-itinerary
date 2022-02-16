@@ -4,13 +4,14 @@ import {authGoogle} from './../store/actions/loginActions'
 import {useSelector, useDispatch} from 'react-redux'
 
 
-
  function Login({ setToken }) {
 
+  
 
-
+  const[loginInState, setLoginInState] = useState()
 
   const loggedIn = useSelector(state => state.members.loggedIn);   
+  
   
 
    const[user, setUser] = useState({
@@ -36,10 +37,33 @@ import {useSelector, useDispatch} from 'react-redux'
           email: user.email, 
           password: user.password,
         })
-      }).then(data => data.json())
+      }).then(data => {
+        data.json()
+        setLoginInState(true)
+      })
+      .catch(error => console.error("ERROR: ", error));
+ 
   }
 
 
+  async function loginOut() {
+    /* prevent the default behaviour caused by the event itself.
+     Keep it from attempting to refresh the browser as the browser
+    tries to submit the form to some back end server that doesn't exist */
+        await fetch('http://localhost:5000/auth/logout', {
+        method: 'GET',
+        headers:{
+          'Content-Type':'application/json',  
+        },
+        withCredentials: true,
+      }).then (   setLoginInState(false))
+      .catch(error => console.error("ERROR: ", error));
+
+ 
+  }
+
+    
+  
   return(
     <div>
   <GoogleAuthButton/>
@@ -66,11 +90,17 @@ import {useSelector, useDispatch} from 'react-redux'
         </div>
       </form>
     </div>
+    <br/>
+
+    <button onClick={loginOut}>Login Out</button>
+    <br/>
+    {loginInState? "" :" you are logged out"}
+
     </div>
 
    
   )
-}
+  }
 
 
 

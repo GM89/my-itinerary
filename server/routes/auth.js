@@ -8,8 +8,6 @@ const { secretOrKey } = require('../config/secret');
 const logOut = require('express-passport-logout');
 
 
-//protected
-
 
 /*we find a {Member} based on the email writen on the form (req.body.email), and when found we'll name it loggedMember
 Then, we compare the password wrote by the user (re.body.passowrd) with that from our database (loggedMember.password)
@@ -91,11 +89,18 @@ const checkLoggedIn = (req, res, next) => {
   console.log('logged out');
   if(req.user){
   res.send("We did NOT logged out. You're still logged")
-  }
-  res.send('you have logged out')
-
+  }else{
+  res.send('you have logged out')}
 })
 
+
+/* router.post('/logout2', function(req, res){
+
+    res.clearCookie('Session_name');
+      res.send('you have logged out')
+  
+});
+ */
 
 module.exports = router;
 
