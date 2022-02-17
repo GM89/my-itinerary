@@ -29,7 +29,7 @@ router.post("/add", async (req, res) => {
   
       await memberModel.findOne( {userName: newMember.userName})
       .then(each_member=>{
-          if(each_member) res.status(500).send('This member already exists')
+          if(each_member) res.status(501).send({message:'This member already exists'})
       })
   
       await newMember.save()
@@ -38,7 +38,7 @@ router.post("/add", async (req, res) => {
         });
     } catch{
           (err => {
-          res.status(500).send("Server error")}) 
+          res.status(500).send({message: "Server error"})}) 
       }
     });
 

@@ -3,6 +3,11 @@ import {GoogleAuthButton} from './GoogleAuthButton'
 import {authGoogle} from './../store/actions/loginActions'
 import {useSelector, useDispatch} from 'react-redux'
 
+import {Link} from 'react-router-dom'
+
+
+
+
 
  function Login({ setToken }) {
 
@@ -65,34 +70,86 @@ import {useSelector, useDispatch} from 'react-redux'
     
   
   return(
-    <div>
-  <GoogleAuthButton/>
+   <div className="container">
+    <GoogleAuthButton/>
 
-  <p>User status logged in: {loggedIn? "You are connected":"You are  NOT connected"}</p>
+    <p>User status logged in: {loggedIn? "You are connected":"You are  NOT connected"}</p>
 
-    <div className="login-wrapper">
-      <h1>Login</h1>
-      <form onSubmit={e=> loginUser(e)}>
-        <label>
-          <p>Username</p>
-          <input type="text" onChange={e => setUser((x)=>({ ...x, userName:e.target.value,}))} />
-        </label>< br/>
-        <label>
-          <p>Email</p>
-          <input type="email" onChange={e => setUser((x)=>({ ...x, email:e.target.value,}))}  />
-        </label>< br/>
-        <label>
-          <p>Password</p>
-          <input type="password" onChange={e => setUser((x)=>({ ...x, password:e.target.value,}))}  />
-        </label>< br/>
-        <div>
-          <button  type="submit">Submit</button>
+ 
+  <div className="col s8 offset-s2">
+            <Link to="/" className="btn-flat waves-effect">
+              <i className="material-icons left">keyboard_backspace</i> Back to
+              home
+            </Link>
+            <div className="col s12" style={{ paddingLeft: "11.250px" }}>
+              <h4>
+                <b>Login</b> 
+              </h4>
+              <p className="grey-text text-darken-1">
+                Don't have an account? <Link to="/register">Register</Link>
+              </p>
+            </div>
+            <form onSubmit={e=> loginUser(e)}>
+
+            <div className="input-field col s12">
+            <input type="text" 
+              onChange={
+                e => setUser((x)=>({ ...x, userName:e.target.value,}))
+               } />
+                <label htmlFor="name">Username</label>
+              </div>
+
+               <div className="input-field col s12">
+              <input type="email" 
+                onChange={
+                e => setUser((x)=>({ ...x, email:e.target.value,
+                }))}  />
+                <label htmlFor="email">Email</label>
+              </div>
+
+              <div className="input-field col s12">
+              <input type="password" 
+                onChange={
+                e => setUser((x)=>({ ...x, password:e.target.value,
+                }))}  />
+                <label htmlFor="password">Password</label>
+              </div>
+              <div className="col s12" style={{ paddingLeft: "11.250px" }}>
+                <div>
+                <button
+                  style={{
+                    width: "150px",
+                    borderRadius: "3px",
+                    letterSpacing: "1.5px",
+                    marginTop: "1rem"
+                  }}
+                  type="submit"
+                  className="btn btn-large waves-effect waves-light hoverable blue accent-3"
+                >
+                  Login
+                </button>
+                </div>
+                <div>
+                 <button
+                  style={{
+                    width: "150px",
+                    borderRadius: "3px",
+                    letterSpacing: "1.5px",
+                    marginTop: "1rem"
+                  }}
+                  onClick={loginOut}
+                  type="submit"
+                  className="btn btn-large waves-effect waves-light hoverable red accent-3"
+                >
+                  Login Out
+                </button>
+                </div>
+
         </div>
       </form>
     </div>
     <br/>
-
-    <button onClick={loginOut}>Login Out</button>
+    
     <br/>
     {loginInState? "" :" you are logged out"}
 

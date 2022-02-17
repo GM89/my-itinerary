@@ -10,7 +10,7 @@ const GoBackButton = () => {
     
       function handleClick() {
             navigate('/home')
-        }
+        }^
   
     return (
      
