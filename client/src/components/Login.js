@@ -39,17 +39,20 @@ import {Link} from 'react-router-dom'
           password: user.password,
         })
       }).then(async(response) => {
+        console.log("response en la fetch del front", response)
         const data = await response.json();
-        console.log(data)
-        console.log("DATA....", data)
-        loginUserSuccess(data.user, data.token);
+        if(data.success === true) {
+          console.log("response en la fetch del front", data)
+          console.log("respuesta existosa?", data.success)
+          console.log("data!!!!!")
+          console.log(data)      
+          loginUserSuccess(data.userData, data.tokenData);
+
+        } else if (data.success ===false){
+          console.log("the error is catched", data.success )
+          loginUserFailure(data.message)
+        }
       })
-      .catch(err => {
-        console.log("the error is catched")
-        console.log(typeof err)
-        console.log("mensaje dle error", err.message)
-        loginUserFailure(err.message)
-      });
  
   }
 

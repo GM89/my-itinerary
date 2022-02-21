@@ -21,23 +21,28 @@ router.post("/login", (req,res, next) => {
   
   passport.authenticate("local",{session: false}, function(err, user, info){
     if (err){
-      console.log(err, "There's an error in authenticate process")
+      console.log("error in passport.authenticate")
+      return next(err); // will generate a 500 error
+
 
       //return res.status(400).json({errors:err});
-      throw new Error("Error general en la autentificación local");
+     // throw new Error("Error general en la autentificación local");
     }
     if(!user){
       console.log("Error in authenticate process: user not found")
-      console.log("res.body--------------------------", res)
+    
       //return res.status(400).json({errors: "no users found"});
-      throw new Error("usuario no encontrado");
+      
+      return res.send({ success : false, message : 'authentication failed' })
     }
     req.logIn(user, {session: false}, function(err){
         if(err){
           //return res.status(400).json({errors:err})
-          throw new Error("Error general en la autentificación local");
-        }//if loggin success
-        console.log("login success. local", user)
+         return next (err);
+        }
+        
+        //if loggin success
+        console.log("login success! local", user)
 
         //--Token--------
         const payload = {
@@ -53,12 +58,14 @@ router.post("/login", (req,res, next) => {
         // return res.status(200).json({success: `logged in ${user.id}`.user, token});
         
         console.log("look at this token", token)
-        return res.json({user, token});
+        //let status = { success : true, message : 'authentication succeeded' }
+        return res.json({ success : true, message : 'authentication succeeded', userData: user, tokenData:token});
+        
         })
     }) (req,res,next);
   })
 
-/* Req.logOut clears both "req.session.passport"  and "req.user"
+/* Req.logOut clears both "req.session.passport"  and "req.userfind
 "req.session.passport"  -------> {}
 "req.user" ------->  undefined 
   router.get("/logout", (req,res) => {
