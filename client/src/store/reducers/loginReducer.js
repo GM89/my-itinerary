@@ -7,6 +7,7 @@ const initialState = {
     _id: "",
     userName: "",
     email: "",
+    token: "",
     profilePicture: "",
   
   },
@@ -30,9 +31,12 @@ const loginReducer = (state = initialState, action) => {
           _id: "",
           userName: "",
           email: "",
+          password: "",
           profilePicture: "",
+          favorites:[],
         
         },
+        token: "",
         loading: true,
         //loadingFav: true,
         errorMsg: "",
@@ -44,7 +48,8 @@ const loginReducer = (state = initialState, action) => {
       case 'LOGIN_USER_SUCCESS':
         return {
           ...state,
-          user: action.payload,
+          user: action.payload.user,
+          token:action.payload.token,
           loading: false,
           //popup: false,
           loggedIn: true
@@ -53,6 +58,7 @@ const loginReducer = (state = initialState, action) => {
         return {
           ...state,
           loading: false,
+          errorMsg: action.payload.error,
           //popup: true,
           loggedIn: false
         };

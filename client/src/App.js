@@ -16,7 +16,7 @@ import { Navbar } from './components/Navbar';
 
 //Switch is deprecated, instead we use Routes.
 function App() {
-  return (
+  return (      
       <div className="App">
             <BrowserRouter>
                   <Navbar/>

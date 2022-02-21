@@ -7,7 +7,7 @@ const url = `http://localhost:${port}/`;
 
 
 
-
+/* 
 export function  authLocal(){
 return async dispatch =>  {
     dispatch(loginUserBegin());
@@ -18,7 +18,7 @@ return async dispatch =>  {
   } catch(error){
     dispatch(loginUserFailure(error));
   }
-}}
+}} */
 
 
 export function authGoogle() {
@@ -41,17 +41,24 @@ export function authGoogle() {
       type: 'LOGIN_USER_BEGIN',
     });
     
-    export const loginUserSuccess = user => ({
+    export const loginUserSuccess = (usr, tken) => ({
       type: 'LOGIN_USER_SUCCESS',
-      payload: user,
-    });
-    
-    export const loginUserFailure = error => ({
-      type: 'LOGIN_USER_FAILURE',
-      payload: {
-        error
+      payload:  {
+        user: usr,
+        token: tken,
       }
     });
- 
+    
+    export const loginUserFailure = err => ({
+      type: 'LOGIN_USER_FAILURE',
+      payload: {
+        error: err,
+      }
+    });
+    
+    export const loginOutSuccess = () => ({
+      type: 'LOGIN_OUT_SUCCESS',
+    });
+    
 
 

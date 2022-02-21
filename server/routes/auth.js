@@ -23,15 +23,19 @@ router.post("/login", (req,res, next) => {
     if (err){
       console.log(err, "There's an error in authenticate process")
 
-      return res.status(400).json({errors:err});
+      //return res.status(400).json({errors:err});
+      throw new Error("Error general en la autentificación local");
     }
     if(!user){
       console.log("Error in authenticate process: user not found")
-      return res.status(400).json({errors: "no users found"});
+      console.log("res.body--------------------------", res)
+      //return res.status(400).json({errors: "no users found"});
+      throw new Error("usuario no encontrado");
     }
     req.logIn(user, {session: false}, function(err){
         if(err){
-          return res.status(400).json({errors:err})
+          //return res.status(400).json({errors:err})
+          throw new Error("Error general en la autentificación local");
         }//if loggin success
         console.log("login success. local", user)
 

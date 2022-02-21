@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import {GoogleAuthButton} from './GoogleAuthButton'
-import {authGoogle} from './../store/actions/loginActions'
+import {authGoogle, loginUserBegin, loginUserSuccess, loginUserFailure, loginOutSuccess} from './../store/actions/loginActions'
 import {useSelector, useDispatch} from 'react-redux'
 
 import {Link} from 'react-router-dom'
@@ -10,15 +10,11 @@ import {Link} from 'react-router-dom'
 
 
  function Login({ setToken }) {
+  const dispatch = useDispatch();
 
-  
-
-  const[loginInState, setLoginInState] = useState()
-
+  const [loginInState, setLoginInState] = useState()
   const loggedIn = useSelector(state => state.members.loggedIn);   
   
-  
-
    const[user, setUser] = useState({
      userName:"",
      email:"",
@@ -31,7 +27,7 @@ import {Link} from 'react-router-dom'
      Keep it from attempting to refresh the browser as the browser
     tries to submit the form to some back end server that doesn't exist */
     event.preventDefault()
-    
+    dispatch(loginUserBegin);
     await fetch('http://localhost:5000/auth/login', {
         method: 'POST',
         headers:{
@@ -42,11 +38,18 @@ import {Link} from 'react-router-dom'
           email: user.email, 
           password: user.password,
         })
-      }).then(data => {
-        data.json()
-        setLoginInState(true)
+      }).then(async(response) => {
+        const data = await response.json();
+        console.log(data)
+        console.log("DATA....", data)
+        loginUserSuccess(data.user, data.token);
       })
-      .catch(error => console.error("ERROR: ", error));
+      .catch(err => {
+        console.log("the error is catched")
+        console.log(typeof err)
+        console.log("mensaje dle error", err.message)
+        loginUserFailure(err.message)
+      });
  
   }
 
@@ -61,10 +64,8 @@ import {Link} from 'react-router-dom'
           'Content-Type':'application/json',  
         },
         withCredentials: true,
-      }).then (   setLoginInState(false))
+      }).then (setLoginInState(false))
       .catch(error => console.error("ERROR: ", error));
-
- 
   }
 
     
@@ -89,8 +90,8 @@ import {Link} from 'react-router-dom'
                 Don't have an account? <Link to="/register">Register</Link>
               </p>
             </div>
-            <form onSubmit={e=> loginUser(e)}>
 
+            <form onSubmit={e=> loginUser(e)}>
             <div className="input-field col s12">
             <input type="text" 
               onChange={
@@ -139,9 +140,8 @@ import {Link} from 'react-router-dom'
                   }}
                   onClick={loginOut}
                   type="submit"
-                  className="btn btn-large waves-effect waves-light hoverable red accent-3"
-                >
-                  Login Out
+                  className="btn btn-large waves-effect waves-light hoverable red accent-3">
+                    Login Out
                 </button>
                 </div>
 
