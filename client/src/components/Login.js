@@ -55,6 +55,7 @@ import {Link} from 'react-router-dom'
 
 
   async function loginOut() {
+    console.log("loggin out")
     /* prevent the default behaviour caused by the event itself.
      Keep it from attempting to refresh the browser as the browser
     tries to submit the form to some back end server that doesn't exist */
@@ -71,92 +72,83 @@ import {Link} from 'react-router-dom'
     
   
   return(
-   <div className="container">
-    <GoogleAuthButton/>
+    <div>
+    <section class="vh-100">
+      
+    <h2>
+      <b>Login</b>
+    </h2>
+          <GoogleAuthButton/>
+          <p>User status logged in: {loggedIn? "You are connected":"You are  NOT connected"}</p>
 
-    <p>User status logged in: {loggedIn? "You are connected":"You are  NOT connected"}</p>
+    {loginInState? "" :" you are logged out"}
 
- 
-  <div className="col s8 offset-s2">
-            <Link to="/" className="btn-flat waves-effect">
-              <i className="material-icons left">keyboard_backspace</i> Back to
-              home
-            </Link>
-            <div className="col s12" style={{ paddingLeft: "11.250px" }}>
-              <h4>
-                <b>Login</b> 
-              </h4>
-              <p className="grey-text text-darken-1">
-                Don't have an account? <Link to="/register">Register</Link>
-              </p>
+    <div class="container py-5 h-100">
+      <div class="row d-flex align-items-center justify-content-center h-100">
+        <div class="col-md-8 col-lg-7 col-xl-6">
+          <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg" class="img-fluid" alt="Phone image"/>
+        </div>
+        <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
+          <form onSubmit={e=> loginUser(e)}>
+           {/*  <!-- Email input --> */}
+           <div class="form-outline mb-4">
+            <input type="text" 
+                id="form1Example13"
+                class="form-control form-control-lg" 
+                onChange={
+                e => setUser((x)=>({ ...x, userName:e.target.value,
+                }))}  />
+              <label  htmlFor="name" class="form-label" for="form1Example13">Username</label>
             </div>
 
-            <form onSubmit={e=> loginUser(e)}>
-            <div className="input-field col s12">
-            <input type="text" 
-              onChange={
-                e => setUser((x)=>({ ...x, userName:e.target.value,}))
-               } />
-                <label htmlFor="name">Username</label>
-              </div>
 
-               <div className="input-field col s12">
-              <input type="email" 
+            <div class="form-outline mb-4">
+            <input type="email" 
+                id="form1Example13"
+                class="form-control form-control-lg" 
                 onChange={
                 e => setUser((x)=>({ ...x, email:e.target.value,
                 }))}  />
-                <label htmlFor="email">Email</label>
-              </div>
-
-              <div className="input-field col s12">
-              <input type="password" 
+              <label htmlFor="email" class="form-label" for="form1Example13">Email address</label>
+            </div>
+  
+           {/*  <!-- Password input --> */}
+            <div class="form-outline mb-4">
+            <input type="password" 
+                id="form1Example23" 
+                class="form-control form-control-lg"
                 onChange={
                 e => setUser((x)=>({ ...x, password:e.target.value,
                 }))}  />
-                <label htmlFor="password">Password</label>
-              </div>
-              <div className="col s12" style={{ paddingLeft: "11.250px" }}>
-                <div>
-                <button
-                  style={{
-                    width: "150px",
-                    borderRadius: "3px",
-                    letterSpacing: "1.5px",
-                    marginTop: "1rem"
-                  }}
-                  type="submit"
-                  className="btn btn-large waves-effect waves-light hoverable blue accent-3"
-                >
-                  Login
-                </button>
-                </div>
-                <div>
-                 <button
-                  style={{
-                    width: "150px",
-                    borderRadius: "3px",
-                    letterSpacing: "1.5px",
-                    marginTop: "1rem"
-                  }}
-                  onClick={loginOut}
-                  type="submit"
-                  className="btn btn-large waves-effect waves-light hoverable red accent-3">
-                    Login Out
-                </button>
-                </div>
-
+              <label class="form-label" for="form1Example23">Password</label>
+            </div>
+  
+            <div class="d-flex justify-content-evenly">
+            {/* <!-- Submit button --> */}
+              <button type="submit" class="btn btn-primary btn-lg btn-block">Sign in</button>
+              <button type="button" onClick={loginOut} class="btn btn-primary btn-lg btn-block">Sign Out</button>
+           
+           
+            </div>
+            <div class="divider d-flex align-items-center my-4">
+            <p class="text-center fw-bold mx-3 mb-0 text-muted">
+                Don't have an account? <Link to="/register">Register</Link>
+              </p>
+              <p class="text-center fw-bold mx-3 mb-0 text-muted">OR</p>
+              <p class="text-center fw-bold mx-3 mb-0 text-muted" >
+                Back to <Link to="/"  className="btn-flat waves-effect">Home</Link>
+              </p>
+            </div>
+  
+  
+          </form>
         </div>
-      </form>
+      </div>
     </div>
-    <br/>
-    
-    <br/>
-    {loginInState? "" :" you are logged out"}
+  </section>
 
-    </div>
 
-   
-  )
+    </div>  )
   }
 
 

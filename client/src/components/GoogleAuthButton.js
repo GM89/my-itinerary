@@ -46,7 +46,7 @@ const GoogleAuthButton = () => {
     return(            
         <div>
             
-            <p> Google Login</p>
+            <p> Sign in with Google</p>
             
             <div>{singInButton()}</div>
             <div>{singOutButton()}</div>
