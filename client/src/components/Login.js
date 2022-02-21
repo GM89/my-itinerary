@@ -46,11 +46,11 @@ import {Link} from 'react-router-dom'
           console.log("respuesta existosa?", data.success)
           console.log("data!!!!!")
           console.log(data)      
-          loginUserSuccess(data.userData, data.tokenData);
+          dispatch(loginUserSuccess(data.userData, data.tokenData));
 
         } else if (data.success ===false){
           console.log("the error is catched", data.success )
-          loginUserFailure(data.message)
+          dispatch(loginUserFailure(data.message));
         }
       })
  
