@@ -87,6 +87,7 @@ const GOOGLE_CLIENT_ID = googleConfig.postman.client_id
 const GOOGLE_CLIENT_SECRET = googleConfig.postman.client_secret
 
 passport.use(new GoogleStrategy({
+     // options for google strategy
     clientID: GOOGLE_CLIENT_ID,
     clientSecret: GOOGLE_CLIENT_SECRET,
     callbackURL: "http://localhost:5000/auth/google/callback", //if success?

@@ -78,13 +78,14 @@ import {Link} from 'react-router-dom'
     <div>
     <section class="vh-100">
       
-    <h2>
-      <b>Login</b>
-    </h2>
+    <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Login</p>
+    
           <GoogleAuthButton/>
-          <p>User status logged in: {loggedIn? "You are connected":"You are  NOT connected"}</p>
+          <p class="text-center fw-bold mx-3 mb-0 text-muted">
+          User status logged in: {loggedIn? "You are connected":"You are NOT connected"}
 
-    {loginInState? "" :" you are logged out"}
+          {loginInState? "" :" you are logged out"}
+          </p>
 
     <div class="container py-5 h-100">
       <div class="row d-flex align-items-center justify-content-center h-100">

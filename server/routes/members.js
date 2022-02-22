@@ -15,7 +15,6 @@ router.get('/all',(req,res)=>{
         res.send(files)
     })
     .catch(e=>console.log(e))
-    
 }) 
 
 router.post("/add", async (req, res) => {

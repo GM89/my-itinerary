@@ -4,10 +4,11 @@
 const express = require('express');
 const router = express.Router();
 const passport = require('passport');
+const logOut = require('express-passport-logout');
 
 //-----------------------------
 //auth/google 
-router.get('/',
+router.get('/login',
   passport.authenticate('google', { scope: ['profile','email'] }));
 
 
@@ -22,13 +23,24 @@ router.get('/callback',
 
   const authenticated = (req, res, next) => { 
     const customError = new Error('you are not logged in'); 
-    customError.statusCode = 401; (!req.user) ? next(customError) : next() 
+    customError.statusCode = 401; (!req.user) ? next(customError) : next(); 
   }
 
 
   
 router.get('/getUser', authenticated,(req,res)=>res.send(req.user))
 
+
+router.get('/logout', function (req, res) {
+  logOut();
+    //req.logout();
+    //res.redirect('/');
+  console.log('logged out');
+  if(req.user){
+  res.send("We did NOT logged out. You're still logged")
+  }else{
+  res.send('you have logged out')}
+})
 
 
 

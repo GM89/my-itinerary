@@ -84,6 +84,7 @@ app.use('/activities', require('./routes/activities'));
 app.use('/members',require('./routes/members.js'));
 app.use('/auth',require('./routes/auth.js'));
 app.use('/auth/google',require('./routes/googleAuth.js'));
+app.use('/comments',require('./routes/comments.js'));
 
 
 

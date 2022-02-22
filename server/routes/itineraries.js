@@ -30,7 +30,7 @@ router.get("/:name_city", (req, res) => {
   });
   
 
-            ///-------------------ESTO NO FUNCIONA
+
           // ---------------GET  ONE SINGLE ITINERARY BY ID -------------
             router.get('/:id',
             (req, res) => {

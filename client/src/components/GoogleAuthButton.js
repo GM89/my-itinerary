@@ -12,11 +12,11 @@ const GoogleAuthButton = () => {
 
    //'_self	URL replaces the current page
    function signInGoogle () {
-    window.open("http://localhost:5000/auth/google","_self")
+    window.open("http://localhost:5000/auth/google/login","_self")
 
    }
    function signOutGoogle(){
-    window.open("http://localhost:5000/auth/logout","_self")
+    window.open("http://localhost:5000/auth/google/logout","_self")
    }
    
    const singInButton  = ()=> {
@@ -50,11 +50,7 @@ const GoogleAuthButton = () => {
             
             <div>{singInButton()}</div>
             <div>{singOutButton()}</div>
-
-         
-
-  
-        
+      
         </div>
     )
         
