@@ -2,14 +2,14 @@ const express = require('express')
 
 const router = express.Router()
 const CommentModel = require('./../model/CommentModel.js')
-const checkLoggedIn = require('./../middlewares/checkLoggedIn.js')
+
 
 const passport = require("passport");
 
 
 //route /comments/all
 router.get(
-  "/all",checkLoggedIn,
+  "/all",
   async (req, res) => {
 //    let itineraryIdRequested = req.params.name;
    await CommentModel
@@ -22,21 +22,33 @@ router.get(
   });
 //route /comments/allByItinerary
 
+
+
 /*get comment by ItineraryId*/
 //REST API query must be in json. It will return a json automatically.
 router.get(
   "/allByItinerary",
   async (req, res) => {
-//    let itineraryIdRequested = req.params.name;
-  
-   await CommentModel
-      .findOne({itineraryId: req.body.itineraryId }) 
-      .then(data => {
-        console.log("get all by Itinerary data", data)
-        res.send(data);
-      })
-      .catch(err => res.send(err));
-  });
+    {
+      try
+      {
+          console.log(req.body.itineraryId)
+          const comment = await CommentModel.findOne({itineraryId: "61c1c1cd6d1590cea5f48fed"})
+          if (comment) {              
+              console.log(comment)
+              res.status(200).send(comment)         
+          } else {
+              res.status(400).send("Comment not found")
+          }          
+      }
+      catch(e)
+      {
+          res.status(500).send("Server error: " + e.message)
+      }
+  }}
+  )
+
+
 
 
 
@@ -47,6 +59,7 @@ router.get(
       res.send(data);
     });
   });
+
 //route /comments/add
 /*add a comment CREATE*/
 router.post(
@@ -60,8 +73,6 @@ router.post(
       profilePicture:req.body.profilePicture,
      });
      //When we save the comment, it retuns its id
-
-
    /*   await CommentModel.findOne( {itineraryId: newComment.itineraryId})
      .then(each_comment=>{
          if(each_comment) res.status(501).send({message:'This comment already exists'})

@@ -53,7 +53,7 @@ router.post('/add',  async  (req, res) => {
        const newCity = new cityModel({
         city: req.body.city,
         country: req.body.country,
-        photoUrl: req.body.photoUrl
+        photoUrl: req.body.photoUrl,
        })
     
     await  cityModel.findOne( {city: newCity.city})
@@ -84,7 +84,6 @@ router.post('/add',  async  (req, res) => {
         cityModel.findOne({ city: cityRequested })
           .then(city => {
               res.send(city)
-              
           })
           .catch(err => console.log(err));
 });

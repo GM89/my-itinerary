@@ -1,5 +1,5 @@
 
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 
 
 const CommentSchema = new mongoose.Schema({
@@ -26,7 +26,8 @@ const CommentSchema = new mongoose.Schema({
         type: String,
         //unique: true,
     },
-
 })
-module.exports = mongoose.model('comment', CommentSchema)
+//The third argument there is the collection name to be used rather than what will be determined based on the model name.
+//module.exports = mongoose.model('Comment', CommentSchema)
 
+module.exports = mongoose.model('Comment', CommentSchema, "comments")
