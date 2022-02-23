@@ -3,12 +3,12 @@ import React from 'react';
 import { useNavigate, Link } from "react-router-dom";
 
 import { useEffect} from "react";
-
+import {useSelector} from 'react-redux'
 import {GoogleAuthButton} from "./GoogleAuthButton.js"
 
 function Navbar() {
+  const loggedIn = useSelector(state => state.members.loggedIn)
 
- 
 return (
   <div className="miNavbar">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -49,11 +49,13 @@ return (
                 Login
               </a>
             </li>
+            {loggedIn? ""  :
             <li className="nav-item ">
               <a className="nav-link" href="/register">
                 Register
               </a>
             </li>
+            }
           </ul>
         </div>
       </div>

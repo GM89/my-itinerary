@@ -62,7 +62,24 @@ const loginReducer = (state = initialState, action) => {
           //popup: true,
           loggedIn: false
         };
- 
+      case 'LOGIN_OUT_SUCCESS':
+        return {
+          user: {
+            favorites: [],
+            _id: "",
+            userName: "",
+            email: "",
+            token: "",
+            profilePicture: "",
+          
+          },
+          loading: false,
+          loadingFav: false,
+          errorMsg: "",
+          loggedIn: false,
+          
+           };
+
     default:
     return state
   }
