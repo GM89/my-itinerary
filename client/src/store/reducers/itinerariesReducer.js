@@ -13,7 +13,6 @@ const itinerariesReducers = (state = initialState2, action) => {
   switch(action.type) {
 
 
-
     case 'FETCH_ITINERARY/fetch_init':
       return{
                  ...state,

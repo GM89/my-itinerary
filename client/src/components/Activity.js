@@ -23,8 +23,7 @@ function Activity(props) {
 
       let mapping =  activitiesData && activitiesData.filter(x=>
             x.itineraryId === props.itineraryId
-        ).map(y=>{
-            
+        ).map(y=>{     
             return (
                 <div>
                     <h3>{y.activityName}</h3>

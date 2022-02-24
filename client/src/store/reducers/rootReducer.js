@@ -11,8 +11,7 @@ const rootReducer = combineReducers(
       error: errorReducer,
       itineraries: itinerariesReducers,
       activities: activitiesReducers,
-      members: loginReducer,
-            
+      members: loginReducer,            
     }
     );
 

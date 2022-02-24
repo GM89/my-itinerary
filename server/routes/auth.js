@@ -55,10 +55,9 @@ router.post("/login", (req,res, next) => {
           expiresIn:60000
         }
         const token = jwt.sign(payload, secretOrKey, options);
-        // return res.status(200).json({success: `logged in ${user.id}`.user, token});
-        
+               
         console.log("look at this token", token)
-        //let status = { success : true, message : 'authentication succeeded' }
+  
         return res.json({ success : true, message : 'authentication succeeded', userData: user, tokenData:token});
         
         })

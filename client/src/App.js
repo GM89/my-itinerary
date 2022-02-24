@@ -4,8 +4,8 @@ import './App.css';
 import { BrowserRouter, Route, Routes} from 'react-router-dom'
 import {Home} from './components/Home.js'
 import {Cities} from './components/cities/Cities.js'
-import { Itineraries } from './components/Itineraries';
-import { Itinerary } from './components/Itinerary';
+import { AllItineraries } from './components/AllItineraries';
+import { ItinerariesByCity } from './components/ItinerariesByCity';
 import { Login } from './components/Login';
 import { Register } from './components/Register';
 import { Navbar } from './components/Navbar';
@@ -25,8 +25,8 @@ function App() {
                   <Routes>         
                         <Route path='/' element={<Home/>}> </Route>
                         <Route exact path='/cities' element={<Cities/>}> </Route>
-                        <Route exact path='/itineraries/all' element={<Itineraries/>}> </Route>
-                        <Route exact path='/cities/itineraries/:city' element={<Itinerary/>}> </Route>
+                        <Route exact path='/itineraries/all' element={<AllItineraries/>}> </Route>
+                        <Route exact path='/cities/itineraries/:city' element={<ItinerariesByCity/>}> </Route>
                         <Route exact path='/login' element={<Login/>}> </Route>
                         <Route exact path='/register' element={<Register/>}> </Route>
                         

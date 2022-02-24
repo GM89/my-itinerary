@@ -44,15 +44,15 @@ import {Link} from 'react-router-dom'
         console.log("response en la fetch del front", response)
         const data = await response.json();
         if(data.success === true) {
-          console.log("response en la fetch del front", data)
-          console.log("respuesta existosa?", data.success)
-          console.log("data!!!!!")
-          console.log(data)      
+          console.log("response en la fetch del front", data);
+          console.log("respuesta existosa?", data.success);
+          console.log("data!!!!!");
+          console.log(data);      
           dispatch(loginUserSuccess(data.userData, data.tokenData));
           alert("You have logged in")
 
         } else if (data.success ===false){
-          console.log("the error is catched", data.success )
+          console.log("the error is catched", data.success);    
           dispatch(loginUserFailure(data.message));
           alert("There has been an error. Please try again");
         }
@@ -83,17 +83,21 @@ import {Link} from 'react-router-dom'
   
   return (
      <section class="vh-100" style={{ "background-color": "#eee" }}>
+     <div class="container h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
-          <div class="col-lg-12 col-xl-11">
-            <div class="card text-black" style={{ "border-radius": "25px" }}>
-              <div class="card-body p-md-5">
+        <div class="col-lg-12 col-xl-11">
+      
+            <div class="card text-black w-150" style={{ "border-radius": "25px" }}>
+           
+              <div class="card-body p-md-10">
+              
                 <p className="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">
                   Login
                 </p>
 
                 <GoogleAuthButton />
                 <p className="text-center fw-bold mx-3 mb-0 text-muted">
-                  User status logged in:{" "}
+                  User status logged in:
                   {loggedIn ? "You are logged in" : "You are NOT connected"}
                 </p>
 
@@ -209,10 +213,12 @@ import {Link} from 'react-router-dom'
                         Sign Out
                       </button>
                     </div>
-                  </div>
+                  
                 </div>
               </div>
             </div>
+          </div>
+           </div>
           </div>
         </div>
       </section>

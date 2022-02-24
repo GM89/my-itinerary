@@ -26,7 +26,14 @@ const activitiesReducers = (state = initialState, action) => {
                  activityLoaded: true,
                  activities:state.activities.concat(action.payload.data),               
             }
-    
+  case 'ERROR_ACTIVITES/get_list_failure':
+    return{
+                ...state,
+                activityLoaded: false,
+               msg: action.payload.action.msg,
+
+          }
+
  
     default:
     return state

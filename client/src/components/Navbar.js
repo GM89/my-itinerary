@@ -1,10 +1,8 @@
 import React from 'react';
 
-import { useNavigate, Link } from "react-router-dom";
-
-import { useEffect} from "react";
 import {useSelector} from 'react-redux'
 import {GoogleAuthButton} from "./GoogleAuthButton.js"
+import { Link} from 'react-router-dom'
 
 function Navbar() {
   const loggedIn = useSelector(state => state.members.loggedIn)
@@ -13,9 +11,9 @@ return (
   <div className="miNavbar">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">
+        <Link class="navbar-brand" to="#">
           Navbar
-        </a>
+        </Link>
         <button
           class="navbar-toggler"
           type="button"
@@ -30,30 +28,30 @@ return (
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li className="nav-item ">
-              <a className="nav-link" href="/">
+              <Link className="nav-link" to="/">
                 Home{" "}
-              </a>
+              </Link>
             </li>
             <li className="nav-item ">
-              <a className="nav-link" href="/cities">
+              <Link className="nav-link" to="/cities">
                 Cities{" "}
-              </a>
+              </Link>
             </li>
             <li className="nav-item ">
-              <a className="nav-link" href="itineraries/all">
+              <Link className="nav-link" to="itineraries/all">
                 All itineraries{" "}
-              </a>
+              </Link>
             </li>
             <li className="nav-item ">
-              <a className="nav-link" href="/login">
+              <Link className="nav-link" to="/login">
                 Login
-              </a>
+              </Link>
             </li>
             {loggedIn? ""  :
             <li className="nav-item ">
-              <a className="nav-link" href="/register">
+              <Link className="nav-link" to="/register">
                 Register
-              </a>
+              </Link>
             </li>
             }
           </ul>

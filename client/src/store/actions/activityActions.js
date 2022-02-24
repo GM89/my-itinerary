@@ -11,13 +11,18 @@ const port = '5000';
 const url = `http://localhost:${port}/`;
 
 
-                          export const fetchAllActivities = () => {
-                          return async dispatch =>  {
-                            const  response = await axios.get(`${url}activities/all`);
-                            const fetchedData = await response;
-                            
-                            dispatch(actionFetchSuccess(fetchedData.data));
-                          }}
+export const fetchAllActivities = () => {
+return async dispatch =>  {
+  dispatch(actionFetchInit()) 
+  try{
+    const  response = await axios.get(`${url}activities/all`);
+    const fetchedData = await response;
+    
+    dispatch(actionFetchSuccess(fetchedData.data));
+  }catch(e){
+    dispatch(actionFetchFailure)
+  }
+}}
 
 //------fetch by itineraryId
 //`${url}activities/it_it/${itineraryId}`
@@ -25,8 +30,6 @@ const url = `http://localhost:${port}/`;
 
 
 export const fetchActivitiesByItineraryId = (itineraryId) => {
-
-
     return async dispatch =>  {
      /*  dispatch(storeItineraryId(itineraryId)); */
       dispatch(actionFetchInit()) //1
@@ -34,16 +37,12 @@ export const fetchActivitiesByItineraryId = (itineraryId) => {
       try{ //2
         const  response = await axios.get(`http://localhost:5000/activities/it_id/${itineraryId}`);
         const fetchedData = await response;
-       
-
+   
         dispatch(actionFetchSuccess(fetchedData.data));
       }catch(e){
         dispatch(actionFetchFailure)
       }
         /*  const responseIt = await axios.get() */
-
-
-
     }}
 
 

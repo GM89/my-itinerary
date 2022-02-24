@@ -63,10 +63,13 @@ that is the ".data" key-value, and we do this when we write fetchedData.data.
   return (
    <div>
     <p>cities.js is here</p>
+    <div class="container">
   
-    <table>
+    <div class="row row-cols-2 row-cols-md-2 g-4  px-5 ">
      {mapping}
-    </table>
+    </div>
+    </div>
+    
   </div>  
 
   )

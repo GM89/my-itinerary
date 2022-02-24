@@ -7,10 +7,14 @@ import {ItineraryItem} from './ItineraryItem'
 import {connect} from "react-redux";
 
            
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
 
 
      
-function Itinerary(props) {
+function ItinerariesByCity(props) {
 
 
   const {city} = useParams();
@@ -42,8 +46,7 @@ const itineraryData = useSelector(state => state.itineraries.itineraries.data)
     let mapping =  ((itineraryData  && itineraryData.map(x=>{
       let itineraryIdString = x._id.valueOf()
           return (
-            <div id = "itinerary">
-                                                           
+            <div id = "itinerary">                             
                 <ItineraryItem itineraryId={itineraryIdString}
                   title={x.title}
                   price={x.price}
@@ -56,8 +59,7 @@ const itineraryData = useSelector(state => state.itineraries.itineraries.data)
 
       return (
       <div>
-        <p>itinerary of Wakanda will be here</p>
-        <p> {city}</p>
+        <h1>{capitalizeFirstLetter(city)}</h1>
 
         <div>
           {mapping}
@@ -68,7 +70,7 @@ const itineraryData = useSelector(state => state.itineraries.itineraries.data)
 } 
 
   
-export default connect()(Itinerary);
+export default connect()(ItinerariesByCity);
 
-export  {Itinerary};
+export  {ItinerariesByCity};
 

@@ -2,7 +2,8 @@ import React, { useEffect } from 'react';
 import {fetchAllItineraries} from '../store/actions/itineraryActions.js';
 import { useSelector, useDispatch } from "react-redux";
 
-
+import {fetchAllActivities} from '../store/actions/activityActions.js';
+import {ItineraryItem} from './ItineraryItem'
             /*   console.log(dispatch, 'el dispatch') */
             // Los estados se cargan antes que el componente se cargue, 
             //const [filter, setFilter] = useState('')
@@ -20,13 +21,16 @@ import { useSelector, useDispatch } from "react-redux";
             //const [data, setData] = useState('')
             */
 
-function Itineraries() {
+function AllItineraries() {
 
 /* Note! There could have been asyncrony troubles here. itineraryData intitial data is read and mounted before useEffect, meaning that fetch has not been done
 therefore we don't have access to entire state object, but just partially. 
 state.itineraries.itineraries.data.data (where the itineraries are) can't be read right now because fetch hasn't download it. 
 So initialy itineraryData is dummy variable that only gets itineraries.itineraries.data*/
 const itineraryData = useSelector(state => state.itineraries.itineraries.data)
+const activitiesData = useSelector(state => state.activities.activities)
+
+
 const dispatch = useDispatch();
 console.log(itineraryData,'itineraryData here');
 
@@ -37,29 +41,57 @@ that is the ".data" key-value, and we do this when we write fetchedData.data.
  */
 
 
+  
+
   useEffect( () => {
    const loadItineraries = async()=> {
    await dispatch(fetchAllItineraries())
    };
    loadItineraries();
+
+
+   const loadAct= async()=> {
+    await dispatch(fetchAllActivities())
+    };
+
+    loadAct()
+   
+
+   
   },[dispatch] );
 
  let mapping =  ((itineraryData  && itineraryData.map(x=>{
       return (
-        <tr key={x.title}>
-          <td> {x.title}</td>
-          <td> {x.name_itineraries}</td> 
-          <td> {x.rating}</td> 
-          <td> <img  className="photoUrl" src={x.picture} alt={x.name_itineraries}/> </td>
-        </tr> ) })) ) 
+        <div class="col gx-4">
+        <div class="card">
+          <img  className="photoUrl" src={x.picture} alt={x.name_itineraries}/> 
+          <div class="card-body">
+          <h5 class="card-title">{x.title}</h5>
+            <p class="card-text">{x.name_itineraries}</p>
+            <p class="card-text">Rating: {x.rating} stars</p>
+            <p class="card-text">ItineraryId: {x._id}</p>
+
+            <ItineraryItem itineraryId={x._id}
+                  title={x.title}
+                  price={x.price}
+                  rating={x.rating}
+                  picture={x.picture}/>
+            <button class="btn btn-primary">Check their activities</button>
+          </div>
+        
+       </div>
+      </div>
+      )
+        })) ) 
+        
 
   return (
    <div>
-    <p>itineraries.js is here</p>
+    <h1>Itineraries</h1>
+    <div class="row row-cols-1 row-cols-md-2 g-4  px-5">
 
-    <table>
-     {mapping}
-    </table>
+      {mapping}
+   </div>
   </div>  
 
   )
@@ -69,6 +101,6 @@ that is the ".data" key-value, and we do this when we write fetchedData.data.
 
 
 
-export  {Itineraries};
+export  {AllItineraries};
 
 
