@@ -62,25 +62,15 @@ that is the ".data" key-value, and we do this when we write fetchedData.data.
 
  let mapping =  ((itineraryData  && itineraryData.map(x=>{
       return (
-        <div class="col gx-4">
-        <div class="card">
-          <img  className="photoUrl" src={x.picture} alt={x.name_itineraries}/> 
-          <div class="card-body">
-          <h5 class="card-title">{x.title}</h5>
-            <p class="card-text">{x.name_itineraries}</p>
-            <p class="card-text">Rating: {x.rating} stars</p>
-            <p class="card-text">ItineraryId: {x._id}</p>
-
+ 
             <ItineraryItem itineraryId={x._id}
                   title={x.title}
                   price={x.price}
                   rating={x.rating}
                   picture={x.picture}/>
-            <button class="btn btn-primary">Check their activities</button>
-          </div>
-        
-       </div>
-      </div>
+           
+              
+       
       )
         })) ) 
         

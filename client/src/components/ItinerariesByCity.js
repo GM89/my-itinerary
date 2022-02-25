@@ -7,7 +7,7 @@ import {ItineraryItem} from './ItineraryItem'
 import {connect} from "react-redux";
 
            
-function capitalizeFirstLetter(string) {
+export function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
@@ -61,8 +61,10 @@ const itineraryData = useSelector(state => state.itineraries.itineraries.data)
       <div>
         <h1>{capitalizeFirstLetter(city)}</h1>
 
-        <div>
+        <div className="container">
+        <div class="row row-cols-1 g-4  px-5">
           {mapping}
+        </div>
         </div>
       </div>  
 

@@ -1,25 +1,5 @@
 import React from 'react'
-
-
-
-/*
-const GoBackButton = () => {
-
-    
-    let navigate = useNavigate();
-    
-      function handleClick() {
-            navigate('/home')
-        }^
-  
-    return (
-     
-      <button type="button" className="btn btn-secondary" onClick={handleClick}>
-        Go back
-      </button>
-    );
-  }*/
-
+import logo from "../images/myItineraryLogo.png";
 
 
 function Home() {
@@ -28,7 +8,18 @@ function Home() {
  
     return (
       <div>
-        <p>Home</p>
+        <div className="container">
+          <div className="landingPageContents">
+  
+            <img class=" .logo mx-auto"src={logo}  alt="Responsive image"/>
+    
+  
+            <h2 className=" text-center">
+              Find your perfect trip, designed by insiders who know and love
+              their cities
+            </h2>
+          </div>
+        </div>
       </div>
     );
 }

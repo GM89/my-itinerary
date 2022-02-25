@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import {fetchCities} from '../../store/actions/cityActions.js';
 import { useSelector, useDispatch } from "react-redux";
-
+import { capitalizeFirstLetter } from '../ItinerariesByCity.js';
 
 import {City} from './City.js'
             /*   console.log(dispatch, 'el dispatch') */
@@ -28,6 +28,9 @@ therefore we don't have access to entire state object, but just partially.
 state.cities.cities.data.data (where the cities are) can't be read right now because fetch hasn't download it. 
 So initialy cityData is dummy variable that only gets cities.cities.data*/
 const cityData = useSelector(state => state.cities.cities.data)
+const itineraryData = useSelector(state => state.itineraries.itineraries.data);
+
+
 const dispatch = useDispatch();
 
 
@@ -47,10 +50,12 @@ that is the ".data" key-value, and we do this when we write fetchedData.data.
 
 
      
-    let mapping =  ((cityData  && cityData.map(x=>{  
-      let city = (x.city)
-      let cityLowCase = city && city.toLowerCase()  //mirko
-      let props = {city: x.city, cityLowcase: cityLowCase, country:cityLowCase, photoUrl:x.photoUrl}
+    let citiesMapped =  ((cityData  && cityData.map(x=>{  
+   
+      let cityCapitalLetter = capitalizeFirstLetter(x.city)
+      let city = x.city
+      let cityLowCase = city.toLowerCase()
+      let props = {city: x.city, cityLowCase: cityLowCase, cityCapitalLetter: cityCapitalLetter, country:x.country, photoUrl:x.photoUrl}
     
           return (
             
@@ -58,17 +63,20 @@ that is the ".data" key-value, and we do this when we write fetchedData.data.
           
             ) 
           })) ) 
+
+    function hasItinerary(cityId) {
+
+
+    }
       
 
   return (
    <div>
-    <p>cities.js is here</p>
-    <div class="container">
-  
+    
     <div class="row row-cols-2 row-cols-md-2 g-4  px-5 ">
-     {mapping}
+     {citiesMapped}
     </div>
-    </div>
+
     
   </div>  
 
