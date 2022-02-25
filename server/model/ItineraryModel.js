@@ -32,7 +32,7 @@ const itinerarySchema = new mongoose.Schema({
            },
     name_city: {
         type: String,
-        ref: 'cities',  //hace referenci a la coleccion cities
+        // ref: 'cities',  //hace referenci a la coleccion cities
         required: true
     },
     })

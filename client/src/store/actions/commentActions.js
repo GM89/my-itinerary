@@ -8,26 +8,16 @@ const url = `http://localhost:${port}/`;
 
 
 
-export function commentsByItinerary(itineraryIdToCheck) {
+export function commentsByItineraryId(itineraryIdToCheck) {
     return async dispatch =>  {
-      
+
           dispatch(commentBegin());
       try{
-      await fetch('http://localhost:5000/comments/allByItinerary', {
-        method: 'GET',
-        headers:{
-          'Content-Type':'application/json',  
-        },
-        body: JSON.stringify({
-          itineraryId: itineraryIdToCheck,
-        })
-      }).then((response) => {
-  
-      const fetchedData = response;
-    
-      dispatch(commentSuccess(fetchedData));
-      })
-    
+      const response = await axios.get('http://localhost:5000/comments/byitid/'+ itineraryIdToCheck);
+      const fetchedData = await response;
+      console.log("fetchedata", fetchedData)
+
+      dispatch(commentSuccess(fetchedData.data));
       }  catch(error){
         dispatch(commentFailure(error));
       }

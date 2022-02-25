@@ -30,7 +30,6 @@ function Activity(props) {
                     <p>Itinerary id: {y.itineraryId}</p>
                     <p>{y.location}</p>
                     <p>{y.duration}</p>
-                    <p>{y.comments}</p>
                 </div>
             )
         })

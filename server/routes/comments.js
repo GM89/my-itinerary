@@ -26,14 +26,16 @@ router.get(
 
 /*get comment by ItineraryId*/
 //REST API query must be in json. It will return a json automatically.
-router.get(
+router.post(
   "/allByItinerary",
   async (req, res) => {
     {
       try
       {
-          console.log(req.body.itineraryId)
-          const comment = await CommentModel.findOne({itineraryId: "61c1c1cd6d1590cea5f48fed"})
+          const searchItineraryId = req.body.itineraryId;
+          console.log(searchItineraryId);
+
+          const comment = await CommentModel.findOne({itineraryId: searchItineraryId})
           if (comment) {              
               console.log(comment)
               res.status(200).send(comment)         
@@ -52,16 +54,16 @@ router.get(
 
 
 
+//route  comments/byitid/
 
-  router.get("/:itineraryId", (req, res) => {
+  router.get("/byitid/:itineraryId", (req, res) => {
     CommentModel.find({itineraryId: req.params.itineraryId}, (err, data) => {
       if (err) res.send(err);
       res.send(data);
     });
   });
 
-//route /comments/add
-/*add a comment CREATE*/
+//route /comments/post
 router.post(
   "/post",
   async (req, res) => {

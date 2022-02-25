@@ -45,6 +45,21 @@ Afterwards,I  call save(). This mongoose method will return a promise.
 If resolved it can send back the object created in my response. If rejected we'll need to debug!*/
 
 
+/*get Itineraries for a city by City's ID*/
+router.get("/:id", (req, res) => {
+  console.log("get city begins")
+    cityModel
+    .findOne({ city_id: req.params.id })
+    .then(files => {
+      res.send(files);
+    })
+    .catch(err => console.log(err));
+});
+
+
+
+
+
 
 
 

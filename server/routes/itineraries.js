@@ -31,21 +31,20 @@ router.get("/:name_city", (req, res) => {
   
 
 
-          // ---------------GET  ONE SINGLE ITINERARY BY ID -------------
-            router.get('/:id',
-            (req, res) => {
-                  let itineraryRequested = req.params.id;
-                  itineraryModel.findOne({ _id: itineraryRequested })
-                    .then(itinerary => {
-                        res.send(itinerary)
-                        
-                    })
-                    .catch(err => console.log(err));
-            });
-            
-            router.post("/prova",(req,res)=>{
-              res.send('I m try')
-            })
+// ---------------GET  ONE SINGLE ITINERARY BY ID -------------
+  router.get("/byid/:id", (req, res) => {
+    console.log("get itinerary begins")
+    itineraryModel
+      .findOne({ _id: req.params.id })
+      .then((itinerary) => {
+        res.send(itinerary);
+      })
+      .catch((err) => console.log(err));
+  });
+  
+
+
+
             
 
 // POST /itineraries/barcelona-------------------------------

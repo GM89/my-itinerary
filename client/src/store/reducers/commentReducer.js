@@ -2,7 +2,7 @@
 
 // actions refer to loginActions.js
 const initialState = {
-  comments: [],
+  allComments: [],
   loading: false,
 }
 
@@ -21,7 +21,7 @@ const commentReducer = (state = initialState, action) => {
     case 'COMMENT_FETCH_SUCCESS':
       return {
         ...state,
-        comments: action.payload.data,
+        allComments: action.payload.comments,
         loading: false,
   
       };

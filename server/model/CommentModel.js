@@ -28,6 +28,6 @@ const CommentSchema = new mongoose.Schema({
     },
 })
 //The third argument there is the collection name to be used rather than what will be determined based on the model name.
-//module.exports = mongoose.model('Comment', CommentSchema)
+module.exports = mongoose.model('Comment', CommentSchema)
 
-module.exports = mongoose.model('Comment', CommentSchema, "comments")
+//module.exports = mongoose.model('Comment', CommentSchema, "comments")

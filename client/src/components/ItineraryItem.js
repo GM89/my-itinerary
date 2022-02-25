@@ -29,16 +29,14 @@ function ItineraryItem(props) {
 therefore we don't have access to entire state object, but just partially. 
 state.itineraries.itineraries.data.data (where the itineraries are) can't be read right now because fetch hasn't download it. 
 So initialy itineraryData is dummy variable that only gets itineraries.itineraries.data*/
-  const itineraryData = useSelector(
-    (state) => state.itineraries.itineraries.data
-  );
-  console.log(itineraryData, "itineraryData here");
+
 
   /*UseEffect invoked immediately after a component is mounted.it is also called everytime its dispatch change its values, that is, when there's a new fetch
 On the previous section topic, here we have access to whole already fetched state, so we could go itineraries.itineraries.data.data. Where do we do this?
 In the itinerariesActions fetchitineraries() downloads the whole state as 'fetchedData', and now we can access to where the itineraries are.
 that is the ".data" key-value, and we do this when we write fetchedData.data.
  */
+
 
   return (
     <div class="col gx-4">
@@ -73,9 +71,33 @@ that is the ".data" key-value, and we do this when we write fetchedData.data.
               <div class="accordion-body">
                 <Activity itineraryId={props.itineraryId} />
               </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion" id="accordionExample">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+              <button
+                class="accordion-button"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseOne"
+                aria-expanded="true"
+                aria-controls="collapseOne"
+              >
+                Reviews
+              </button>
+            </h2>
+            <div
+              id="collapseOne"
+              class="accordion-collapse collapse show"
+              aria-labelledby="headingOne"
+              data-bs-parent="#accordionExample"
+            >
               <div class="accordion-body">
                 <Comments itineraryId={props.itineraryId} />
-                </div>
+              </div>
             </div>
           </div>
         </div>

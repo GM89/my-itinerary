@@ -109,7 +109,6 @@ router.post("/newActivity",async (req, res) => {
       duration: req.body.duration,
       price: req.body.price,
       comments: req.body.comments,    
-    
     };
     activityModel.findOneAndUpdate({ activityId: req.params.activityId }, updatedActivity)
       .then(activity => res.json({ success: true }))
