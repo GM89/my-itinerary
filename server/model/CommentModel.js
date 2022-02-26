@@ -6,7 +6,9 @@ const CommentSchema = new mongoose.Schema({
     itineraryId: {
         type: String,
         required: true,
-       
+    },
+    userName: {
+        type: String,
     },
     text: {
         type: Array,

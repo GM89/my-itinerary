@@ -48,6 +48,7 @@ that is the ".data" key-value, and we do this when we write fetchedData.data.
         />
         <p>Price: € {props.price}</p>
         <p>Rating:{props.rating} stars</p>
+        
         <div class="accordion" id="accordionExample">
           <div class="accordion-item">
             <h2 class="accordion-header" id="headingOne">
@@ -77,7 +78,7 @@ that is the ".data" key-value, and we do this when we write fetchedData.data.
 
         <div class="accordion" id="accordionExample">
           <div class="accordion-item">
-            <h2 class="accordion-header" id="headingOne">
+            <h2 class="accordion-header" id="headingTwo">
               <button
                 class="accordion-button"
                 type="button"
@@ -101,6 +102,9 @@ that is the ".data" key-value, and we do this when we write fetchedData.data.
             </div>
           </div>
         </div>
+
+
+
       </div>
     </div>
   );

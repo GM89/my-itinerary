@@ -71,6 +71,7 @@ router.post(
       itineraryId: req.body.itineraryId,
       text: req.body.text,
       memberId: req.body.memberId,
+      userName: req.body.userName,
       timestamp: req.body.timestamp,
       profilePicture:req.body.profilePicture,
      });
