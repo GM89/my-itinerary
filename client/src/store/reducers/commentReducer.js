@@ -4,6 +4,7 @@
 const initialState = {
   allComments: [],
   loading: false,
+  errorComments:{},
 }
 
 
@@ -31,6 +32,7 @@ const commentReducer = (state = initialState, action) => {
         loading: false,
         errorComments: action.payload.error,
       };
+      
 
     case 'COMMENT_POST_SUCCESS':
       return {

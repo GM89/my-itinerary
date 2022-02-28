@@ -3,6 +3,9 @@ import axios from "axios";
 const port = "5000";
 const url = `http://localhost:${port}/`;
 
+
+
+/// -----fetching  comments from MongoDB
 export function commentsByItineraryId(itineraryIdToCheck) {
   return async (dispatch) => {
     dispatch(commentBegin());
@@ -19,17 +22,38 @@ export function commentsByItineraryId(itineraryIdToCheck) {
     }
   };
 }
-
-export function commentsPostByItinerary(itineraryIdToCheck) {
+/// ----- posting a comment
+export function commentsPostByItinerary(commentObject ) {
   return async (dispatch) => {
     // dispatch(commentBegin());
     try {
-      const response = await axios.post("http://localhost:5000/comments/post");
+
+           
+
+       const response =  await fetch('http://localhost:5000/comments/post', {
+          method: 'POST',
+          headers:{
+            'Content-Type':'application/json',  
+          },
+          body: JSON.stringify({
+            itineraryId: commentObject.itineraryId,
+            text: commentObject.text, 
+            memberId: commentObject.memberId,
+            timestamp: commentObject.timestamp,
+            profilePicture: commentObject.profilePicture,
+            userName: commentObject.userName,
+            city: commentObject.city
+          })
+       })
+      
+      
+      
       const commentPosted = await response;
       console.log("commentBeingPosted", commentPosted);
-      dispatch(commentSuccess(commentPosted));
+      dispatch(commentPostSuccess(commentPosted));
     } catch (error) {
-      dispatch(commentFailure(error));
+      console.log("error when posting comment", error)
+      dispatch(commentPostFailure(error));
     }
   };
 }
@@ -49,6 +73,13 @@ export const commentSuccess = (data) => ({
 
 export const commentFailure = (err) => ({
   type: "COMMENT_FETCH_FAILURE",
+  payload: {
+    error: err,
+  },
+});
+
+export const commentPostFailure = (err) => ({
+  type: "COMMENT_POST_FAILURE",
   payload: {
     error: err,
   },

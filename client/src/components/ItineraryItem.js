@@ -97,7 +97,7 @@ that is the ".data" key-value, and we do this when we write fetchedData.data.
               data-bs-parent="#accordionExample"
             >
               <div class="accordion-body">
-                <Comments itineraryId={props.itineraryId} />
+                <Comments itineraryId={props.itineraryId} city={props.city}/>
               </div>
             </div>
           </div>

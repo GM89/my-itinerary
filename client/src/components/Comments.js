@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { commentsByItineraryId } from "./../store/actions/commentActions";
+import { commentsByItineraryId , commentsPostByItinerary} from "./../store/actions/commentActions";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import moment from "moment";
@@ -43,13 +43,11 @@ function Comments(props) {
     const m = moment(timestamp);
     const minutes = moment(timestamp).minute();
     const hours = moment(timestamp).hours();
-
     const month = m.format("MMMM");
     const day = m.format("D");
     const year = m.format("YYYY");
     const date = moment(timestamp).format("MMMM Do YYYY");
     const fromNow = m.fromNow();
-
     const dateObject = {
       minutes: minutes,
       hours: hours,
@@ -66,16 +64,24 @@ function Comments(props) {
 
     const CurrentDate = moment().toISOString();
 
-    setComment({
-      itineraryId: props.ItineraryId,
-      text: [],
+    
+    const commentObject = ({
+      itineraryId: props.itineraryId,
+      text: [newCommentState],
       memberId: authenticatedUser._id,
       timestamp: CurrentDate,
       profilePicture: authenticatedUser.profilePicture,
       userName: authenticatedUser.userName,
       city: props.city,
     });
+    console.log("comentario objecto", commentObject)
+   dispatch(commentsPostByItinerary(commentObject))
+
+
+
+  console.log("newcomment state", newCommentState)
   }
+
 
   let mappingComments =
     commentsData &&
@@ -83,9 +89,7 @@ function Comments(props) {
       .filter((x) => x.itineraryId === props.itineraryId)
       .map((y) => {
         const date = convertToDate(y.timestamp);
-
         const name = capitalLetters(y.userName);
-
         return (
           <div class="d-flex flex-row p-3">
             <img
@@ -111,7 +115,7 @@ function Comments(props) {
         );
       });
 
-  const newMessage = 1;
+
 
   return (
     <div class="container mt-5 mb-5">
@@ -123,24 +127,32 @@ function Comments(props) {
             </div>
 
             <div class="mt-3 d-flex flex-row align-items-center p-3 form-color">
+
               <img
                 src={authenticatedUser.profilePicture}
                 width="50"
                 class="rounded-circle mr-2"
               />
-               <form onSubmit={(e) => newComment(e)}>
-              <input
-                type="text"
-                class="form-control"
-                placeholder="Enter your comment..."
-                onChange={(e) =>
-                  setComment((x) => ({
-                    ...x,
-                    text: e.target.value,
-                  }))}
-              />
-              </form>
-              
+                <form onSubmit={(e) => newComment(e)}>
+                <div class="d-flex justify-content-center">
+                  <input id="input-comments"
+                      type="text"
+                      class="form-control"
+                      placeholder="Enter your comment..."
+                      onChange={(e) =>
+                        setComment((x) => ({
+                          ...x,
+                          text: e.target.value,
+                        }))}
+                    />   
+                       <button id="submit-button-comments" type="submit">                
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-send" viewBox="0 0 16 16">
+                          <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576 6.636 10.07Zm6.787-8.201L1.591 6.602l4.339 2.76 7.494-7.493Z"/>
+                        </svg>
+                      </button> 
+                      </div>
+                </form>
+                     
             </div>
 
             <div class="mt-2">{mappingComments}</div>
