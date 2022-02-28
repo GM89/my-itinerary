@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { commentsByItineraryId } from "./../store/actions/commentActions";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { YahooLoginButton } from "react-social-login-buttons";
+import moment from 'moment'
 
 function Comments(props) {
   const commentsData = useSelector((state) => state.comments.allComments);
@@ -28,29 +28,27 @@ function Comments(props) {
   }
 
 
-  function convertToDate(stringTime){
+  function convertToDate(timestamp){
 
  
-   const date = new Date(stringTime)
+      const m = moment(timestamp)
+      const minutes = moment(timestamp).minute();
+      const hours =moment(timestamp).hours()
+   
+      const month = m.format('MMMM');
+      const day   = m.format('D');
+      const year  = m.format('YYYY');
+      const date = moment(timestamp).format('MMMM Do YYYY')
+      const fromNow = m.fromNow(); 
 
-   const monthName = date.toLocaleString('default', { month: 'long' });
-    const timeUTC = date.getTime()
-    const minutes = date.getUTCMinutes()
 
-
-    
-    const hours = date.getUTCHours()
-    const day = date.getUTCDate()
-    const month = date.getUTCMonth()
-    const year = date.getFullYear()
    const dateObject = {
       minutes: minutes,
       hours: hours,
       day: day,
       month: month,
-      monthName: monthName,
       year: year,
-
+      fromNow: fromNow,
     }
     return dateObject
   }
@@ -78,7 +76,8 @@ let mappingComments =
                   <div class="d-flex flex-row align-items-center">
                     <span class="mr-2">{name}</span>
                   </div>{" "}
-                  <small>Date: {date.day} of {date.monthName} {date.year} - at {date.hours}: {date.minutes}h </small>
+                  <small>{date.fromNow} </small>
+                  <small>Date: {date.day} of {date.month} {date.year} - at {date.hours}: {date.minutes}h </small>
                 </div>
                 <p class="text-justify comment-text mb-0">{y.text}</p>
               </div>
