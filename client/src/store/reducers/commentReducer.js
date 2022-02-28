@@ -30,9 +30,21 @@ const commentReducer = (state = initialState, action) => {
         ...state,
         loading: false,
         errorComments: action.payload.error,
-   
       };
-   
+
+    case 'COMMENT_POST_SUCCESS':
+      return {
+        ...state,
+        allComments:state.comments.allComments.concat([action.payload.comments]),
+        loading: false,
+      };
+
+    case 'COMMENT_POST_FAILURE':
+      return {
+        ...state,
+        loading: false,
+        errorComments: action.payload.error,
+      };
 
     default:
     return state

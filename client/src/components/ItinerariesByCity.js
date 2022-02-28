@@ -51,7 +51,8 @@ const itineraryData = useSelector(state => state.itineraries.itineraries.data)
                   title={x.title}
                   price={x.price}
                   rating={x.rating}
-                  picture={x.picture}/>
+                  picture={x.picture}
+                  city={x.name_city}/>
               </div>
 
             

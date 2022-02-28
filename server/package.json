@@ -14,6 +14,7 @@
     "bcrypt": "^5.0.1",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
+    "bootstrap-icons": "^1.8.1",
     "classnames": "^2.3.1",
     "concurrently": "^6.4.0",
     "connect-flash": "^0.1.1",
