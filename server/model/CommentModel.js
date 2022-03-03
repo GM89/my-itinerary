@@ -9,6 +9,7 @@ const CommentSchema = new mongoose.Schema({
     },
     userName: {
         type: String,
+        required:true,
     },
     text: {
         type: Array,
@@ -16,11 +17,14 @@ const CommentSchema = new mongoose.Schema({
     },
     memberId: {
         type: String,
-        required: true,
+        //required: true,
         //unique: true,
     },
+    city: {
+        type: String,
+    },
     timestamp: {
-        type: Number,
+        type: Date,
         //It is not 'required' because some users can login with Google, and then password is not used.
        // required: true, )
     },

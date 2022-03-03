@@ -6,7 +6,7 @@ import moment from "moment";
 import { withSetStateAllowed } from "enzyme/build/Utils";
 
 function Comments(props) {
-  const [newCommentState, setComment] = useState({
+/*   const [newCommentState, setComment] = useState({
     itineraryId: "",
     text: [],
     memberId: "",
@@ -14,7 +14,8 @@ function Comments(props) {
     profilePicture: "",
     userName: "",
     city: "",
-  });
+  }); */
+  const[newTextState, setState] = useState([])
 
   const commentsData = useSelector((state) => state.comments.allComments);
   const authenticatedUser = useSelector((state) => state.members.user);
@@ -29,6 +30,7 @@ function Comments(props) {
   }, [dispatch]);
 
   console.log("commentsData", commentsData);
+  console.log("ciudad:", props.city)
 
   function capitalLetters(string) {
     const words = string.split(" ");
@@ -38,6 +40,7 @@ function Comments(props) {
       })
       .join(" ");
   }
+
 
   function convertToDate(timestamp) {
     const m = moment(timestamp);
@@ -59,27 +62,32 @@ function Comments(props) {
     return dateObject;
   }
 
+
+
+  
   async function newComment(event) {
     event.preventDefault();
 
-    const CurrentDate = moment().toISOString();
-
-    
-    const commentObject = ({
+    const CurrentDate = moment().toDate();
+    console.log("what is current date?", CurrentDate)
+    console.log("tipo de dato", typeof CurrentDate)
+    console.log("qué ciudad?", props.city)
+   
+    const commentObject = {
       itineraryId: props.itineraryId,
-      text: [newCommentState],
+      text: [newTextState],
       memberId: authenticatedUser._id,
       timestamp: CurrentDate,
       profilePicture: authenticatedUser.profilePicture,
       userName: authenticatedUser.userName,
       city: props.city,
-    });
+    };
     console.log("comentario objecto", commentObject)
    dispatch(commentsPostByItinerary(commentObject))
 
 
 
-  console.log("newcomment state", newCommentState)
+  //console.log("newcomment state", newCommentState)
   }
 
 
@@ -140,10 +148,7 @@ function Comments(props) {
                       class="form-control"
                       placeholder="Enter your comment..."
                       onChange={(e) =>
-                        setComment((x) => ({
-                          ...x,
-                          text: e.target.value,
-                        }))}
+                        setState(e.target.value)}
                     />   
                        <button id="submit-button-comments" type="submit">                
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-send" viewBox="0 0 16 16">

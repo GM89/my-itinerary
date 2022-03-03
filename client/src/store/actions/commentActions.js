@@ -44,9 +44,7 @@ export function commentsPostByItinerary(commentObject ) {
             userName: commentObject.userName,
             city: commentObject.city
           })
-       })
-      
-      
+       })         
       
       const commentPosted = await response;
       console.log("commentBeingPosted", commentPosted);

@@ -7,11 +7,31 @@ const CommentModel = require('./../model/CommentModel.js')
 const passport = require("passport");
 
 
+
+
+//getcomment by id  /comments/.:id
+
+
+
+router.get("/byid/:id",
+  async (req, res) => {
+   await CommentModel
+      .findOne({_id: req.params.id}) 
+      .then(data => {
+        console.log("get 1 comment", data)
+        res.send(data);
+      })
+      .catch(err => res.send(err));
+  });
+
+
+
+
+
 //route /comments/all
 router.get(
   "/all",
   async (req, res) => {
-//    let itineraryIdRequested = req.params.name;
    await CommentModel
       .find({}) 
       .then(data => {

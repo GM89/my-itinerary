@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import { useNavigate } from "react-router-dom";
 import {GoogleAuthButton} from './GoogleAuthButton'
 import {authGoogle, loginUserBegin, loginUserSuccess, loginUserFailure, loginOutSuccess} from './../store/actions/loginActions'
 import {useSelector, useDispatch} from 'react-redux'
@@ -12,6 +13,7 @@ import {Link} from 'react-router-dom'
 
  function Login({ setToken }) {
 
+  const navigate = useNavigate()
   const dispatch = useDispatch();
 
 
@@ -66,17 +68,19 @@ import {Link} from 'react-router-dom'
     /* prevent the default behaviour caused by the event itself.
      Keep it from attempting to refresh the browser as the browser
     tries to submit the form to some back end server that doesn't exist */
-        await fetch('http://localhost:5000/auth/logout', {
-        method: 'GET',
-        headers:{
-          'Content-Type':'application/json',  
-        },
-        withCredentials: true,
-      }).then ( ()=>{ dispatch(loginOutSuccess())
-      alert("You have logged out")}
-      
-      )
-      .catch(error => console.error("ERROR: ", error));
+        await fetch("http://localhost:5000/auth/logout", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          withCredentials: true,
+        })
+          .then(() => {
+            dispatch(loginOutSuccess());
+            alert("You have logged out");
+            navigate('/home');
+          })
+          .catch((error) => console.error("ERROR: ", error));
   }
 
     
