@@ -59,13 +59,13 @@ const itineraryData = useSelector(state => state.itineraries.itineraries.data)
             ) })) ) 
 
       return (
-        <section class="vh-100" style={{ "background-color": "#eee" }}>
+        <section class="vh-100" style={{ "backgroundColor": "#eee" }}>
           <div class="container h-100">
             <div class="row d-flex justify-content-center align-items-center h-100">
               <div class="col-lg-12 col-xl-11">
                 <div
                   class="card text-black w-150"
-                  style={{ "border-radius": "25px" }}
+                  style={{ "borderRadius": "25px" }}
                 >
                   <div>
                     <h1>{capitalizeFirstLetter(city)}</h1>

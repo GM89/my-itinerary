@@ -12,7 +12,12 @@ code {
     monospace;
 }
 
-
+.photoUrl{
+    float: left;
+    width:  100%;
+    height: 350px;
+    object-fit: cover;
+}
 .logo{
     max-width: 100%;
    height: 200px;

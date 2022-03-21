@@ -6,7 +6,7 @@ export function City(props) {
 //props.city props.country props.photoUrl
     return (
       <div class="col">
-          <div class="card mb-5 ">
+          <div class="card mb-5 "  style={{ "borderRadius": "25px" }}>
           <div class="card-title"><h4>{props.cityCapitalLetter}</h4></div>
             <img  className="photoUrl" src={props.photoUrl}/> 
             <div class="card-body">

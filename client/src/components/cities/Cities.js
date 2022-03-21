@@ -11,7 +11,7 @@ import {City} from './City.js'
                     getData()
                     }, [])*/
               
-            // Dentro del map hay código html. Neceistaríamos indicar el resultado dentro de un return? No es necesario.
+            // Dentro del map hay código html. Necesitaríamos indicar el resultado dentro de un return? No es necesario.
             /* Dado que map ya está dentro de un return.
             Analizamos el siguiente pedazo de código:
             filter(objectCity => data[objectCity].city.toLowerCase().includes(filter.toLowerCase()))
@@ -69,17 +69,17 @@ that is the ".data" key-value, and we do this when we write fetchedData.data.
 
     }
       
-
+    /*vh-100  (view height 100%) sizing is relative to the viewport (user's visible area of a web page)
+    That means that the whole first screen will have this background color, but from them down it won't.
+    that's why the screen looks half grey and half white
+    */
   return (
-   <div>
-    
-    <div class="row row-cols-2 row-cols-md-2 g-4  px-5 ">
-     {citiesMapped}
-    </div>
-
-    
-  </div>  
-
+  
+      <section class="vh-100" style={{ "backgroundColor": "#eee" }}>
+          <div class="row row-cols-2 row-cols-md-2 g-4  px-5 ">
+          {citiesMapped}
+        </div>
+       </section>
   )
 } 
 
@@ -90,27 +90,3 @@ that is the ".data" key-value, and we do this when we write fetchedData.data.
 export  {Cities};
 
 
-/* 
-        <input
-          type="text"
-          placeholder='Filter cities'
-          id="filter"
-        onChange={event => setFilter(event.target.value) || filter === ''} /> .
-        
-        
-              {Object.+(data).filter(objectCity => data[objectCity].city.toLowerCase().startsWith(filter.toLowerCase()))
-        .map(x => <li key={data[x].city}>{data[x].city}</li>)}
-        */
-
-    
-
-/*
-  <BrowserRouter>
-        <div className="App">
-          <Switch>
-            <Route exact path='/cities' component={Landing} />
-          </Switch>
-        </div>
-      </BrowserRouter>
-
-*/
