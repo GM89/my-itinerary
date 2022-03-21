@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { capitalizeFirstLetter } from '../ItinerariesByCity.js';
 
 import {City} from './City.js'
-            /*   console.log(dispatch, 'el dispatch') */
+ 
             // Los estados se cargan antes que el componente se cargue, 
             //const [filter, setFilter] = useState('')
                 /* useEffect(() => {

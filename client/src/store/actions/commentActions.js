@@ -5,7 +5,9 @@ const url = `http://localhost:${port}/`;
 
 
 
-/// -----fetching  comments from MongoDB
+
+/// -----fetching  comments from MongoDB------
+
 export function commentsByItineraryId(itineraryIdToCheck) {
   return async (dispatch) => {
     dispatch(commentBegin());
@@ -23,13 +25,13 @@ export function commentsByItineraryId(itineraryIdToCheck) {
   };
 }
 /// ----- posting a comment
-export function commentsPostByItinerary(commentObject ) {
+export function commentsPostByItinerary(commentObject) {
+  
   return async (dispatch) => {
-    // dispatch(commentBegin());
+    dispatch(commentPostBegin());
     try {
 
-           
-
+     
        const response =  await fetch('http://localhost:5000/comments/post', {
           method: 'POST',
           headers:{
@@ -42,15 +44,19 @@ export function commentsPostByItinerary(commentObject ) {
             timestamp: commentObject.timestamp,
             profilePicture: commentObject.profilePicture,
             userName: commentObject.userName,
-            city: commentObject.city
+            city: commentObject.city,
           })
        })         
+   
+      const commentPosted = await response.json()
+      //create a middleware above
       
-      const commentPosted = await response;
-      console.log("commentBeingPosted", commentPosted);
       dispatch(commentPostSuccess(commentPosted));
+
     } catch (error) {
-      console.log("error when posting comment", error)
+      console.log("comment post error:")
+      console.log(error)
+      
       dispatch(commentPostFailure(error));
     }
   };
@@ -74,6 +80,11 @@ export const commentFailure = (err) => ({
   payload: {
     error: err,
   },
+});
+
+
+export const commentPostBegin = () => ({
+  type: "COMMENT_POST_BEGIN",
 });
 
 export const commentPostFailure = (err) => ({

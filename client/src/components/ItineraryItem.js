@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import { Activity } from "./Activity";
 import { fetchAllActivities } from "../store/actions/activityActions.js";
 import {Comments} from './Comments'
-/*   console.log(dispatch, 'el dispatch') */
+
 // Los estados se cargan antes que el componente se cargue,
 //const [filter, setFilter] = useState('')
 /* useEffect(() => {

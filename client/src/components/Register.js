@@ -47,7 +47,7 @@ import{Link} from 'react-router-dom'
           profilePicture: user.profilePicture,
         })
      }).then((response)=> {  
-        console.log("response aquí", response);                   // first then()
+
         if(response.ok){
           return response.json();         
         }if(response.status === 501){  

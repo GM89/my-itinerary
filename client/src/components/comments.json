@@ -1,0 +1,841 @@
+[
+    'employees':{
+                {"_id": "621613626d128c6129d64f1f",
+                "itineraryId": "61c1c1cd6d1590cea5f48fed",
+                "text": [
+                    "We enjoyed a lot our visit to Barcelona"
+                ],
+                "memberId": "620a23c4e18b032a5e14a69c",
+                "timestamp": "2022-02-28T09:46:46.778Z",
+                "profilePicture": "https://pm1.narvii.com/7654/af7e1a2f650e1ea9dd0d04d20279efbfdf9ef498r1-458-547v2_128.jpg",
+                "__v": 0,
+                "userName": "gerard",
+                "city": "Barcelona"
+                },
+                {
+                "_id": "6218e7828b0c8ba8143d545b",
+                "itineraryId": "61c1c4106d1590cea5f48ff2",
+                "text": [
+                    "The Stasi Museum is very interesting"
+                ],
+                "memberId": "620a23c4e18b032a5e14a69c",
+                "timestamp": "2022-03-03T13:43:52.210Z",
+                "profilePicture": "https://pm1.narvii.com/7654/af7e1a2f650e1ea9dd0d04d20279efbfdf9ef498r1-458-547v2_128.jpg",
+                "__v": 0,
+                "userName": "gerard",
+                "city": "Berlin"
+                },
+                {
+                "_id": "62195655348dbd4b356fc0d3",
+                "itineraryId": "61c1c4736d1590cea5f48ff3",
+                "text": [
+                    "first time in Budapest, and we'll come back"
+                ],
+                "memberId": "620a23c4e18b032a5e14a69c",
+                "timestamp": "2022-03-03T13:43:52.210Z",
+                "profilePicture": "https://pm1.narvii.com/7654/af7e1a2f650e1ea9dd0d04d20279efbfdf9ef498r1-458-547v2_128.jpg",
+                "__v": 0,
+                "userName": "gerard",
+                "city": "Budapest"
+                },
+                {
+                "_id": "621a69c00c457f7544a69597",
+                "itineraryId": "61c1c1cd6d1590cea5f48fed",
+                "text": [
+                    "Barcelona in  a nutshell!"
+                ],
+                "memberId": "62098768ad55b3868179226d",
+                "timestamp": "2022-02-26T15:07:18.000Z",
+                "profilePicture": "https://album.mediaset.es/cimg/1000001/2019/12/16/el-cejas-autor_3689_-1_aebf.jpg?w=1024",
+                "__v": 0,
+                "userName": "Susana",
+                "city": "Barcelona"
+                },
+                {
+                "_id": "621a6b410c457f7544a69598",
+                "itineraryId": "61c1c1cd6d1590cea5f48fed",
+                "text": [
+                    "Barcelona in  a nutshell!"
+                ],
+                "memberId": "61e5494dba0d421b5451542e",
+                "timestamp": "2022-02-26T15:07:18.000Z",
+                "profilePicture": "https://pbs.twimg.com/profile_images/677609867297824768/Pm84gJ9F_400x400.jpg",
+                "__v": 0,
+                "userName": "Jordi",
+                "city": "Barcelona"
+                },
+                {
+                "_id": "621cb40366e2598f9b988e3a",
+                "itineraryId": "61c7b57b4c5a7ed36884c3c7",
+                "text": [
+                    "Milan is a bit pricey, but it's worth it. Lots of art and gastronomy"
+                ],
+                "memberId": "61ea71d76b8c1f68eecfa10b",
+                "timestamp": "2022-02-26T15:07:18.000Z",
+                "profilePicture": "https://pm1.narvii.com/7654/af7e1a2f650e1ea9dd0d04d20279efbfdf9ef498r1-458-547v2_128.jpg",
+                "__v": 0,
+                "userName": "helen",
+                "city": "Milan"
+                },
+                {
+                "_id": "621cb4fc89da577d3b269ebf",
+                "itineraryId": "61c1c4c26d1590cea5f48ff4",
+                "text": [
+                    "Bucharest is a hidden gem"
+                ],
+                "memberId": "61ea71d76b8c1f68eecfa10b",
+                "timestamp": "2022-02-28T12:08:43.000Z",
+                "profilePicture": "https://media.revistavanityfair.es/photos/60e82cbf76b409bfd6cb7483/master/w_1600%2Cc_limit/243837.jpg",
+                "__v": 0,
+                "userName": "Helen",
+                "city": "Bucharest"
+                },
+                {
+                "_id": "621d4a8cea9fc03f3f7c957c",
+                "itineraryId": "61c1c4c26d1590cea5f48ff4",
+                "userName": "Elena",
+                "text": [
+                    "Bucharest is a hidden gem"
+                ],
+                "memberId": "61ea71d76b8c1f68eecfa10b",
+                "timestamp": "2022-02-28T12:08:43.000Z",
+                "profilePicture": "https://media.revistavanityfair.es/photos/60e82cbf76b409bfd6cb7483/master/w_1600%2Cc_limit/243837.jpg",
+                "__v": 0,
+                "city": "Bucharest"
+                },
+                {
+                "_id": "6220ae77f245a06f08106e12",
+                "itineraryId": "61c1c4c26d1590cea5f48ff4",
+                "userName": "Elena",
+                "text": [
+                    "Bucharest is a hidden gem"
+                ],
+                "memberId": "61ea71d76b8c1f68eecfa10b",
+                "timestamp": "2022-02-15T12:09:24.465Z",
+                "profilePicture": "https://media.revistavanityfair.es/photos/60e82cbf76b409bfd6cb7483/master/w_1600%2Cc_limit/243837.jpg",
+                "__v": 0,
+                "city": "Bucharest"
+                },
+                {
+                "_id": "6220afe0e2b513809a98b0c1",
+                "itineraryId": "61c1c4106d1590cea5f48ff2",
+                "userName": "gerard",
+                "text": [
+                    "Best tour I've ever done"
+                ],
+                "memberId": "620a23c4e18b032a5e14a69c",
+                "timestamp": "2022-03-03T12:09:04.762Z",
+                "profilePicture": "https://pm1.narvii.com/7654/af7e1a2f650e1ea9dd0d04d20279efbfdf9ef498r1-458-547v2_128.jpg",
+                "__v": 0,
+                "city": "Berlin"
+                },
+                {
+                "_id": "6220c618b5a805aecc13b248",
+                "itineraryId": "61c1c4106d1590cea5f48ff2",
+                "userName": "gerard",
+                "text": [
+                    "Meine Ehre heißt Treue"
+                ],
+                "memberId": "620a23c4e18b032a5e14a69c",
+                "timestamp": "2022-03-03T13:43:52.210Z",
+                "profilePicture": "https://pm1.narvii.com/7654/af7e1a2f650e1ea9dd0d04d20279efbfdf9ef498r1-458-547v2_128.jpg",
+                "__v": 0
+                },
+                {
+                "_id": "6220cd609f5cad938cecfb0b",
+                "itineraryId": "61c1c4106d1590cea5f48ff2",
+                "userName": "elena",
+                "text": [
+                    "Great city!"
+                ],
+                "memberId": "61ea71d76b8c1f68eecfa10b",
+                "timestamp": "2022-03-03T14:14:56.520Z",
+                "profilePicture": "https://estaticos-cdn.elperiodico.com/clip/5dadab35-b9c9-4b94-b6e1-51d3a27dee51_16-9-aspect-ratio_default_0.jpg",
+                "__v": 0
+                },
+                {
+                "_id": "6220cdc39f5cad938cecfb43",
+                "itineraryId": "61c1c4736d1590cea5f48ff3",
+                "userName": "elena",
+                "text": [
+                    "I love the  local women!"
+                ],
+                "memberId": "61ea71d76b8c1f68eecfa10b",
+                "timestamp": "2022-03-03T14:16:35.565Z",
+                "profilePicture": "https://estaticos-cdn.elperiodico.com/clip/5dadab35-b9c9-4b94-b6e1-51d3a27dee51_16-9-aspect-ratio_default_0.jpg",
+                "__v": 0
+                },
+                {
+                "_id": "6220ce149f5cad938cecfb53",
+                "itineraryId": "61c1c4736d1590cea5f48ff3",
+                "userName": "elena",
+                "text": [
+                    "Drugs and beers were cheap!"
+                ],
+                "memberId": "61ea71d76b8c1f68eecfa10b",
+                "timestamp": "2022-03-03T14:17:56.922Z",
+                "profilePicture": "https://estaticos-cdn.elperiodico.com/clip/5dadab35-b9c9-4b94-b6e1-51d3a27dee51_16-9-aspect-ratio_default_0.jpg",
+                "__v": 0
+                },
+                {
+                "_id": "6220ce999f5cad938cecfb56",
+                "itineraryId": "61c1c4736d1590cea5f48ff3",
+                "userName": "elena",
+                "text": [
+                    "Drugs and beers were cheap!"
+                ],
+                "memberId": "61ea71d76b8c1f68eecfa10b",
+                "timestamp": "2022-03-03T14:20:09.142Z",
+                "profilePicture": "https://estaticos-cdn.elperiodico.com/clip/5dadab35-b9c9-4b94-b6e1-51d3a27dee51_16-9-aspect-ratio_default_0.jpg",
+                "__v": 0
+                },
+                {
+                "_id": "6220ceaf9f5cad938cecfb59",
+                "itineraryId": "61c1c4736d1590cea5f48ff3",
+                "userName": "elena",
+                "text": [
+                    "Drugs and beers were cheap!"
+                ],
+                "memberId": "61ea71d76b8c1f68eecfa10b",
+                "timestamp": "2022-03-03T14:20:31.163Z",
+                "profilePicture": "https://estaticos-cdn.elperiodico.com/clip/5dadab35-b9c9-4b94-b6e1-51d3a27dee51_16-9-aspect-ratio_default_0.jpg",
+                "__v": 0
+                },
+                {
+                "_id": "6220cf009f5cad938cecfb5c",
+                "itineraryId": "61c1c4736d1590cea5f48ff3",
+                "userName": "elena",
+                "text": [
+                    "Drugs and beers were cheap!"
+                ],
+                "memberId": "61ea71d76b8c1f68eecfa10b",
+                "timestamp": "2022-03-03T14:21:52.032Z",
+                "profilePicture": "https://estaticos-cdn.elperiodico.com/clip/5dadab35-b9c9-4b94-b6e1-51d3a27dee51_16-9-aspect-ratio_default_0.jpg",
+                "__v": 0
+                },
+                {
+                "_id": "6220d03a9f5cad938cecfb6c",
+                "itineraryId": "61c1c4c26d1590cea5f48ff4",
+                "userName": "elena",
+                "text": [
+                    "Yes!"
+                ],
+                "memberId": "61ea71d76b8c1f68eecfa10b",
+                "timestamp": "2022-03-03T14:27:06.013Z",
+                "profilePicture": "https://estaticos-cdn.elperiodico.com/clip/5dadab35-b9c9-4b94-b6e1-51d3a27dee51_16-9-aspect-ratio_default_0.jpg",
+                "__v": 0
+                },
+                {
+                "_id": "6220d2ba9f5cad938cecfb6f",
+                "itineraryId": "61c1c4c26d1590cea5f48ff4",
+                "userName": "elena",
+                "text": [
+                    "Yes!"
+                ],
+                "memberId": "61ea71d76b8c1f68eecfa10b",
+                "timestamp": "2022-03-03T14:37:46.272Z",
+                "profilePicture": "https://estaticos-cdn.elperiodico.com/clip/5dadab35-b9c9-4b94-b6e1-51d3a27dee51_16-9-aspect-ratio_default_0.jpg",
+                "__v": 0
+                },
+                {
+                "_id": "6220d3039f5cad938cecfb73",
+                "itineraryId": "61c1c4c26d1590cea5f48ff4",
+                "userName": "elena",
+                "text": [
+                    "Yes!"
+                ],
+                "memberId": "61ea71d76b8c1f68eecfa10b",
+                "timestamp": "2022-03-03T14:38:59.478Z",
+                "profilePicture": "https://estaticos-cdn.elperiodico.com/clip/5dadab35-b9c9-4b94-b6e1-51d3a27dee51_16-9-aspect-ratio_default_0.jpg",
+                "__v": 0
+                },
+                {
+                "_id": "6220d3179f5cad938cecfb76",
+                "itineraryId": "61c1c4c26d1590cea5f48ff4",
+                "userName": "elena",
+                "text": [
+                    "Yes!"
+                ],
+                "memberId": "61ea71d76b8c1f68eecfa10b",
+                "timestamp": "2022-03-03T14:39:19.891Z",
+                "profilePicture": "https://estaticos-cdn.elperiodico.com/clip/5dadab35-b9c9-4b94-b6e1-51d3a27dee51_16-9-aspect-ratio_default_0.jpg",
+                "__v": 0
+                },
+                {
+                "_id": "6220d3219f5cad938cecfb79",
+                "itineraryId": "61c1c4c26d1590cea5f48ff4",
+                "userName": "elena",
+                "text": [
+                    "Yes!"
+                ],
+                "memberId": "61ea71d76b8c1f68eecfa10b",
+                "timestamp": "2022-03-03T14:39:29.902Z",
+                "profilePicture": "https://estaticos-cdn.elperiodico.com/clip/5dadab35-b9c9-4b94-b6e1-51d3a27dee51_16-9-aspect-ratio_default_0.jpg",
+                "__v": 0
+                },
+                {
+                "_id": "6220d3d49f5cad938cecfb7c",
+                "itineraryId": "61c1c4c26d1590cea5f48ff4",
+                "userName": "elena",
+                "text": [
+                    "Yes!"
+                ],
+                "memberId": "61ea71d76b8c1f68eecfa10b",
+                "timestamp": "2022-03-03T14:42:28.482Z",
+                "profilePicture": "https://estaticos-cdn.elperiodico.com/clip/5dadab35-b9c9-4b94-b6e1-51d3a27dee51_16-9-aspect-ratio_default_0.jpg",
+                "__v": 0
+                },
+                {
+                "_id": "6220d3d59f5cad938cecfb7e",
+                "itineraryId": "61c1c4c26d1590cea5f48ff4",
+                "userName": "elena",
+                "text": [
+                    "Yes!"
+                ],
+                "memberId": "61ea71d76b8c1f68eecfa10b",
+                "timestamp": "2022-03-03T14:42:29.461Z",
+                "profilePicture": "https://estaticos-cdn.elperiodico.com/clip/5dadab35-b9c9-4b94-b6e1-51d3a27dee51_16-9-aspect-ratio_default_0.jpg",
+                "__v": 0
+                },
+                {
+                "_id": "6220d4fe9f5cad938cecfb81",
+                "itineraryId": "61c1c4c26d1590cea5f48ff4",
+                "userName": "elena",
+                "text": [
+                    "Yes!"
+                ],
+                "memberId": "61ea71d76b8c1f68eecfa10b",
+                "timestamp": "2022-03-03T14:47:26.686Z",
+                "profilePicture": "https://estaticos-cdn.elperiodico.com/clip/5dadab35-b9c9-4b94-b6e1-51d3a27dee51_16-9-aspect-ratio_default_0.jpg",
+                "__v": 0
+                },
+                {
+                "_id": "6220d5189f5cad938cecfb83",
+                "itineraryId": "61c1c4c26d1590cea5f48ff4",
+                "userName": "elena",
+                "text": [
+                    "Yes!"
+                ],
+                "memberId": "61ea71d76b8c1f68eecfa10b",
+                "timestamp": "2022-03-03T14:47:52.051Z",
+                "profilePicture": "https://estaticos-cdn.elperiodico.com/clip/5dadab35-b9c9-4b94-b6e1-51d3a27dee51_16-9-aspect-ratio_default_0.jpg",
+                "__v": 0
+                },
+                {
+                "_id": "6220d5589f5cad938cecfb85",
+                "itineraryId": "61c1c4c26d1590cea5f48ff4",
+                "userName": "elena",
+                "text": [
+                    "Hi Mirko"
+                ],
+                "memberId": "61ea71d76b8c1f68eecfa10b",
+                "timestamp": "2022-03-03T14:48:56.904Z",
+                "profilePicture": "https://estaticos-cdn.elperiodico.com/clip/5dadab35-b9c9-4b94-b6e1-51d3a27dee51_16-9-aspect-ratio_default_0.jpg",
+                "__v": 0
+                },
+                {
+                "_id": "6220d56a9f5cad938cecfb87",
+                "itineraryId": "61c1c4c26d1590cea5f48ff4",
+                "userName": "elena",
+                "text": [
+                    "Hi Mirko"
+                ],
+                "memberId": "61ea71d76b8c1f68eecfa10b",
+                "timestamp": "2022-03-03T14:49:14.416Z",
+                "profilePicture": "https://estaticos-cdn.elperiodico.com/clip/5dadab35-b9c9-4b94-b6e1-51d3a27dee51_16-9-aspect-ratio_default_0.jpg",
+                "__v": 0
+                },
+                {
+                "_id": "6220d56d9f5cad938cecfb89",
+                "itineraryId": "61c1c4c26d1590cea5f48ff4",
+                "userName": "elena",
+                "text": [
+                    "Hi Mirko"
+                ],
+                "memberId": "61ea71d76b8c1f68eecfa10b",
+                "timestamp": "2022-03-03T14:49:17.001Z",
+                "profilePicture": "https://estaticos-cdn.elperiodico.com/clip/5dadab35-b9c9-4b94-b6e1-51d3a27dee51_16-9-aspect-ratio_default_0.jpg",
+                "__v": 0
+                },
+                {
+                "_id": "6220d59d9f5cad938cecfb95",
+                "itineraryId": "61c1c4106d1590cea5f48ff2",
+                "userName": "gerard",
+                "text": [
+                    "Heil Hilter"
+                ],
+                "memberId": "620a23c4e18b032a5e14a69c",
+                "timestamp": "2022-03-03T14:50:05.811Z",
+                "profilePicture": "https://pm1.narvii.com/7654/af7e1a2f650e1ea9dd0d04d20279efbfdf9ef498r1-458-547v2_128.jpg",
+                "__v": 0
+                },
+                {
+                "_id": "6220d88f9f5cad938cecfba8",
+                "itineraryId": "61c1c4106d1590cea5f48ff2",
+                "userName": "gerard",
+                "text": [
+                    "Pa amb tomàquet"
+                ],
+                "memberId": "620a23c4e18b032a5e14a69c",
+                "timestamp": "2022-03-03T15:02:39.338Z",
+                "profilePicture": "https://pm1.narvii.com/7654/af7e1a2f650e1ea9dd0d04d20279efbfdf9ef498r1-458-547v2_128.jpg",
+                "__v": 0
+                },
+                {
+                "_id": "6220daaf9f5cad938cecfbbe",
+                "itineraryId": "61c1c4106d1590cea5f48ff2",
+                "userName": "gerard",
+                "text": [
+                    "ciao"
+                ],
+                "memberId": "620a23c4e18b032a5e14a69c",
+                "timestamp": "2022-03-03T15:11:43.490Z",
+                "profilePicture": "https://pm1.narvii.com/7654/af7e1a2f650e1ea9dd0d04d20279efbfdf9ef498r1-458-547v2_128.jpg",
+                "__v": 0
+                },
+                {
+                "_id": "6220dab19f5cad938cecfbc0",
+                "itineraryId": "61c1c4106d1590cea5f48ff2",
+                "userName": "gerard",
+                "text": [
+                    "ciao"
+                ],
+                "memberId": "620a23c4e18b032a5e14a69c",
+                "timestamp": "2022-03-03T15:11:45.229Z",
+                "profilePicture": "https://pm1.narvii.com/7654/af7e1a2f650e1ea9dd0d04d20279efbfdf9ef498r1-458-547v2_128.jpg",
+                "__v": 0
+                },
+                {
+                "_id": "6220db1d9f5cad938cecfbc4",
+                "itineraryId": "61c1c4106d1590cea5f48ff2",
+                "userName": "gerard",
+                "text": [
+                    "ciao"
+                ],
+                "memberId": "620a23c4e18b032a5e14a69c",
+                "timestamp": "2022-03-03T15:13:33.056Z",
+                "profilePicture": "https://pm1.narvii.com/7654/af7e1a2f650e1ea9dd0d04d20279efbfdf9ef498r1-458-547v2_128.jpg",
+                "__v": 0
+                },
+                {
+                "_id": "6220db229f5cad938cecfbc6",
+                "itineraryId": "61c1c4106d1590cea5f48ff2",
+                "userName": "gerard",
+                "text": [
+                    "ciao"
+                ],
+                "memberId": "620a23c4e18b032a5e14a69c",
+                "timestamp": "2022-03-03T15:13:38.932Z",
+                "profilePicture": "https://pm1.narvii.com/7654/af7e1a2f650e1ea9dd0d04d20279efbfdf9ef498r1-458-547v2_128.jpg",
+                "__v": 0
+                },
+                {
+                "_id": "6220db489f5cad938cecfbc9",
+                "itineraryId": "61c1c4106d1590cea5f48ff2",
+                "userName": "gerard",
+                "text": [
+                    "ciao"
+                ],
+                "memberId": "620a23c4e18b032a5e14a69c",
+                "timestamp": "2022-03-03T15:14:16.241Z",
+                "profilePicture": "https://pm1.narvii.com/7654/af7e1a2f650e1ea9dd0d04d20279efbfdf9ef498r1-458-547v2_128.jpg",
+                "__v": 0
+                },
+                {
+                "_id": "6220db5f9f5cad938cecfbcc",
+                "itineraryId": "61c1c4106d1590cea5f48ff2",
+                "userName": "gerard",
+                "text": [
+                    "buenos días señor"
+                ],
+                "memberId": "620a23c4e18b032a5e14a69c",
+                "timestamp": "2022-03-03T15:14:39.716Z",
+                "profilePicture": "https://pm1.narvii.com/7654/af7e1a2f650e1ea9dd0d04d20279efbfdf9ef498r1-458-547v2_128.jpg",
+                "__v": 0
+                },
+                {
+                "_id": "6220db659f5cad938cecfbce",
+                "itineraryId": "61c1c4106d1590cea5f48ff2",
+                "userName": "gerard",
+                "text": [
+                    "buenos días señor"
+                ],
+                "memberId": "620a23c4e18b032a5e14a69c",
+                "timestamp": "2022-03-03T15:14:45.455Z",
+                "profilePicture": "https://pm1.narvii.com/7654/af7e1a2f650e1ea9dd0d04d20279efbfdf9ef498r1-458-547v2_128.jpg",
+                "__v": 0
+                },
+                {
+                "_id": "6220dbe49f5cad938cecfbd1",
+                "itineraryId": "61c1c4106d1590cea5f48ff2",
+                "userName": "gerard",
+                "text": [
+                    "Genis Mestres"
+                ],
+                "memberId": "620a23c4e18b032a5e14a69c",
+                "timestamp": "2022-03-03T15:16:52.667Z",
+                "profilePicture": "https://pm1.narvii.com/7654/af7e1a2f650e1ea9dd0d04d20279efbfdf9ef498r1-458-547v2_128.jpg",
+                "__v": 0
+                },
+                {
+                "_id": "6220dc659f5cad938cecfbd3",
+                "itineraryId": "61c1c4106d1590cea5f48ff2",
+                "userName": "gerard",
+                "text": [
+                    "Genis Mestres"
+                ],
+                "memberId": "620a23c4e18b032a5e14a69c",
+                "timestamp": "2022-03-03T15:19:01.472Z",
+                "profilePicture": "https://pm1.narvii.com/7654/af7e1a2f650e1ea9dd0d04d20279efbfdf9ef498r1-458-547v2_128.jpg",
+                "__v": 0
+                },
+                {
+                "_id": "6220dc719f5cad938cecfbd5",
+                "itineraryId": "61c1c4106d1590cea5f48ff2",
+                "userName": "gerard",
+                "text": [
+                    "Genis Mestres"
+                ],
+                "memberId": "620a23c4e18b032a5e14a69c",
+                "timestamp": "2022-03-03T15:19:13.372Z",
+                "profilePicture": "https://pm1.narvii.com/7654/af7e1a2f650e1ea9dd0d04d20279efbfdf9ef498r1-458-547v2_128.jpg",
+                "__v": 0
+                },
+                {
+                "_id": "6220dcaf9f5cad938cecfbd7",
+                "itineraryId": "61c1c4106d1590cea5f48ff2",
+                "userName": "gerard",
+                "text": [
+                    "Genis Mestres"
+                ],
+                "memberId": "620a23c4e18b032a5e14a69c",
+                "timestamp": "2022-03-03T15:20:15.588Z",
+                "profilePicture": "https://pm1.narvii.com/7654/af7e1a2f650e1ea9dd0d04d20279efbfdf9ef498r1-458-547v2_128.jpg",
+                "__v": 0
+                },
+                {
+                "_id": "6220dce39f5cad938cecfbd9",
+                "itineraryId": "61c1c4106d1590cea5f48ff2",
+                "userName": "gerard",
+                "text": [
+                    "Genis Mestres"
+                ],
+                "memberId": "620a23c4e18b032a5e14a69c",
+                "timestamp": "2022-03-03T15:21:07.594Z",
+                "profilePicture": "https://pm1.narvii.com/7654/af7e1a2f650e1ea9dd0d04d20279efbfdf9ef498r1-458-547v2_128.jpg",
+                "__v": 0
+                },
+                {
+                "_id": "6220dd819f5cad938cecfbe5",
+                "itineraryId": "61c1c4106d1590cea5f48ff2",
+                "userName": "elena",
+                "text": [
+                    "Hola Mama!"
+                ],
+                "memberId": "61ea71d76b8c1f68eecfa10b",
+                "timestamp": "2022-03-03T15:23:45.535Z",
+                "profilePicture": "https://estaticos-cdn.elperiodico.com/clip/5dadab35-b9c9-4b94-b6e1-51d3a27dee51_16-9-aspect-ratio_default_0.jpg",
+                "__v": 0
+                },
+                {
+                "_id": "6220dd929f5cad938cecfbe8",
+                "itineraryId": "61c1c4106d1590cea5f48ff2",
+                "userName": "elena",
+                "text": [
+                    "Hola Mama!"
+                ],
+                "memberId": "61ea71d76b8c1f68eecfa10b",
+                "timestamp": "2022-03-03T15:24:02.707Z",
+                "profilePicture": "https://estaticos-cdn.elperiodico.com/clip/5dadab35-b9c9-4b94-b6e1-51d3a27dee51_16-9-aspect-ratio_default_0.jpg",
+                "__v": 0
+                },
+                {
+                "_id": "6220dd9c9f5cad938cecfbeb",
+                "itineraryId": "61c1c4106d1590cea5f48ff2",
+                "userName": "elena",
+                "text": [
+                    "Hola Mama!"
+                ],
+                "memberId": "61ea71d76b8c1f68eecfa10b",
+                "timestamp": "2022-03-03T15:24:12.012Z",
+                "profilePicture": "https://estaticos-cdn.elperiodico.com/clip/5dadab35-b9c9-4b94-b6e1-51d3a27dee51_16-9-aspect-ratio_default_0.jpg",
+                "__v": 0
+                },
+                {
+                "_id": "6220de5e9f5cad938cecfbed",
+                "itineraryId": "61c1c4106d1590cea5f48ff2",
+                "userName": "elena",
+                "text": [
+                    "Hola Mama!"
+                ],
+                "memberId": "61ea71d76b8c1f68eecfa10b",
+                "timestamp": "2022-03-03T15:27:26.675Z",
+                "profilePicture": "https://estaticos-cdn.elperiodico.com/clip/5dadab35-b9c9-4b94-b6e1-51d3a27dee51_16-9-aspect-ratio_default_0.jpg",
+                "__v": 0
+                },
+                {
+                "_id": "6220dea69f5cad938cecfbfa",
+                "itineraryId": "61c1c4106d1590cea5f48ff2",
+                "userName": "elena",
+                "text": [
+                    "hola!"
+                ],
+                "memberId": "61ea71d76b8c1f68eecfa10b",
+                "timestamp": "2022-03-03T15:28:38.004Z",
+                "profilePicture": "https://estaticos-cdn.elperiodico.com/clip/5dadab35-b9c9-4b94-b6e1-51d3a27dee51_16-9-aspect-ratio_default_0.jpg",
+                "__v": 0
+                },
+                {
+                "_id": "6220dedf9f5cad938cecfbfc",
+                "itineraryId": "61c1c4106d1590cea5f48ff2",
+                "userName": "elena",
+                "text": [
+                    "hola!"
+                ],
+                "memberId": "61ea71d76b8c1f68eecfa10b",
+                "timestamp": "2022-03-03T15:29:35.792Z",
+                "profilePicture": "https://estaticos-cdn.elperiodico.com/clip/5dadab35-b9c9-4b94-b6e1-51d3a27dee51_16-9-aspect-ratio_default_0.jpg",
+                "__v": 0
+                },
+                {
+                "_id": "6220df219f5cad938cecfbfe",
+                "itineraryId": "61c1c4106d1590cea5f48ff2",
+                "userName": "elena",
+                "text": [
+                    "hola!"
+                ],
+                "memberId": "61ea71d76b8c1f68eecfa10b",
+                "timestamp": "2022-03-03T15:30:41.400Z",
+                "profilePicture": "https://estaticos-cdn.elperiodico.com/clip/5dadab35-b9c9-4b94-b6e1-51d3a27dee51_16-9-aspect-ratio_default_0.jpg",
+                "__v": 0
+                },
+                {
+                "_id": "6220df329f5cad938cecfc00",
+                "itineraryId": "61c1c4106d1590cea5f48ff2",
+                "userName": "elena",
+                "text": [
+                    "hola!"
+                ],
+                "memberId": "61ea71d76b8c1f68eecfa10b",
+                "timestamp": "2022-03-03T15:30:58.832Z",
+                "profilePicture": "https://estaticos-cdn.elperiodico.com/clip/5dadab35-b9c9-4b94-b6e1-51d3a27dee51_16-9-aspect-ratio_default_0.jpg",
+                "__v": 0
+                },
+                {
+                "_id": "6220df339f5cad938cecfc02",
+                "itineraryId": "61c1c4106d1590cea5f48ff2",
+                "userName": "elena",
+                "text": [
+                    "hola!"
+                ],
+                "memberId": "61ea71d76b8c1f68eecfa10b",
+                "timestamp": "2022-03-03T15:30:59.870Z",
+                "profilePicture": "https://estaticos-cdn.elperiodico.com/clip/5dadab35-b9c9-4b94-b6e1-51d3a27dee51_16-9-aspect-ratio_default_0.jpg",
+                "__v": 0
+                },
+                {
+                "_id": "6220df729f5cad938cecfc04",
+                "itineraryId": "61c1c4106d1590cea5f48ff2",
+                "userName": "elena",
+                "text": [
+                    "hola!"
+                ],
+                "memberId": "61ea71d76b8c1f68eecfa10b",
+                "timestamp": "2022-03-03T15:32:02.292Z",
+                "profilePicture": "https://estaticos-cdn.elperiodico.com/clip/5dadab35-b9c9-4b94-b6e1-51d3a27dee51_16-9-aspect-ratio_default_0.jpg",
+                "__v": 0
+                },
+                {
+                "_id": "6220df759f5cad938cecfc06",
+                "itineraryId": "61c1c4106d1590cea5f48ff2",
+                "userName": "elena",
+                "text": [
+                    "hola!"
+                ],
+                "memberId": "61ea71d76b8c1f68eecfa10b",
+                "timestamp": "2022-03-03T15:32:05.590Z",
+                "profilePicture": "https://estaticos-cdn.elperiodico.com/clip/5dadab35-b9c9-4b94-b6e1-51d3a27dee51_16-9-aspect-ratio_default_0.jpg",
+                "__v": 0
+                },
+                {
+                "_id": "6220e0559f5cad938cecfc08",
+                "itineraryId": "61c1c4106d1590cea5f48ff2",
+                "userName": "elena",
+                "text": [
+                    "hola!"
+                ],
+                "memberId": "61ea71d76b8c1f68eecfa10b",
+                "timestamp": "2022-03-03T15:35:49.858Z",
+                "profilePicture": "https://estaticos-cdn.elperiodico.com/clip/5dadab35-b9c9-4b94-b6e1-51d3a27dee51_16-9-aspect-ratio_default_0.jpg",
+                "__v": 0
+                },
+                {
+                "_id": "6220e0a49f5cad938cecfc0a",
+                "itineraryId": "61c1c4106d1590cea5f48ff2",
+                "userName": "elena",
+                "text": [
+                    "hola!"
+                ],
+                "memberId": "61ea71d76b8c1f68eecfa10b",
+                "timestamp": "2022-03-03T15:37:08.373Z",
+                "profilePicture": "https://estaticos-cdn.elperiodico.com/clip/5dadab35-b9c9-4b94-b6e1-51d3a27dee51_16-9-aspect-ratio_default_0.jpg",
+                "__v": 0
+                },
+                {
+                "_id": "6220e0a89f5cad938cecfc0c",
+                "itineraryId": "61c1c4106d1590cea5f48ff2",
+                "userName": "elena",
+                "text": [
+                    "hola!"
+                ],
+                "memberId": "61ea71d76b8c1f68eecfa10b",
+                "timestamp": "2022-03-03T15:37:12.480Z",
+                "profilePicture": "https://estaticos-cdn.elperiodico.com/clip/5dadab35-b9c9-4b94-b6e1-51d3a27dee51_16-9-aspect-ratio_default_0.jpg",
+                "__v": 0
+                },
+                {
+                "_id": "6220e0ac9f5cad938cecfc0e",
+                "itineraryId": "61c1c4106d1590cea5f48ff2",
+                "userName": "elena",
+                "text": [
+                    "hola!"
+                ],
+                "memberId": "61ea71d76b8c1f68eecfa10b",
+                "timestamp": "2022-03-03T15:37:16.845Z",
+                "profilePicture": "https://estaticos-cdn.elperiodico.com/clip/5dadab35-b9c9-4b94-b6e1-51d3a27dee51_16-9-aspect-ratio_default_0.jpg",
+                "__v": 0
+                },
+                {
+                "_id": "6220eab1d22d0f9bd33a0a26",
+                "itineraryId": "61c1c4106d1590cea5f48ff2",
+                "userName": "elena",
+                "text": [
+                    "Borreu això siusplaua"
+                ],
+                "memberId": "61ea71d76b8c1f68eecfa10b",
+                "timestamp": "2022-03-03T16:20:00.985Z",
+                "profilePicture": "https://estaticos-cdn.elperiodico.com/clip/5dadab35-b9c9-4b94-b6e1-51d3a27dee51_16-9-aspect-ratio_default_0.jpg",
+                "__v": 0
+                },
+                {
+                "_id": "6220eaf5d22d0f9bd33a0a28",
+                "itineraryId": "61c1c4106d1590cea5f48ff2",
+                "userName": "elena",
+                "text": [
+                    "Borreu això siusplaua"
+                ],
+                "memberId": "61ea71d76b8c1f68eecfa10b",
+                "timestamp": "2022-03-03T16:21:09.253Z",
+                "profilePicture": "https://estaticos-cdn.elperiodico.com/clip/5dadab35-b9c9-4b94-b6e1-51d3a27dee51_16-9-aspect-ratio_default_0.jpg",
+                "__v": 0
+                },
+                {
+                "_id": "6220eb01d22d0f9bd33a0a2a",
+                "itineraryId": "61c1c4106d1590cea5f48ff2",
+                "userName": "elena",
+                "text": [
+                    "Borreu això siusplaua"
+                ],
+                "memberId": "61ea71d76b8c1f68eecfa10b",
+                "timestamp": "2022-03-03T16:21:21.570Z",
+                "profilePicture": "https://estaticos-cdn.elperiodico.com/clip/5dadab35-b9c9-4b94-b6e1-51d3a27dee51_16-9-aspect-ratio_default_0.jpg",
+                "__v": 0
+                },
+                {
+                "_id": "6220ed4ad22d0f9bd33a0a2c",
+                "itineraryId": "61c1c4106d1590cea5f48ff2",
+                "userName": "elena",
+                "text": [
+                    "bon dia senyor pingüi"
+                ],
+                "memberId": "61ea71d76b8c1f68eecfa10b",
+                "timestamp": "2022-03-03T16:31:06.098Z",
+                "profilePicture": "https://estaticos-cdn.elperiodico.com/clip/5dadab35-b9c9-4b94-b6e1-51d3a27dee51_16-9-aspect-ratio_default_0.jpg",
+                "__v": 0
+                },
+                {
+                "_id": "6220ed77d22d0f9bd33a0a2e",
+                "itineraryId": "61c1c4106d1590cea5f48ff2",
+                "userName": "elena",
+                "text": [
+                    "bon dia senyor pingüi"
+                ],
+                "memberId": "61ea71d76b8c1f68eecfa10b",
+                "timestamp": "2022-03-03T16:31:51.683Z",
+                "profilePicture": "https://estaticos-cdn.elperiodico.com/clip/5dadab35-b9c9-4b94-b6e1-51d3a27dee51_16-9-aspect-ratio_default_0.jpg",
+                "__v": 0
+                },
+                {
+                "_id": "6220ed78d22d0f9bd33a0a30",
+                "itineraryId": "61c1c4106d1590cea5f48ff2",
+                "userName": "elena",
+                "text": [
+                    "bon dia senyor pingüi"
+                ],
+                "memberId": "61ea71d76b8c1f68eecfa10b",
+                "timestamp": "2022-03-03T16:31:52.657Z",
+                "profilePicture": "https://estaticos-cdn.elperiodico.com/clip/5dadab35-b9c9-4b94-b6e1-51d3a27dee51_16-9-aspect-ratio_default_0.jpg",
+                "__v": 0
+                },
+                {
+                "_id": "6220ed7dd22d0f9bd33a0a32",
+                "itineraryId": "61c1c4106d1590cea5f48ff2",
+                "userName": "elena",
+                "text": [
+                    "bon dia senyor pingüi"
+                ],
+                "memberId": "61ea71d76b8c1f68eecfa10b",
+                "timestamp": "2022-03-03T16:31:57.836Z",
+                "profilePicture": "https://estaticos-cdn.elperiodico.com/clip/5dadab35-b9c9-4b94-b6e1-51d3a27dee51_16-9-aspect-ratio_default_0.jpg",
+                "__v": 0
+                },
+                {
+                "_id": "6220f299d22d0f9bd33a0a40",
+                "itineraryId": "61c1c4c26d1590cea5f48ff4",
+                "userName": "Elena",
+                "text": [
+                    "Bucharest is a hidden gem"
+                ],
+                "memberId": "61ea71d76b8c1f68eecfa10b",
+                "timestamp": "1970-01-20T01:14:08.226Z",
+                "profilePicture": "https://media.revistavanityfair.es/photos/60e82cbf76b409bfd6cb7483/master/w_1600%2Cc_limit/243837.jpg",
+                "__v": 0
+                },
+                {
+                "_id": "6220f851d22d0f9bd33a0a9c",
+                "itineraryId": "61c1c1cd6d1590cea5f48fed",
+                "userName": "teresa",
+                "text": [
+                    "We enjoyed our visit to Barcelona"
+                ],
+                "memberId": "61e98752f6330de5fadaea02",
+                "timestamp": "2022-03-03T17:18:09.560Z",
+                "profilePicture": "https://estaticos-cdn.elperiodico.com/clip/5dadab35-b9c9-4b94-b6e1-51d3a27dee51_16-9-aspect-ratio_default_0.jpg",
+                "__v": 0
+                },
+                {
+                "_id": "6220f962d22d0f9bd33a0aaa",
+                "itineraryId": "61c1c1cd6d1590cea5f48fed",
+                "userName": "teresa",
+                "text": [
+                    "great city"
+                ],
+                "memberId": "61e98752f6330de5fadaea02",
+                "timestamp": "2022-03-03T17:22:42.590Z",
+                "profilePicture": "https://estaticos-cdn.elperiodico.com/clip/5dadab35-b9c9-4b94-b6e1-51d3a27dee51_16-9-aspect-ratio_default_0.jpg",
+                "__v": 0
+                },
+                {
+                "_id": "6220faaed22d0f9bd33a0ab4",
+                "itineraryId": "61c1c4c26d1590cea5f48ff4",
+                "userName": "Elena",
+                "text": [
+                    "Bucharest is a hidden gem"
+                ],
+                "memberId": "61ea71d76b8c1f68eecfa10b",
+                "timestamp": "1970-01-20T01:14:08.226Z",
+                "profilePicture": "https://media.revistavanityfair.es/photos/60e82cbf76b409bfd6cb7483/master/w_1600%2Cc_limit/243837.jpg",
+                "__v": 0
+                }
+            }
+     ]

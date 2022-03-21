@@ -6,6 +6,7 @@ import moment from "moment";
 import { withSetStateAllowed } from "enzyme/build/Utils";
 
 function Comments(props) {
+
 /*   const [newCommentState, setComment] = useState({
     itineraryId: "",
     text: [],
@@ -15,6 +16,7 @@ function Comments(props) {
     userName: "",
     city: "",
   }); */
+  
   const[newTextState, setState] = useState([])
 
   const commentsData = useSelector((state) => state.comments.allComments);
@@ -22,12 +24,18 @@ function Comments(props) {
 
   const dispatch = useDispatch();
 
+
+
   useEffect(() => {
     const loadComments = async (itineraryIdToCheck) => {
       await dispatch(commentsByItineraryId(itineraryIdToCheck));
     };
     loadComments(props.itineraryId);
   }, [dispatch]);
+
+
+
+  
 
   console.log("commentsData", commentsData);
   console.log("ciudad:", props.city)
@@ -69,9 +77,7 @@ function Comments(props) {
     event.preventDefault();
 
     const CurrentDate = moment().toDate();
-    console.log("what is current date?", CurrentDate)
-    console.log("tipo de dato", typeof CurrentDate)
-    console.log("qué ciudad?", props.city)
+
    
     const commentObject = {
       itineraryId: props.itineraryId,
@@ -87,7 +93,6 @@ function Comments(props) {
 
 
 
-  //console.log("newcomment state", newCommentState)
   }
 
 

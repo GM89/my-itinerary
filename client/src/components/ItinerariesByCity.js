@@ -59,17 +59,27 @@ const itineraryData = useSelector(state => state.itineraries.itineraries.data)
             ) })) ) 
 
       return (
-      <div>
-        <h1>{capitalizeFirstLetter(city)}</h1>
+        <section class="vh-100" style={{ "background-color": "#eee" }}>
+          <div class="container h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+              <div class="col-lg-12 col-xl-11">
+                <div
+                  class="card text-black w-150"
+                  style={{ "border-radius": "25px" }}
+                >
+                  <div>
+                    <h1>{capitalizeFirstLetter(city)}</h1>
 
-        <div className="container">
-        <div class="row row-cols-1 g-4  px-5">
-          {mapping}
-        </div>
-        </div>
-      </div>  
-
-      )
+                    <div className="container">
+                      <div class="row row-cols-1 g-4  px-5">{mapping}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      );
 } 
 
   

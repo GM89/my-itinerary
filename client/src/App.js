@@ -9,14 +9,14 @@ import { ItinerariesByCity } from './components/ItinerariesByCity';
 import { Login } from './components/Login';
 import { Register } from './components/Register';
 import { Navbar } from './components/Navbar';
-import {useSelector, useDispatch} from 'react-redux'
+
 
 
 //routes és equivalent a Switch
 
 //Switch is deprecated, instead we use Routes.
 function App() {
-      const isLoggedIn = useSelector(state => state.members.members)
+      
   return (      
       <div className="App">
             <BrowserRouter>

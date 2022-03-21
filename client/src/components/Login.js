@@ -7,11 +7,8 @@ import {useSelector, useDispatch} from 'react-redux'
 import {Link} from 'react-router-dom'
 
 
-
-
-
-
  function Login({ setToken }) {
+   
 
   const navigate = useNavigate()
   const dispatch = useDispatch();
@@ -43,13 +40,10 @@ import {Link} from 'react-router-dom'
           password: user.password,
         })
       }).then(async(response) => {
-        console.log("response en la fetch del front", response)
+      
         const data = await response.json();
         if(data.success === true) {
-          console.log("response en la fetch del front", data);
-          console.log("respuesta existosa?", data.success);
-          console.log("data!!!!!");
-          console.log(data);      
+
           dispatch(loginUserSuccess(data.userData, data.tokenData));
           alert("You have logged in")
 
@@ -64,7 +58,7 @@ import {Link} from 'react-router-dom'
 
 
   async function loginOut() {
-    console.log("loggin out")
+
     /* prevent the default behaviour caused by the event itself.
      Keep it from attempting to refresh the browser as the browser
     tries to submit the form to some back end server that doesn't exist */
@@ -99,7 +93,7 @@ import {Link} from 'react-router-dom'
                   Login
                 </p>
 
-                <GoogleAuthButton />
+               
                 <p className="text-center fw-bold mx-3 mb-0 text-muted">
                   User status logged in:
                   {loggedIn ? "You are logged in" : "You are NOT connected"}
