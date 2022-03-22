@@ -1,9 +1,7 @@
 import React from "react";
 
-import { useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
 import { Activity } from "./Activity";
-import { fetchAllActivities } from "../store/actions/activityActions.js";
+
 import {Comments} from './Comments'
 
 // Los estados se cargan antes que el componente se cargue,

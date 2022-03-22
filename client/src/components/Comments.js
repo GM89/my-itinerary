@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { commentsByItineraryId , commentsPostByItinerary} from "./../store/actions/commentActions";
 import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
 import moment from "moment";
-import { withSetStateAllowed } from "enzyme/build/Utils";
+//import { withSetStateAllowed } from "enzyme/build/Utils";
 
 function Comments(props) {
 
@@ -12,9 +12,11 @@ function Comments(props) {
   const commentsData = useSelector((state) => state.comments.allComments);
   const authenticatedUser = useSelector((state) => state.members.user);
 
+  
+  const[postingSomething, setPosting] = useState(false)
   const dispatch = useDispatch();
 
-  var turnos = 0
+
 
 
 //componentDidUpdate equivalent
@@ -24,7 +26,7 @@ function Comments(props) {
       await dispatch(commentsByItineraryId(itineraryIdToCheck));
     };
     loadComments(props.itineraryId);
-  }, );
+  }, [dispatch, postingSomething]);
 
 
 
@@ -66,6 +68,7 @@ function Comments(props) {
 
   
   async function newComment(event) {
+  
     event.preventDefault();
 
     const CurrentDate = moment().toDate();
@@ -83,6 +86,7 @@ function Comments(props) {
      
     console.log("comentario objecto", commentObject)
    dispatch(commentsPostByItinerary(commentObject))
+   setPosting(!postingSomething);
 
 
 

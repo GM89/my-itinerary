@@ -20,7 +20,7 @@ import{Link} from 'react-router-dom'
    function Validate() {
     var password = document.getElementById("1stPassword").value;
     var confirmPassword = document.getElementById("ConfirmPassword").value;
-    if (password != confirmPassword) {
+    if (password !== confirmPassword) {
         alert("You first Passwords is not similar with 2nd password. Please enter same password in both");
         return false;
     }

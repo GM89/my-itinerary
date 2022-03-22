@@ -28,7 +28,7 @@ therefore we don't have access to entire state object, but just partially.
 state.itineraries.itineraries.data.data (where the itineraries are) can't be read right now because fetch hasn't download it. 
 So initialy itineraryData is dummy variable that only gets itineraries.itineraries.data*/
 const itineraryData = useSelector(state => state.itineraries.itineraries.data)
-const activitiesData = useSelector(state => state.activities.activities)
+//const activitiesData = useSelector(state => state.activities.activities)
 
 
 const dispatch = useDispatch();

@@ -1,6 +1,5 @@
 import React  from 'react';
 
-import {authGoogle} from './../store/actions/loginActions'
 
 
 const GoogleAuthButton = () => {
